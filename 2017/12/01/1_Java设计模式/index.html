@@ -1,0 +1,1921 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Java,设计模式,软件架构," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="ZhongZhenGang's Notes" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="JAVA设计模式设计模式软件架构模式基本概念及三者区别在做软件架构设计时,根据不同的抽象层次可分为三种不同层次的模式：架构模式(Architectural Pattern)、设计模式(Design Pattern)、代码模式(Coding Pattern)。 &amp;emsp;&amp;emsp;架构模式是一个系统的高层次策略，涉及到大尺度的组件以及整体性质和力学。架构模式的好坏可以影响到总体布局和框架 结构。">
+<meta name="keywords" content="Java,设计模式,软件架构">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JAVA设计模式">
+<meta property="og:url" content="http://yoursite.com/2017/12/01/1_Java设计模式/index.html">
+<meta property="og:site_name" content="ZhongZhenGang&#39;s Notes">
+<meta property="og:description" content="JAVA设计模式设计模式软件架构模式基本概念及三者区别在做软件架构设计时,根据不同的抽象层次可分为三种不同层次的模式：架构模式(Architectural Pattern)、设计模式(Design Pattern)、代码模式(Coding Pattern)。 &amp;emsp;&amp;emsp;架构模式是一个系统的高层次策略，涉及到大尺度的组件以及整体性质和力学。架构模式的好坏可以影响到总体布局和框架 结构。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/image/JAVA学习/黑板模式类图.png">
+<meta property="og:image" content="http://yoursite.com/image/JAVA学习/简单对象交互图.jpg">
+<meta property="og:image" content="http://yoursite.com/image/JAVA学习/Broker模式应用场景二.jpg">
+<meta property="og:image" content="http://yoursite.com/image/JAVA学习/Broker模式应用场景三.jpg">
+<meta property="og:image" content="http://yoursite.com/image/JAVA学习/Broker模式部署示意图.jpg">
+<meta property="og:image" content="http://yoursite.com/image/JAVA学习/MVC示意图.png">
+<meta property="og:image" content="http://yoursite.com/image/JAVA学习/PAC智能体结构图.png">
+<meta property="og:image" content="http://yoursite.com/image/JAVA学习/PAC模式选举投票系统序列图.png">
+<meta property="og:image" content="http://yoursite.com/image/JAVA学习/移动机器人PAC层次结构.png">
+<meta property="og:image" content="http://yoursite.com/image/JAVA学习/微内核架构模式图.png">
+<meta property="og:image" content="http://yoursite.com/image/JAVA学习/微内核架构案例图.png">
+<meta property="og:image" content="http://yoursite.com/image/JAVA学习/Whole-part模式OMT图.png">
+<meta property="og:image" content="http://yoursite.com/image/JAVA学习/线段旋转时序图.png">
+<meta property="og:image" content="http://yoursite.com/image/JAVA学习/Master-Slave结构.png">
+<meta property="og:image" content="http://yoursite.com/image/JAVA学习/Master-Slave时序图.png">
+<meta property="og:image" content="http://yoursite.com/image/JAVA学习/Proxy模式OMT图.png">
+<meta property="og:image" content="http://yoursite.com/image/JAVA学习/Proxy模式时序图.png">
+<meta property="og:image" content="http://yoursite.com/image/JAVA学习/Command%20Processor%20%20模式结构图.png">
+<meta property="og:image" content="http://yoursite.com/image/JAVA学习/Command%20Processor%20%20时序图.png">
+<meta property="og:image" content="http://yoursite.com/image/JAVA学习/View%20Handler模式结构图.png">
+<meta property="og:image" content="http://yoursite.com/image/JAVA学习/View%20Handler模式时序图.png">
+<meta property="og:image" content="http://yoursite.com/image/JAVA学习/转发器-接收器结构图.png">
+<meta property="og:image" content="http://yoursite.com/image/JAVA学习/转发器-接收器时序图.png">
+<meta property="og:image" content="http://yoursite.com/image/JAVA学习/Client-Dispatcher-Server模式结构图.png">
+<meta property="og:image" content="http://yoursite.com/image/JAVA学习/Client-Dispatcher-Server模式时序图.png">
+<meta property="og:image" content="http://yoursite.com/image/JAVA学习/Client-Dispatcher-Server模式三者协议图.png">
+<meta property="og:image" content="http://yoursite.com/image/JAVA学习/引用计数成例静态结构.png">
+<meta property="og:image" content="http://yoursite.com/image/面向模式的软件架构/模式纲要.png">
+<meta property="og:updated_time" content="2018-07-03T12:22:48.099Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JAVA设计模式">
+<meta name="twitter:description" content="JAVA设计模式设计模式软件架构模式基本概念及三者区别在做软件架构设计时,根据不同的抽象层次可分为三种不同层次的模式：架构模式(Architectural Pattern)、设计模式(Design Pattern)、代码模式(Coding Pattern)。 &amp;emsp;&amp;emsp;架构模式是一个系统的高层次策略，涉及到大尺度的组件以及整体性质和力学。架构模式的好坏可以影响到总体布局和框架 结构。">
+<meta name="twitter:image" content="http://yoursite.com/image/JAVA学习/黑板模式类图.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/12/01/1_Java设计模式/"/>
+
+
+
+
+
+  <title>JAVA设计模式 | ZhongZhenGang's Notes</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ZhongZhenGang's Notes</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/01/1_Java设计模式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhongzhengang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/zhg_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZhongZhenGang's Notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JAVA设计模式</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-01T20:03:08+08:00">
+                2017-12-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java高级知识/" itemprop="url" rel="index">
+                    <span itemprop="name">Java高级知识</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java高级知识/设计模式/" itemprop="url" rel="index">
+                    <span itemprop="name">设计模式</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="JAVA设计模式"><a href="#JAVA设计模式" class="headerlink" title="JAVA设计模式"></a><center>JAVA设计模式<center></center></center></h1><h2 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h2><h3 id="软件架构模式基本概念及三者区别"><a href="#软件架构模式基本概念及三者区别" class="headerlink" title="软件架构模式基本概念及三者区别"></a>软件架构模式基本概念及三者区别</h3><p>在做软件架构设计时,根据不同的抽象层次可分为三种不同层次的模式：架构模式(Architectural Pattern)、设计模式(Design Pattern)、代码模式(Coding Pattern)。</p>
+<p>&emsp;&emsp;架构模式是一个系统的高层次策略，涉及到大尺度的组件以及整体性质和力学。架构模式的好坏可以影响到总体布局和框架 结构。</p>
+<p>&emsp;&emsp;设计模式是中等尺度的结构策略。这些中等尺度的结构实现了一些大尺度组件的行为和它们之间的关系。模式的好坏不会影响到系统的总体布局和总体框架。设计模式定义出子系统或组件的微观结构。</p>
+<p>&emsp;&emsp;代码模式（或成例）是特定的范例和与特定语言有关的编程技巧。代码模式的好坏会影响到一个中等尺度组件的内部、外部的结构或行为的底层细节，但不会影响到一个部件或子系统的中等尺度的结构，更不会影响到系统的总体布局和大尺度框架。</p>
+<h4 id="1-架构模式-Architectural-Pattern"><a href="#1-架构模式-Architectural-Pattern" class="headerlink" title="1. 架构模式(Architectural Pattern)"></a>1. 架构模式(Architectural Pattern)</h4><p>一个架构模式描述软件系统里的基本的结构组织或纲要。架构模式提供一些事先定义好的子系统，指定它们的责任，并给出把它们组织在一起的法则和指南。称之为系统模式。</p>
+<ul>
+<li><p>MVC模式,一个架构模式常常可以分解成很多个设计模式的联合使用。MVC模式常常包括调停者（Mediator）模式、策略（Strategy）模式、合成（Composite）模式、观察者（Observer）模式等。</p>
+</li>
+<li><p>Layers（分层）模式，有时也称Tiers模式</p>
+</li>
+<li><p>Blackboard（黑板）模式</p>
+</li>
+<li><p>Broker（中介）模式</p>
+</li>
+<li><p>Distributed Process（分散过程）模式</p>
+</li>
+<li><p>Microkernel（微核）模式</p>
+</li>
+</ul>
+<p><strong>架构模式常常划分成如下的几种：</strong></p>
+<p>一、 模块结构(From Mud to Structure)型。帮助架构师将系统合理划分，避免形成一个对象的海洋。包括Layers（分层）模式、Blackboard（黑板）模式、Pipes/Filters（管道/过滤器）模式等。</p>
+<p>二、分散系统（Distributed Systems）型。为分散式系统提供完整的架构设计，包括像Broker（中介）模式等。</p>
+<p>三、人机互动（Interactive Systems）型，支持包含有人机互动界面的系统的架构设计，例子包括MVC（Model-View-Controller）模式、PAC（Presentation-Abstraction-Control）模式等。</p>
+<p>四、Adaptable Systems型，支持应用系统适应技术的变化、软件功能需求的变化。如Reflection（反射）模式、Microkernel（微核）模式等。</p>
+<h4 id="2-设计模式-Design-Pattern"><a href="#2-设计模式-Design-Pattern" class="headerlink" title="2. 设计模式(Design Pattern)"></a>2. 设计模式(Design Pattern)</h4><p>一个设计模式提供一种提炼子系统或软件系统中的组件的，或者它们之间的关系的纲要设计。设计模式描述普遍存在的在相互通讯的组件中重复出现的结构，这种结构解决在一定的背景中的具有一般性的设计问题。</p>
+<p>设计模式常常划分成不同的种类，常见的种类有：</p>
+<p>创建型设计模式，如工厂方法（Factory Method）模式、抽象工厂（Abstract Factory）模式、原型（Prototype）模式、单例（Singleton）模式，建造（Builder）模式等</p>
+<p>结构型设计模式，如合成（Composite）模式、装饰（Decorator）模式、代理（Proxy）模式、享元（Flyweight）模式、门面（Facade）模式、桥梁（Bridge）模式等</p>
+<p>行为型模式，如模版方法（Template Method）模式、观察者（Observer）模式、迭代子（Iterator）模式、责任链（Chain of Responsibility）模式、备忘录（Memento）模式、命令（Command）模式、状态（State）模式、访问者（Visitor）模式等等。</p>
+<p>以上是三种经典类型，实际上还有很多其他的类型，比如Fundamental型、Partition型，Relation型等等。设计模式在特定的编程语言中实现的时候，常常会用到代码模式。比如单例（Singleton）模式的实现常常涉及到双检锁（Double-Check Locking）模式等。</p>
+<h4 id="3-代码模式-Coding-Pattern"><a href="#3-代码模式-Coding-Pattern" class="headerlink" title="3. 代码模式(Coding Pattern)"></a>3. 代码模式(Coding Pattern)</h4><p>代码模式（或成例）是较低层次的模式，并与编程语言密切相关。代码模式描述怎样利用一个特定的编程语言的特点来实现一个组件的某些特定的方面或关系。</p>
+<p>较为著名的代码模式的例子包括双检锁（Double-Check Locking）模式等</p>
+<p>原文网址:<a href="http://zhidao.baidu.com/link?url=ehOFeyNExgYkFdGD9SYAWGsWNBpeWyzMW1bUoqqAq_-VfrQsBU9CyBxys0zAx715sdBnh98bRzbX9mCYGR5jgq" target="_blank" rel="noopener">http://zhidao.baidu.com/link?url=ehOFeyNExgYkFdGD9SYAWGsWNBpeWyzMW1bUoqqAq_-VfrQsBU9CyBxys0zAx715sdBnh98bRzbX9mCYGR5jgq</a> </p>
+<h3 id="一、架构模式"><a href="#一、架构模式" class="headerlink" title="一、架构模式"></a>一、架构模式</h3><p>将架构模式分为四类：</p>
+<ul>
+<li><p>从混乱到有序类  包括Layers、Pipes and Filters和Blackboard</p>
+</li>
+<li><p>分布式系统  只包括Broker模式。</p>
+</li>
+<li>交互式系统  包括Model-View-Controller和Presentation-Abstraction-Control模式。</li>
+<li>可适应系统  包括Reflection和Microkernel模式</li>
+</ul>
+<h4 id="1-从混乱到有序"><a href="#1-从混乱到有序" class="headerlink" title="1.从混乱到有序"></a>1.从混乱到有序</h4><h5 id="1-1-Layers模式"><a href="#1-1-Layers模式" class="headerlink" title="1.1 Layers模式"></a>1.1 Layers模式</h5><p>分层（Layer）模式是最常见的一种架构模式。甚至说分层模式是很多架构模式的基础，本章下面讲到的一些内容实际上都和分层模式相关联。</p>
+<p>分层描述的是这样一种架构设计过程：从最低级别的抽象开始，称为第1层。这是系统的基础。通过将第J层放置在第J-1层的上面逐步向上完成抽象阶梯，直到到达功能的最高级别，称为第N层。</p>
+<p>因而分层模式就可以定义为：将解决方案的组件分隔到不同的层中。每一层中的组件应保持内聚性，并且应大致在同一抽象级别。每一层都应与它下面的各层保持松散耦合。</p>
+<p>分层模式的关键点在于确定依赖：即通过分层，可以限制子系统间的依赖关系，使系统以更松散的方式耦合，从而更易于维护。</p>
+<p>相对于分层，还有一种概念叫分区。分层是对架构的横向划分，而分区是对架构的纵向划分。</p>
+<p>典型的分层方式是应用程序专用功能位于上层，跨越应用程序领域的功能位于中层，而配置环境专用功能位于低层。层的数量与组成取决于问题领域和解决方案的复杂程度。通常而言只有一个应用程序专用层。应当把子系统组织成分层结构，架构的上层是应用程序专用子系统，架构的低层是硬件和操作专用子系统，中间件层是通用服务。</p>
+<p><strong>对系统进行分层有如下基本原则：</strong></p>
+<p>— 可见度。各子系统只能与同一层及其下一层的子系统存在依赖关系。</p>
+<p>— 易变性。最上层放置随用户需求的改变而改变的元素。最底层放置随实施平台（硬件、语言、操作系统、数据库等）的改变而改变的元素。中间的夹层放置广泛适用于各种系统和实施环境的元素。如果在这些大类中进一步划分有助于对模型进行组织，则添加更多的层。</p>
+<p>— 通用性。一般将抽象的模型元素放置在模型的低层。如果它们不针对于具体的实施，则倾向于将其放置在中间层。</p>
+<p>— 层数。对于小型系统，三层就足够了。对于复杂系统，通常需要5-7层。无论复杂程度如何，如果超过10层，就需要慎重考虑了。层数越多，越需慎重。</p>
+<p><strong>常见的分层架构模式</strong></p>
+<ol>
+<li><p>客户端-服务器模型（Client-Server，C/S）。</p>
+</li>
+<li><p>三层模型：用户表示层、业务逻辑层、数据层。</p>
+</li>
+<li><p>多层结构的技术组成模型：表现层、中间层、数据层。</p>
+</li>
+<li><p>网络系统常用三层结构：核心层、汇聚层和接入层。</p>
+</li>
+<li><p>RUP典型分层方法：应用层、专业业务层、中间件层、系统软件层。</p>
+</li>
+<li><p>基于Java的B/S模式系统结构：浏览器端、服务器端、请求接收层、请求处理层。</p>
+</li>
+<li><p>某六层结构：功能层（用户界面）、模块层、组装层（软件总线）、服务层（数据处理）、数据层、核心层。</p>
+</li>
+</ol>
+<p><strong>简单例子</strong></p>
+<p>比如，一个高中年级的管理结构。首先是普通的学生，然后是小组长，小组长上面是班长，班长一层上面是班主任，然后班主任一层上面是年纪主任。</p>
+<h5 id="1-2-Pipes-and-Filters模式"><a href="#1-2-Pipes-and-Filters模式" class="headerlink" title="1.2 Pipes and Filters模式"></a>1.2 Pipes and Filters模式</h5><blockquote>
+<p>架构模式Pipes and Filters提供的结构适合用于处理数据流的系统。每个处理步骤封装在一个过滤器组件中，数据通过相邻过滤器之间的管道传输。通过重组过滤器，可打造多个相关的系统组。</p>
+</blockquote>
+<p><strong>背景</strong><br>处理数据流</p>
+<p><strong>问题</strong></p>
+<p>假设要打造的系统必须对输入数据进行处理或转换，以单个组件的方式实现这种系统可能不可行，原因有多个：系统必须由多名开发人员打造；整个系统要完成的任务分多个处理阶段；需求很可能发生变化。<br>因此，需要提供灵活性，以便能够更换处理步骤或调整处理顺序。提供这样的灵活性后，便可使用既有处理组件打造出一些列系统。设计系统时，必须考虑如下作用力。</p>
+<ul>
+<li>以后可通过更换或重组处理步骤来改进系统。</li>
+<li>相比大型组件，在其他环境中重用小型处理步骤更容易。</li>
+<li>不相邻的处理步骤不共享消息。</li>
+<li>存在不同的输入数据源，如网络连接和提供温度的硬件传感器。</li>
+<li>最终结果能够以各种方式和存储。</li>
+<li>如果要求用户将中间结果存储到文件中，供以后进一步处理，将很容易出错。</li>
+<li>应避免同时执行多个处理步骤，如并行或半并行地执行这些步骤。</li>
+</ul>
+<p><strong>解决方案</strong></p>
+<p>架构模式Pipes and Filters将系统面临的任务分为多个一次执行的处理步骤。这些步骤通过在系统中传输的数据相关联：一个步骤的输出是下一个步骤的输入。每个处理步骤都由过滤器组件实现。过滤器一边使用数据一边提供数据，而不是等到获得所有输入后才生成输出。这降低了延迟，实现了真正的并行处理。数据源、过滤器、数据接收器通过管道依次相连，每条管道都在相邻处理步骤之间传输数据。</p>
+<p><strong>结构</strong></p>
+<p>过滤器组件式流水线的处理单元，负责充实、提炼或转换输入数据。<br>过滤器操作可由多种事件触发： </p>
+<p>- 下一个流水线元素从过滤器拉去输出。(被动过滤器) </p>
+<p>- 前一个流水线元素向过滤器推送输入。(被动过滤器) </p>
+<p>- 过滤器不间断地循环，从流水线上游拉去输入，并向下游推送输出。(主动过滤器)</p>
+<p>管道指的是过滤器之间、数据源和第一个过滤器之间以及最后一个过滤器和数据接收器之间的连接。将两个主动过滤器组件相连时，管道负责让它们同步，这是使用先进先出缓冲区实现的。被动过滤器与主动过滤器相连时，可这样实现管道：由主动过滤器直接调用被动过滤器，但直接调用增加了重组过滤器的难度。</p>
+<p>数据源指的是系统输入，提供结构或类型相同的数据序列，如包含文本行的文件或提供数字序列的传感器。</p>
+<p>数据接收器从流水线末端收集结果，分主动接收器和被动数据接收器。</p>
+<p><strong>实现</strong></p>
+<p>Pipes and Filters架构实现起来很简单。可将系统服务(如消息队列或UNIX管道)用作管道连接，也可采取其他方式，如直接调用。</p>
+<ol>
+<li>将系统要完成的任务划分为一系列处理阶段。</li>
+<li>定义沿管道传递的数据的格式。</li>
+<li>确定如何实现每条管道连接。</li>
+<li>设计并实现过滤器。</li>
+<li>实际错误处理机制。UNIX为错误消息定义了专用输出通道stderr。过滤器并行运行时，单个错误通道可能包含来自不同组件的错误消息，这即不明显又无法预测。</li>
+<li>搭建处理流水线。</li>
+</ol>
+<p><strong>效果</strong></p>
+<p>优点：</p>
+<ol>
+<li>不需要中间文件，但也可以使用。 </li>
+<li>可更换过滤器。 </li>
+<li>可重组过滤器 </li>
+<li>可重用过滤器组件 </li>
+<li>可快速创建流水线原型。 </li>
+<li>效率因并行处理得以提高。</li>
+</ol>
+<p>缺点： </p>
+<ol>
+<li>共享状态信息的开销高昂或缺乏灵活性。 </li>
+<li>通过并行处理提高效率的初衷常常成为泡影。 </li>
+<li>数据转换开销。 </li>
+<li>错误处理。</li>
+</ol>
+<p><strong>简单例子</strong></p>
+<p>比如，流水线作业，一道工序一道工序的进行，最后就生成出了产品。Linux下的管道命令”|”，将前一个命令的结果作为第二个命令的输入数据。</p>
+<p><strong>参考资料：</strong><a href="http://blog.csdn.net/zsdjoo/article/details/45223809" target="_blank" rel="noopener">http://blog.csdn.net/zsdjoo/article/details/45223809</a></p>
+<h5 id="1-3-Blackboard模式"><a href="#1-3-Blackboard模式" class="headerlink" title="1.3 Blackboard模式"></a>1.3 Blackboard模式</h5><p>这种模式对于没有确定解决方案策略的问题是有用的。黑板模式由3个主要组成部分组成。</p>
+<ul>
+<li>黑板——包含来自解决方案空间的对象的结构化全局内存</li>
+<li>知识源——专门的模块和它们自己的表示</li>
+<li>控制组件——选择、配置和执行模块</li>
+</ul>
+<p>所有的组件都可以访问黑板。组件可以生成添加到黑板上的新数据对象。组件在黑板上查找特定类型的数据，并通过与现有知识源的模式匹配来查找这些数据。</p>
+<p>使用场景：</p>
+<ul>
+<li><p>语音识别</p>
+</li>
+<li><p>车辆识别和跟踪</p>
+</li>
+<li><p>蛋白质结构识别</p>
+</li>
+<li><p>声纳信号的解释</p>
+</li>
+</ul>
+<p><img src="\image\JAVA学习\黑板模式类图.png" alt="黑板模式类图"></p>
+<p>参考资料：<a href="https://www.cnblogs.com/IcanFixIt/p/7518146.html" title="10种常见的软件架构模式" target="_blank" rel="noopener">10种常见的软件架构模式</a></p>
+<h4 id="2-分布式系统"><a href="#2-分布式系统" class="headerlink" title="2.分布式系统"></a>2.分布式系统</h4><h5 id="2-1-Broker模式"><a href="#2-1-Broker模式" class="headerlink" title="2.1 Broker模式"></a>2.1 Broker模式</h5><p>zhg  自己的理解： 其实Broker模式就是在客户端和服务器之间增加了一个Broker，这样就可以将客户端和服务器进行解耦，服务器可以动态的增删或移动，只要注册到了Broker中，客户端就可以通过Broker来调用服务器的服务。</p>
+<p>下面的内容参考自：<a href="https://www.cnblogs.com/kisf/p/6365671.html" title="分布式模式之Broker模式" target="_blank" rel="noopener">分布式模式之Broker模式</a></p>
+<p>​        引入一个Broker组件，解耦客户端和服务端。服务端注册自己到Broker，通过暴露接口的方式允许客户端接入服务。客户端是通过Broker发送请求的，Broker转发请求道服务端，并将请求的结果或异常回发给客户端。通过使用Broker模式，应用可以通过发送消息访问远程的服务。</p>
+<p>这一架构模式允许动态的改变、添加、删除服务端，从客户端的角度，这些都是透明的。</p>
+<p>结构：</p>
+<p>Broker模式定义了6中类：Client，Server，Client_Proxy，Server_Proxy，Broker，Bridge。</p>
+<h6 id="Server："><a href="#Server：" class="headerlink" title="Server："></a>Server：</h6><p>l 责任：处理特定领域的问题，实现服务的细节，注册自己到Broker，处理请求并返回结果或异常。</p>
+<p>l 协作类：Server_Proxy，Broker</p>
+<h6 id="Client："><a href="#Client：" class="headerlink" title="Client："></a>Client：</h6><p>Client是需要访问远程服务的应用程序，为此，Client发送请求到Broker，并从Broker上接收响应或异常。Client和Server只是逻辑上相关而已，实际上Client并不知道Server的确切位置。</p>
+<p>l 责任：1. 实现用户端功能，2. 发送请求到Broker，3. 接收相应和异常。</p>
+<p>l 协作类：Broker，Client_Proxy</p>
+<h6 id="Broker："><a href="#Broker：" class="headerlink" title="Broker："></a>Broker：</h6><p>Broker可以被看成消息转发器。Broker也负责一些控制和管理操作。它能够定位服务端的位置，若发生异常，能够将异常捕获传给Client。Broker需要提供注册服务的接口给Server。如果请求来自其他的Broker，本地的Broker需要转发请求并最终将结果或异常回应给相应的远程Broker。Broker提供的服务和name service非常相像（如DNS、LDAP）。</p>
+<p>l 责任：1. 注册服务。2. 提供服务API。3. 转发消息。4. 容错处理。5. 与其他Broker的交互。6。 定位服务。</p>
+<p>l 协作类：Client_Proxy,Server_Proxy,Bridge</p>
+<h6 id="Client-Proxy："><a href="#Client-Proxy：" class="headerlink" title="Client_Proxy："></a>Client_Proxy：</h6><p>连系Client和Broker，这一层保证了通讯的透明性，使Client调用远程服务就像调用本地的服务一样。</p>
+<p>l 责任：1. 封装特定的系统调用。2. 封装通讯的参数、控制信息等。</p>
+<p>l 协作类：Client,Broker。</p>
+<p>Server_Proxy：</p>
+<p>Server_proxy是与Client_Proxy相对应的，它接受请求，解包消息，解析出参数并调用服务的实现接口。</p>
+<p>l 责任：1. 封装特定的系统调用。2. 封装通讯的参数、控制信息等。3. 调用server的服务接口。</p>
+<p>l 协作类：Server,Broker。</p>
+<h6 id="Bridge："><a href="#Bridge：" class="headerlink" title="Bridge："></a>Bridge：</h6><p>Bridge用来连接各个Broker，一般这个组件是可选的。当系统是发杂的网络组成时，有可能需要这一角色。</p>
+<p>l 责任：1. 封装特定的网络特性。2. 传递Broker之间的通讯。</p>
+<p>l 协作类：Broker。</p>
+<h6 id="应用场景一："><a href="#应用场景一：" class="headerlink" title="应用场景一："></a>应用场景一：</h6><p>直接通讯方式。Client和Server相互理解他们之间的通讯协议。Broker主要完成Client和Server之间的握手。之后所有的消息、异常都是由Client与Server直接交互。（想象DNS）。简单对象交互如图：</p>
+<p><img src="\image\JAVA学习\简单对象交互图.jpg" alt="简单对象交互图"></p>
+<h6 id="应用场景二："><a href="#应用场景二：" class="headerlink" title="应用场景二："></a>应用场景二：</h6><p>l Broker启动，完成自身的初始化，之后进入事件循环，等待消息到来。</p>
+<p>l Server启动，首先执行自身的初始化，然后注册自己到Broker。</p>
+<p>l Broker接收Server的注册请求，将其加入到可使用服务的列表，并回应Ack给Server。</p>
+<p>l Server接收Ack，进入事件监听循环，等待消息到来。</p>
+<p>l Client调用远程服务对象的方法，Client_Proxy封装消息请其发送给Broker。</p>
+<p>l Broker查询可使用的Server，将请求转发给Server。</p>
+<p>l Server_Proxy解析消息，分离出参数和控制信息，并调用特定的Server实现接口。Server处理完的结果通过Server_proxy封装成消息转发到Server。</p>
+<p>l Broker将相应消息转发给正确的Client_Proxy，Client受到响应继续其他逻辑。</p>
+<p>简单对象交互如图：<img src="\image\JAVA学习\Broker模式应用场景二.jpg" alt="Broker模式应用场景二"></p>
+<h6 id="应用场景三："><a href="#应用场景三：" class="headerlink" title="应用场景三："></a>应用场景三：</h6><p>l Broker A接收到请求，交由Server处理，但是发现该Server位于其他的网络节点。</p>
+<p>l Broker A将请求转发给Bridge A，Bridge A将请求进行必要的格式化，传送给Bridge B。</p>
+<p>l Bridge B将请求进行必要的格式化，转化成Broker B可以理解的格式，并转发给Broker B。Broker B执行场景二中的过程，处理的结果按如上逆序返回。</p>
+<p>简单对象交互如图：</p>
+<p><img src="\image\JAVA学习\Broker模式应用场景三.jpg" alt="Broker模式应用场景三"></p>
+<h6 id="部署示意图："><a href="#部署示意图：" class="headerlink" title="部署示意图："></a>部署示意图：</h6><p><img src="\image\JAVA学习\Broker模式部署示意图.jpg" alt="Broker模式部署示意图"></p>
+<h6 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h6><p><strong>优点：</strong></p>
+<ol>
+<li>服务的位置透明性。</li>
+<li>组件的可变性及扩展性。由于Server是注册到Broker上的，所以Server可以动态的增加、删除、改变。</li>
+<li>Broker之间可交互。</li>
+<li>可重用性。</li>
+<li>由于组件的耦合度较小，调试和<a href="http://lib.csdn.net/base/softwaretest" target="_blank" rel="noopener">测试</a>的工作也是可控的。</li>
+</ol>
+<p><strong>缺点:</strong></p>
+<ol>
+<li>效率；增加了一层Broker的消息转发，效率有所降低。</li>
+<li>容错能力必须要特别考虑。</li>
+<li>调试和测试的工作加大。</li>
+</ol>
+<h4 id="3-交互式系统"><a href="#3-交互式系统" class="headerlink" title="3.交互式系统"></a>3.交互式系统</h4><h5 id="3-1-Model-View-Controller模式"><a href="#3-1-Model-View-Controller模式" class="headerlink" title="3.1 Model-View-Controller模式"></a>3.1 Model-View-Controller模式</h5><h6 id="基本介绍"><a href="#基本介绍" class="headerlink" title="基本介绍"></a>基本介绍</h6><p><strong>MVC模式</strong>（Model-View-Controller）是<a href="http://zh.wikipedia.org/wiki/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B" target="_blank" rel="noopener">软件工程</a>中的一种<a href="http://zh.wikipedia.org/wiki/%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84" target="_blank" rel="noopener">软件架构</a>模式，把软件系统分为三个基本部分：模型（Model）、视图（View）和控制器（Controller）。</p>
+<p>MVC模式最早由<a href="http://zh.wikipedia.org/w/index.php?title=Trygve_Reenskaug&amp;action=edit&amp;redlink=1" target="_blank" rel="noopener">Trygve Reenskaug</a>在1978年提出<a href="http://zh.wikipedia.org/wiki/MVC#cite_note-1" target="_blank" rel="noopener">[1]</a> ，是<a href="http://zh.wikipedia.org/wiki/%E5%B8%95%E7%BE%85%E5%A5%A7%E5%A4%9A%E7%A0%94%E7%A9%B6%E4%B8%AD%E5%BF%83" target="_blank" rel="noopener">施乐帕罗奥多研究中心</a>（Xerox PARC）在20世纪80年代为程序语言<a href="http://zh.wikipedia.org/wiki/Smalltalk" target="_blank" rel="noopener">Smalltalk</a>发明的一种软件设计模式。<strong>MVC模式</strong>的目的是实现一种动态的程序设计，使后续对程序的修改和扩展简化，并且使程序某一部分的重复利用成为可能。除此之外，此模式通过对复杂度的简化，使程序结构更加直观。软件系统通过对自身基本部分分离的同时也赋予了各个基本部分应有的功能。专业人员可以通过自身的专长分组：</p>
+<ul>
+<li>（控制器Controller）- 负责转发请求，对请求进行处理。</li>
+<li>（视图View） - 界面设计人员进行图形界面设计。</li>
+<li>（模型Model） - 程序员编写程序应有的功能（实现算法等等）、数据库专家进行数据管理和数据库设计(可以实现具体的功能)。</li>
+</ul>
+<p><img src="\image\JAVA学习\MVC示意图.png" alt="MVC示意图"></p>
+<p><strong>视图</strong></p>
+<p>​    在视图中其实没有真正的处理发生，不管这些数据是联机存储的还是一个雇员列表，作为视图来讲，它只是作为一种输出数据并允许用户操纵的方式。</p>
+<p><strong>模型</strong><br>       模型表示企业数据和业务规则。在MVC的三个部件中，<strong>模型拥有最多的处理任务</strong>。例如它可能用象EJBs和ColdFusionComponents这样的构件对象来处理<a href="http://lib.csdn.net/base/14" target="_blank" rel="noopener">数据库</a>。被模型返回的数据是中立的，就是说<strong>模型与数据格式无关，这样一个模型能为多个视图提供数据</strong>。由于应用于模型的代码只需写一次就可以被多个视图重用，所以减少了代码的重复性。</p>
+<p><strong>控制器</strong><br>　　控制器<strong>接受用户的输入并调用模型和视图去完成用户的需求</strong>。所以当单击Web页面中的超链接和发送HTML表单时，控制器本身不输出任何东西和做任何处理。它只是接收请求并决定调用哪个模型构件去处理请求，然后再确定用哪个视图来显示返回的数据。</p>
+<h6 id="为什么要使用-MVC"><a href="#为什么要使用-MVC" class="headerlink" title="为什么要使用 MVC"></a>为什么要使用 MVC</h6><p>　  首先，<strong>最重要的一点是多个视图能共享一个模型</strong>，现在需要用越来越多的方式来访问你的应用程序。对此，其中一个解决之道是使用MVC，无论你的用户想要Flash界面或是WAP 界面；用一个模型就能处理它们。<strong>由于你已经将数据和业务规则从表示层分开，所以你可以最大化的重用你的代码了。</strong><br>　　由于模型返回的数据没有进行格式化，所以同样的构件能被不同界面使用。例如，很多数据可能用HTML来表示，但是它们也有可能要用AdobeFlash和WAP来表示。模型也有状态管理和数据持久性处理的功能，例如，基于会话的购物车和电子商务过程也能被Flash网站或者无线联网的应用程序所重用。<br>　　因为模型是自包含的，并且与控制器和视图相分离，所以很容易改变你的应用程序的数据层和业务规则。如果你想把你的数据库从MySQL移植到Oracle，或者改变你的基于RDBMS数据源到LDAP，只需改变你的模型即可。一旦你正确的实现了模型，不管你的数据来自数据库或是LDAP服务器，视图将会正确的显示它们。由于运用MVC的应用程序的三个部件是相互独立，改变其中一个不会影响其它两个，所以依据这种设计思想你能构造良好的松耦合的构件。<br>　　对我来说，控制器也提供了一个好处，就是可以使用控制器来联接不同的模型和视图去完成用户的需求，这样控制器可以为构造应用程序提供强有力的手段。给定一些可重用的模型和视图，控制器可以根据用户的需求选择模型进行处理，然后选择视图将处理结果显示给用户。</p>
+<h6 id="MVC的优点"><a href="#MVC的优点" class="headerlink" title="MVC的优点"></a>MVC的优点</h6><p><strong>1.低耦合性</strong><br>　　<strong>视图层和业务层分离，这样就允许更改视图层代码而不用重新编译模型和控制器代码</strong>，同样，一个应用的业务流程或者业务规则的改变只需要改动MVC的模型层即可。因为模型与控制器和视图相分离，所以很容易改变应用程序的数据层和业务规则。</p>
+<p><strong>2.高重用性和可适用性</strong><br>　 　随着技术的不断进步，现在需要用越来越多的方式来访问应用程序。MVC模式允许你使用各种不同样式的视图来访问同一个服务器端的代码。它包括任何 WEB（HTTP）浏览器或者无线浏览器（wap），比如，用户可以通过电脑也可通过手机来订购某样产品，虽然订购的方式不一样，但处理订购产品的方式是 一样的。由于模型返回的数据没有进行格式化，所以同样的构件能被不同的界面使用。例如，很多数据可能用HTML来表示，但是也有可能用WAP来表示，而这 些表示所需要的命令是改变视图层的实现方式，而控制层和模型层无需做任何改变。</p>
+<p><strong>3.较低的生命周期成本</strong><br>　　MVC使开发和维护用户接口的技术含量降低。</p>
+<p><strong>4.快速的部署</strong><br>　　使用MVC模式使开发时间得到相当大的缩减，它使程序员（Java开发人员）集中精力于业务逻辑，界面程序员（HTML和JSP开发人员）集中精力于表现形式上。</p>
+<p><strong>5.可维护性</strong><br>　　分离视图层和业务逻辑层也使得WEB应用更易于维护和修改。</p>
+<p><strong>6.有利于软件工程化管理</strong><br>　　由于不同的层各司其职，每一层不同的应用具有某些相同的特征，有利于通过工程化、工具化管理程序代码。</p>
+<h6 id="MVC的缺点"><a href="#MVC的缺点" class="headerlink" title="MVC的缺点"></a>MVC的缺点</h6><p>　　MVC的缺点是由于它没有明确的定义，所以完全理解MVC并不是很容易。使用MVC需要精心的计划，由于它的内部原理比较复杂，所以需要花费一些时间去思考。<br>　　你将不得不花费相当可观的时间去考虑如何将MVC运用到你的应用程序，同时由于模型和视图要严格的分离，这样也给调试应用程序带来了一定的困难。每个构件在使用之前都需要经过彻底的测试。一旦你的构件经过了测试，你就可以毫无顾忌的重用它们了。<br>　　根据开发者经验，由于开发者将一个应用程序分成了三个部件，所以使用MVC同时也意味着你将要管理比以前更多的文件，这一点是显而易见的。这样好像我们的工作量增加了，但是请记住这比起它所能带给我们的好处是不值一提。<br>　　<strong>MVC并不适合小型甚至中等规模的应用程序，花费大量时间将MVC应用到规模并不是很大的应用程序通常会得不偿失。</strong><br>　　MVC设计模式是一个很好创建软件的途径，它所提倡的一些原则，像内容和显示互相分离可能比较好理解。但是如果你要隔离模型、视图和控制器的构件，你可能需要重新思考你的应用程序，尤其是应用程序的构架方面。如果你肯接受MVC，并且有能力应付它所带来的额外的工作和复杂性，MVC将会使你的软件在健壮性，代码重用和结构方面上一个新的台阶。</p>
+<h5 id="3-2-Presentation-Abstraction-Control模式"><a href="#3-2-Presentation-Abstraction-Control模式" class="headerlink" title="3.2 Presentation-Abstraction-Control模式"></a>3.2 Presentation-Abstraction-Control模式</h5><p>参考书籍《面向模式的软件架构–模式系统》的2.4.2节Presentation-Abstraction-Control模式</p>
+<p><strong>架构模式Presentation-Abstraction-Control(PAC)</strong> 定义了一种适用于交互式软件系统的结构——由相互协作的智能体组成层次结构。每个智能体都负责应用程序功能的特定方面，并包含三个组件：表示组件、抽象组件和控制组件，这将智能体的人机交互方面同功能核心和通信方面分离了。</p>
+<p>问题：</p>
+<p>​    一个代表政治选举的简单系统。这个系统由一个用于输入数据的电子表格以及多种显示最新结果的图表。用户通过图形界面与系统交互。</p>
+<p>​    主持人需要知道实时的数据，可以查看柱状图表示结果，扇形图表示结果。计票员需要在表格中输入新的投票。</p>
+<p><strong>PAC模式的结构</strong></p>
+<p>将交互式应用程序设计成由PAC智能体组成的树形结构，其中包含一个顶层智能体、多个中间层智能体和很多的底层智能体。每个智能体负责应用程序功能的特定方面，并由三个组件组成：表示组件、抽象组件和控制组件。</p>
+<p>应用程序的层次结构放映了智能体之间的依赖关系，每个智能体都依赖于它上一层到最顶层的所有智能体。</p>
+<p><strong>智能体的组成：</strong></p>
+<ol>
+<li>表示组件提供了PAC智能体的可视化行为；</li>
+<li>抽象组件维护智能体的底层数据模型，并提供操作这些数据的功能；</li>
+<li>控制组件是表示组件和抽象组件之间的桥梁，并提供了让智能体能够与其他PAC智能体通信的功能。</li>
+</ol>
+<p>顶层PAC智能体提供了系统的核心功能，其他大部分智能体都依赖或操作这个核心。另外，顶层PAC智能体还包括不属于特定子任务的用户界面，如菜单栏、显示应用程序信息的对话框等。</p>
+<p>底层PAC智能体表示用户可操作的独立语义概念，如电子表格和图表。底层智能体向用户呈现这些概念，并支持用户可以对这些智能体执行的所有操作，如缩放或移动图表。</p>
+<p>中间层PAC智能体表示下一层智能体的组合或他们之间的关系，例如，中间层智能体可能维护相同数据的多个视图。</p>
+<p>我们的政治选举系统中定义了一个顶层PAC智能体，让系统能够访问底层数据仓库。这个数据仓库本身并非系统的一部分。在最底层，我们定义了四个PAC智能体：一个用于输入数据的电子表格智能体以及三个以不同方式表示数据的试图智能体。这个系统只有一个中间层PAC智能体，它负责协调底层的三个视图智能体，确保他们一致。电子表格智能体直接与顶层PAC智能体相连。用户只能与底层智能体交互。</p>
+<p><img src="\image\JAVA学习\PAC智能体结构图.png" alt="PAC智能体结构图"></p>
+<p><strong>情景1</strong>      这个情景描绘了打开新的选举数据柱状图视图时,不同PAC智能体之间的协作,还详细描述了“状图”智体的内部行为。这包括5个阶段。</p>
+<ol>
+<li>用户请求“视图协调器”智能体的表示组件打开一个新的柱状图。</li>
+<li>“视图协调器”智能体的控制组件实例化“柱状图”智能体。</li>
+<li>“视图协调器”智能体向新创建的“柱状图”智能体发送“打开”事件。</li>
+<li>“柱状图“智能体的控制组件从顶层PAC智能体那里获取数据,而“视图协调器”智能体充当了底层智能体和顶层智能体之间的转交人。返回的数据存储在“柱上状图”智能体的抽象组件中,然后,该智能体的控制组件调用表示组件来显示柱状图。</li>
+<li>表示组件在屏幕新建一个窗口,从抽象组件那里获取数据(这是通过向控制组件请求数据实现的),再在新窗口中显示数据。</li>
+</ol>
+<p><img src="\image\JAVA学习\PAC模式选举投票系统序列图.png" alt="PAC模式选举投票系统序列图"></p>
+<p>​        这里显然存在优化空间,例如,可让视图协调器缓存来自顶层智能体的数据,还可在存储数据前调用底层智能体的表示组件。然而,当前的重点是诠释这个模式的基本理念。</p>
+<h6 id="已知应用："><a href="#已知应用：" class="headerlink" title="已知应用："></a>已知应用：</h6><p><strong>移动机器人( Mobile Robot)</strong> 。该系统[Crro85让操作员能够与移动机器人交互。移动机器人在封闭而危险的环境中漫步,而环境由墙壁、设备和人员(要么是闯入者,要么是事故受害人)组成。机器人根据自身安装的传感器以及系统操作员提供的信息漫步。软件让操作员能够：</p>
+<ol>
+<li>向机器人描绘其工作环境以及其中的场所和场所间的通道;</li>
+<li>修改环境</li>
+<li>指出机器人的使命</li>
+<li>控制使命的实施</li>
+<li>观察使命的实施进度。</li>
+</ol>
+<p>​        环境中的每堵墙、每条通道、每个场所都由一个底层PAC智能体表示,这些智能体一起将环境可视化。环境由中间层PAC智能体表示,它们控制组成环境的“墙壁”、“通道”和“场所”PAC智能体。用户对环境的控制由“面板”PAC智能体提供,这种智能体也位于层次结构底层。“环境”PAC智能体和“面板”PAC智能体组成了机器人的工作空间,工作空间由独立的中间层PAC智能体表示。为支持同一个环境的多个视图，由“多工作空间”PAC智能体协调同一个工作空间的多个视图。顶层PAC智能体封装了应用程序的功能核心,这是一个基于规则的智能监控器( intelligent supervisor)，负责驾驭和控制机器人。</p>
+<p><img src="\image\JAVA学习\移动机器人PAC层次结构.png" alt="移动机器人PAC层次结构"></p>
+<h6 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h6><p>架构模式 Presentation- Abstraction- Control有多个优点。</p>
+<p>口    <strong>分离关注点</strong> 。应用领域的每个语义概念都由独立的智能体表示,每个智能体都维护自己的状态和数据,并与其他PAC智能体协作,但又不依赖于它们。每个PAC智能体还提供自己的人机交互,让你能够独立地为应用程序的每个语义概念或任务开发专用的数据和用<br>户界面。<br>口  <strong>支持修改和扩展</strong>。修改PAC智能体的表示组件或抽象组件不影响系统中的其他智能体。这让你能够分别修改或优化各个PAC智能体的底层数据模型,还可分别修改智能体的用户界面如从 command she改为菜单和对话框。</p>
+<p>​        在既有的PAC架构中,可轻松地集成新智能体,而无需对既有PAC智能体做重大修改。所有PAC智能体都通过预定义的接口相互通信,另外,可动态地注册新的PAC智能体,以确保通信和协作。例如,要在我们的政治选举信息系统中添加新的视图PAC智能体,只需扩展“视图协调器”PAC智能体的表示组件的面板,让用户能够创建这种新视图,而处理新PAC智能体的功能(如向“视图协调器”PAC智能体注册以及传播变更和事件)都是现成的。</p>
+<p>口    <strong>支持多任务</strong> 。可轻松地让PAC智能体在不同线程、进程甚至计算机中运行。给PAC智能添加PC功能只会影响其控制组件。</p>
+<p>多任务还能让多用户应用程序受益。例如,在我们的政治选举信息系统中,新闻主播可能播报最新的预测,而数据输入人员可能输入最新的选举数据。这要求共享数据仓库(或其控制组件)负责串行化或同步。</p>
+<p>这个模式的缺点如下。</p>
+<p>口   <strong>系统更复杂度</strong> 。应用程序的每个语义概念都实现为独立的PAC智能体,这可能导致系统结构非常复杂。例如,如果图形编辑器将每个图形对象(如圆或正方形)都实现为独立的PAC智能体,系统将被海量智能体淹没。另外,必须对智能体进行协调和控制,这需要额外的协调智能体。请务必仔细考虑设计的层级粒度,决定在什么情况下不再将智能体细化为更多的底层智能体。</p>
+<p>口    <strong>复杂的控制组件</strong> 。在PAC系统中,控制组件是当前智能体的抽象组件和表示组件之间以及不同智能体之间的通信媒介。因此,控制组件的实现质量对智能体之间能否有效协作影响重大,而智能体之间能否有效协作又决定了系统架构的整体质量。控制组件的各个角色应完全分离。这些角色的实现不应依赖于其他智能体的细节,如其名称或在分布式系统中的物理位置。控制组件的接口应独立于内部细节,确保智能体的协作者不依赖于其表示组件和抽象组件的接口。必要时控制组件应执行接口和数据适配。</p>
+<p>口   <strong>效率</strong> 。PAC智能体之间的通信开销可能影响系统的效率。例如,底层智能体从顶级智能体获取数据时,这种数据交换将把从PAC层次结构底部到顶部路径中的所有智能体都拖下水。如果智能体是分布式的,传输数据时还需进行PC以及对数据进行封送、解封送、分段和重组。</p>
+<p>这些都是严重的隐患。下面讨论什么情况下该使用 Presentation- Abstraction- Control模式、什么情况下不该使用时,考虑了这些因素。</p>
+<p>口    <strong>适用性</strong> 。应用程序中不可分割的语义概念越小、这些语义概念的用户界面越相似,这个模式就越不适用。例如,如果图形编辑器将文档的每个对象都用独立的PAC智能体表示,其结构将非常细致而复杂,进而难以维护。另一方面,如果不可分割的语义概念很大，且需要自己的人机交互,PAC将提供一种易于维护和扩展的结构,并完全分离不同系统任务的关注点。</p>
+<h4 id="4-可适应系统"><a href="#4-可适应系统" class="headerlink" title="4.可适应系统"></a>4.可适应系统</h4><h5 id="4-1-Microkernel模式"><a href="#4-1-Microkernel模式" class="headerlink" title="4.1 Microkernel模式"></a>4.1 Microkernel模式</h5><p><strong>微内核架构（MicroKernel Architecture）</strong>有时也被成为插件架构模式（plug-in architecture pattern），通常用于实现基于产品的应用，如Eclipse和Firefox。然而许多公司也将内部的业务软件做成软件产品，提供版本、发版说明和插件特性。微内核架构模式通过插件向核心应用添加额外的功能，提供了可扩展性和功能的独立和分离。</p>
+<h6 id="模式描述"><a href="#模式描述" class="headerlink" title="模式描述"></a>模式描述</h6><p>微内核架构包含两部分组件：核心系统（core system）和插件模块（plug-in modules）。应用逻辑被分割为独立的插件模块和核心系统，提供了可扩展性、灵活性、功能隔离和自定义处理逻辑的特性。</p>
+<p><img src="\image\JAVA学习\微内核架构模式图.png" alt="微内核架构模式图"></p>
+<center>图1 微内核架构模式（microkernel architecture pattern）</center>
+
+<p>微内核架构的核心系统通常提供系统运行所需的最小功能集。许多操作系统使用的就是微内核架构，这也是它名字的由来。从商业应用程序的角度来看，核心系统一般是通用业务逻辑，没有特殊情况、特殊规则或复杂情形下的自定义代码。</p>
+<p>插件模块是独立的模块，包含特定的处理、额外的功能和自定义代码，来向核心系统增强或扩展额外的业务能力。通常插件模块之间也是独立的，也有一些插件是依赖于若干其它插件的。重要的是，尽量减少插件之间的通信以避免依赖的问题。</p>
+<p>核心系统需要知道哪些插件是可用的且如何使用。一种实现的方式是使用插件注册表。注册表中包含插件的一些信息，如名称、数据契约（输入数据和输出数据）、远程访问协议（决定插件如何与核心系统连接，XML或WSDL等）。</p>
+<p>插件模块和核心系统的连接方式有多种，包括OSGi (open service gateway initiative)、messaging、web service、甚至点对点绑定（对象实例化）。选择哪种连接方式取决于构件的应用类型和是否分布式部署等特殊需求。</p>
+<p>插件和核心系统之间的契约也是各种各样的，既可以是标准的也可以是自定义的。通常在使用第三方插件时需要自定义契约。这种情况下，通常创建一个该插件契约到你的标准契约的适配器，这样核心系统就不需要针对每个插件的定制编码了。创建标准契约时（通常为XML），要记得从一开始就设计好版本策略。</p>
+<h6 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h6><p>微内核架构最好的案例也许就是Eclipse啦。下载基础版本的Ecilpse或许只比一个功能花哨的编辑器强一点，一旦装上一些插件，它立刻就变成高度定制化的很有用的产品。浏览器也是微内核架构产品的典型案例。</p>
+<p>这样的基于产品的软件例子数不胜数，但是大型商业应用呢？微内核结构也是适用的。这里再以保险公司的索赔处理为例。（书中的例子都不符合国情，看着挺费劲的。）</p>
+<p>索赔处理过程很复杂，每个阶段都有很多不同的规则和条例来说明是否应该得到赔偿。例如汽车挡风玻璃被岩石击碎，有的州是允许赔偿的，有的是不允许的。标准的索赔过程几乎有无限的条件。</p>
+<p>通常保险索赔应用都会使用一个大型的复杂的规则引擎来处理。但是规则引擎会像滚雪球一样越来越大，修改一个规则可能会影响其它的规则，或者一个简单的规则修改需要很多分析人员、开发人员和测试人员。使用微内核架构模式可以避免这样的问题。</p>
+<p>如图2中所示，核心系统claims processing包含了处理索赔过程的基本业务逻辑。每个插件模块包含一个州的特殊规则。这个例子中，插件模块可以通过自定义代码或分离规则引擎实例来实现。最重要的是，每个州（美国）的独特的规则从核心系统中剥离出来，可以被添加或移除，修改时不影响或会稍微影响核心系统与其它插件。</p>
+<p><img src="\image\JAVA学习\微内核架构案例图.png" alt="微内核架构案例图"></p>
+<center>图2 微内核架构案例</center>
+
+<h6 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h6><p>微内核架构模式的一个优秀之处在于它可以嵌入或者作为其它架构模式的一部分。例如事件驱动架构中的事件处理组件就可以使用微内核架构实现。</p>
+<p>微内核架构为递进设计和增量开发提供了方便。可以先实现一个稳固的核心系统，然后在不对核心系统进行大量修改的情况下逐渐地增加功能和特性。</p>
+<p>对于基于产品的应用，微内核架构是一开始的首选。尤其是这样的产品：随着时间逐渐地发布新功能，而且希望保证所有的用户都能获取到新功能。如果以后发现该架构不符合需求了，可以随时重构成其它架构。</p>
+<h6 id="模式分析"><a href="#模式分析" class="headerlink" title="模式分析"></a>模式分析</h6><p>下表展示了分层架构模式的通用架构特性的评级和分析。</p>
+<p><strong>整体灵活性</strong></p>
+<p>评级：高</p>
+<p>分析：整体灵活性是对环境变化快速响应的能力。由于插件之间的低耦合，改变通常是隔离的，可以快速实现。通常，核心系统是稳定且快速的，具有一定的健壮性，几乎不需要修改。</p>
+<p><strong>易于部署</strong></p>
+<p>评级：高</p>
+<p>分析：取决于实现方式，插件可以在运行时动态添加（热部署），最小化部署的停机时间。</p>
+<p><strong>可测试性</strong></p>
+<p>评级：高</p>
+<p>分析：插件可以独立测试，也很容易被模拟，不需修改核心系统就可以演示或构建新特性的原型。</p>
+<p><strong>性能</strong></p>
+<p>评级：高</p>
+<p>分析：虽然微内核架构本身不会使应用高性能，但通常使用微内核架构构建的应用性能都还不错，因为可以自定义或者裁剪掉不需要的功能。JBoss应用服务器就是这样的。</p>
+<p><strong>可伸缩性</strong></p>
+<p>评级：低</p>
+<p>分析：因为大部分微内核架构的实现都是基于产品的，一般都很小，是一个独立的单元，因此不具有高可伸缩性。取决于插件的实现方式，有时在插件特性层可以提供伸缩性，但总体上来说该架构还是用于构建高可伸缩性应用的。</p>
+<p><strong>开发容易度</strong></p>
+<p>评级：低</p>
+<p>分析：微内核架构需要深思熟虑的设计和契约的规划管理，因此实现起来比较复杂。契约的版本机制、插件的注册机制、插件的粒度、插件连接方式的选择都使得实现起来是复杂的。</p>
+<p>参考资料：<a href="http://www.mamicode.com/info-detail-1147061.html" title="微内核架构" target="_blank" rel="noopener">“微内核架构(Microkernel Architecture”</a></p>
+<h5 id="4-2-Reflection模式"><a href="#4-2-Reflection模式" class="headerlink" title="4.2 Reflection模式"></a>4.2 Reflection模式</h5><p>​        架构模式 Reflection提供了一种动态地修改软件系统的结构和行为的机制。它支持对基本方面(如类型结构和函数调用机制)进行修改。采用这个模式时,应用程序分两部分元层和基层。元层提供有关选定系统属性的信息,让软件能够了解自己;基层包含应用和序逻辑,其实现依赖于元层,修改元层存储的信息将影响基层的行为。</p>
+<h6 id="别名"><a href="#别名" class="headerlink" title="别名"></a>别名</h6><p>Open Implementation(开放实现)Meta- Level Architectur(元层架构)。</p>
+<h6 id="模式描述-1"><a href="#模式描述-1" class="headerlink" title="模式描述"></a>模式描述</h6><p>其实，Reflection模式，将应用程序分为两层：底层是程序的逻辑结构，一般是保持不变；上一层封装一些数据处理方式、函数和数据类型。上层信息在底层程序逻辑结构中会用到，但是会随着其他原因发生变化，所以单独提取出来，如果需要变化时，修改上层的信息就可以了，不会影响底层程序逻辑。</p>
+<p>底层称作基层，上层称作元层。</p>
+<h6 id="变种"><a href="#变种" class="headerlink" title="变种"></a>变种</h6><p><strong>包含多个元层的反射</strong> 。有时候元层对象彼此依赖，为了协调这种依赖，在元层上面再建一层元层，即元元层。从理论上说，可以形成一个无线反射塔，但是实际中一般就只是一两个元层。</p>
+<h6 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h6><p>当需要修改软件的时候，不需要显示的修改，只需要修改元层的信息就可以了。修改软件系统很容易，且支持众多不同类型的修改。</p>
+<h6 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h6><p>修改软件时，再元层所做的修改可能会带来破环，增加了组件数量。由于反射模式会增加组件数量，所以效率低下。还有，并不是支持对软件的所有修改，比如，不能修改程序的应用逻辑。并不是所有的语言都支持反射。</p>
+<h6 id="实际例子"><a href="#实际例子" class="headerlink" title="实际例子"></a>实际例子</h6><h3 id="二、设计模式"><a href="#二、设计模式" class="headerlink" title="二、设计模式"></a>二、设计模式</h3><p>​        设计模式描绘了一种反复出现的结构,可用于组织相互通信的组件,以解决特定背景下普适的设计问题[GHV9s]。</p>
+<p>​    下面介绍8个设计模式: Whole-Part(整体一部分) Master- Slave(主一从)、 Proxy(代理）、 Command Processor(命令处理器)、 View Handler(视图管理者)、 Forwarder- Receiver(转发者—接收者)、 client-dispatcher- Server(客户端一分派器一服务器)和 publisher-subscriber(发布者—订阅者)。</p>
+<p>​    设计模式为中型模式,规模比架构模式小,但所处的层次比编程语言特定的成例高。使用计模式不会影响软件系统的基本结构，但可能给子系统的架构带来重大影响。</p>
+<p><strong>像架构模式一样,我们将设计十模式也分为几类。</strong> </p>
+<ul>
+<li><p>结构分解模式。这类模式有助于以恰当的方式将子系统和复杂组件分解为一系列相互协作的部分。据我们所知,这类模式中最常见的是 Whole-Pan,它非常适合组织复杂的组件。</p>
+</li>
+<li><p>工作组织模式。这类模式定义组件如何相互协作,以解决复杂的问题。我们将介绍其中的 Master- Slave,它可帮助组织必须能够容错或计算必须精确的服务,还有助于将服务划分为多个部分,这些部分彼此独立,可同时执行。</p>
+</li>
+<li><p>访问控制模式。这类模式监视并控制对服务或组件的访问。我们将介绍其中的 Proxy助它,客户端能够与组件的代表(而非组件本身)通信。</p>
+</li>
+<li><p>管理模式。这类模式处理一系列同质对象、服务和组件,我们将介绍其中两个: Command Processor和 View Handler,其中前者致力于管理和调度用户命令,后者描述了如何管理软件系统中的视图。</p>
+</li>
+<li><p>通信模式。这类模式帮助统筹组件间通信。下面两个模式致力于解决进程间通信问题 Forwarder- Receiver致力于点对点通信,而 client-dispatcher- Server描述了如何在客户端服务器模型中实现位置透明的通信。</p>
+</li>
+<li><p>Publisher- Subscriber模式有助于确保协作组件的数据一致,与[GHV95介绍的 Observer模式是一回事,因此我们只介绍该模式的精髓,并重点介绍其重要变种 Event Channel。</p>
+<p>​</p>
+<p>所有设计模式都有一个重要特征,那就是独立于应用领域。它们致力于组织而非实现应用程序功能。</p>
+<p>​大多数设计模式都独立于编程范式,通常都能够以面向对象的方式轻松地实现,但这里介绍的设计模式都足够通用,适用于更传统的编程范式,如过程型编程。</p>
+</li>
+</ul>
+<h4 id="1-结构分解模式"><a href="#1-结构分解模式" class="headerlink" title="1. 结构分解模式"></a>1. 结构分解模式</h4><p>如果将子系统和复杂组件分解为多个独立的小组件,而不是保留为一个整体,处理起来将容易。另外,更容易修改,更容易集成扩展,设计讠方案理解起来也容易得多。</p>
+<p>本节介绍一个有助于对组件进行结构分解的设计模式。</p>
+<ul>
+<li>Whole-Part设计模式有助于将组件聚合成语义整体。聚合组件( Whole)封装组成它的组件(Part),统筹它们之间的协作,并提供访问其功能的通用接口。从外部不能直接访问Part组件。</li>
+</ul>
+<p>Whole-Part模式的适用范围广泛,几乎每个软件系统中都有适合使用这个模式进行组织的组件甚至子系统,由包含关系构成的层次结构尤其适合使用 whole-part模式。</p>
+<p>另一个有助于结构分解的著名模式是 Composite [GHJV95]。</p>
+<ul>
+<li>Composite模式将对象组织成表示部分—整体层次结构的树型结构,让客户端能够以统的方式与各个对象及其组合交互。</li>
+</ul>
+<p>请注意, Whole-Pan和 Composite等模式并没有提供如何对特定子系统或组件进行结构分解的指南，你需要根据应用程序的具体需求确定组件结构的参与者。</p>
+<h5 id="1-1-Whole-Part模式"><a href="#1-1-Whole-Part模式" class="headerlink" title="1.1 Whole-Part模式"></a>1.1 Whole-Part模式</h5><p>​    Whole-Part设计模式有助于将组件聚合成语义整体。聚合组件( Whole)封装组成它的组件(Part),统筹它们之间的协作,并提供访问其功能的通用接口。从外部不能直接访问Part组件。</p>
+<p><strong>实际的例子</strong></p>
+<p>​    汽车由很多的部件构成，其中有轮子，车窗等。每一个部件都有自己的功能，但是汽车具有所有部件不具备的功能，汽车可以行驶。</p>
+<p>两种角色：whole  part</p>
+<p>​    Whole表示小对象的聚合，这些小对象被称为Part。</p>
+<p>在思考时，考虑Whole时，从Client端的角度出发，把Whole看作是一个整体。然后，在想Part时，从上到下思考，将Whole的功能分解为多个Part。</p>
+<p>下面的OMT图说明了Whole与其Part之间的关系。</p>
+<p><img src="\image\JAVA学习\Whole-part模式OMT图.png" alt="Whole-part模式OMT图"></p>
+<p><strong>动态</strong></p>
+<p>​    假设现在要将一个线段以C点为中线旋转 $ \alpha  $度。线段可以看作是由两个顶点构成的，线段为Whole对象，Part为两个顶点$p$和$q$。客户端请求旋转，并通过参数传递旋转中心和旋转角度。可以通过先旋转两个顶点，然后再重绘线段的方式，来旋转线段。简单起见，不演示如何将原来的线段从屏幕上珊瑚，也没有演示方法drawLine如何获取端点的坐标。</p>
+<p>这个情景分为四个阶段：</p>
+<ul>
+<li>客户端调用线段L的rotate方法，并通过参数传递角度$\alpha$和旋转中心$c$;</li>
+<li>线段L调用p的rotate方法；</li>
+<li>线段L调用q的rotate方法；</li>
+<li>线段L将p和q作为新端点，并重绘自己。</li>
+</ul>
+<p><img src="\image\JAVA学习\线段旋转时序图.png" alt="线段旋转时序图"></p>
+<p><strong>已知应用</strong></p>
+<p>​    很多<strong>面向对象应用程序</strong>的重要抽象都遵循了认 hole- Part模式。例如,有些图形编辑器支持将不同类型的数据组合成多媒体文档,这些通常是依照 Composite设计模式GHv95]实现的。在CAD或动画系统中,构造的对象是使用总成一零件结构表示的。在应用程序中,对于使用层次结构表示为语义整体的所有方面，几乎都可采用Whole-Part模式的某个变种。</p>
+<p><strong>效果</strong></p>
+<p>whole-part模式有多个优点。</p>
+<ul>
+<li>可修改Part。 Whole封装了Part,从而对客户端隐藏了它们。因此,可以修改 Whole的内部结构,而不会给客户端带来任何影响。可完全替换Part的实现,而无需修改其他Part和客户端。</li>
+<li>分离关注点。 Whole-Part结构有助于分离关注点。每个关注点都由不同Par实现,因此可组合简单服务来实现复杂策略,这比将其作为一个整体实现更容易。</li>
+<li>可重用性。模式 Whole- Par改善了可重用性,这表现在两个方面。首先,可在其他聚合对象中重用Part;其次,通过将Part封装在 Whole中,可避免客户端在其源代码中到处使用Part对象,这改善了 Whole的可重用性。</li>
+</ul>
+<p>whole-part模式也存在如下缺点。</p>
+<ul>
+<li>间接导致效率低下。由于 Whole充当其Part的包装器,在客户端请求和执行请求的Part之间增加了一层。相比整体结构,这可能增加运行阶段开销,在Pant本身也采用 whole-part结构时尤其如此。</li>
+<li>分解为Part的工作很复杂。通常难以找到合适的方式将不同Par组合成 Whole,采用自下而上方式时尤其如此。这是因为将 Whole分解为Pant的最佳方式取决于众多因素,如应用领域、要实现的结构以及 Whole提供的功能。</li>
+</ul>
+<h5 id="1-2-Composite模式"><a href="#1-2-Composite模式" class="headerlink" title="1.2 Composite模式"></a>1.2 Composite模式</h5><p>​    Composite模式是Whole-part模式的变种，这个模式也采用了Whole-Part层次结构，但可同等对待Whole及其Part，即Whole和Part实现了相同的抽象接口。</p>
+<h4 id="2-工作组织模式"><a href="#2-工作组织模式" class="headerlink" title="2. 工作组织模式"></a>2. 工作组织模式</h4><p>本节介绍一个用于在系统内组织工作的模式</p>
+<p>​       <strong>Master- Slave模式</strong>有助于改善容错性以及计算的并彳行性和准确度。一个主组件将工作分配给多个相同的从组件,并根据这些从组件返回的结果计算最终结果。</p>
+<p>​    master-slave遵循“分而治之”的原则,将工作分成多个分别处理的子任务,并根据每项处理操作的结果计算整个服务的结果。 master-slave模式在并行和分布式计算领域得到了广泛应用。</p>
+<p>​    模式 Master- Slave的另一个应用示例是实现所谓的“三重模块冗余”原则。这种方法将服务的执行工作委托给三个独立组件,仅当至少有两个组件提供的结果相同时才认为结果有效。</p>
+<p>​    Chain of Responsibility、 Command和 Mediator [GHJ9也属于工作组织模式。</p>
+<p>​    口模式 Chain of Responsibility让让多个对象都有机会处理请求,避免了将请求发送方与接收方挂钩。接收方被串接在一起,请求沿链条不断传递,直到到达能够处理它的对象。    </p>
+<p>​    口模式 Command将请求封装为对象,让客户端能够利用参数发出不同的请求,还让你能够将请求排队或写入日志以及支持可撤销的操作。</p>
+<p>​    口模式 Mediator定义了一个将一组对象的交互方式封装起来的对象。这个模式避免了对象彼此显式地引用,从而降低了耦合度,让你能够独立地修改对象之间的交互。</p>
+<h5 id="2-1-Master-Slave模式"><a href="#2-1-Master-Slave模式" class="headerlink" title="2.1 Master-Slave模式"></a>2.1 Master-Slave模式</h5><p>​    设计模式 master-slave有助于改善容错性以及计算的并行性和准确度。一个主组件将<br>工作分配给多个相同的从组件,并根据这些从组件返回的结果计算最终结果。</p>
+<p>​    Master-Slave模式分为两个部分，Master和slave。Master主要负责的是任务切分、调用slave和最后的合并结果。slave提供的是服务，供master调用。</p>
+<p>下面的OMT图说明了Master-Slave模式定义的结构。</p>
+<p><img src="\image\JAVA学习\Master-Slave结构.png" alt="Master-Slave结构"></p>
+<p><strong>动态</strong></p>
+<p>​    为简单起见,在下面的情景中,我们假定从组件被依次调用。然而,要充分发挥 master-slave模式的威力,应同时调用所有从组件,如给它们分配多个不同的控制线程。这个情景包含6个阶段:</p>
+<ul>
+<li>客户端向主组件请求服务;</li>
+<li>主组件将任务均分为多个子任务</li>
+<li>主组件将执行这些子任务的工作委托给多个从组件,启动这些从组件并等待它们返回结果;</li>
+<li>从组件处理子任务,并将计算结果返回给主组件;</li>
+<li>主组件根据从组件返回的部分结果计算整个任务的最终结果;</li>
+<li>主组件将结果返回给客户端。</li>
+</ul>
+<p><img src="\image\JAVA学习\Master-Slave时序图.png" alt="Master-Slave时序图"></p>
+<p><strong>实际的例子：</strong></p>
+<p>​    比如，要找出1000个数里面的最小数字。可以将1000个数字分给5个slave节点，每个节点找出200数字中的最小，然后返回给master端。最后，master在收到的5个数据中，找出最小的数字，这个数字就是那1000个数字中最小的数字了。</p>
+<p><strong>效果</strong><br>设计模式 Master- Slave有多个优点。</p>
+<p>口 可更换性和可扩展性。提供一个从组件抽象类就能够更换现有从组件实现及添加新实现而无需修改主组件,这种修改也不会影响客户端。如果给从组件分配子任务和计算最终结果的算法是使用 Strateg模式[GHV95]实现的,修改这些算法也不会影响主组件和客户端。</p>
+<p>口分离关注点。引入主组件将从组件和客户端的代码与完成下述任务的代码分离了:划分工作、将工作委托给从组件、从从组件收集结果、计算最终结果以及应对从组件失败或从组件结果不准确。</p>
+<p>口效率。将 master-slave模式用于支持并行计算时,只要精心实现,就能提高服务的性能。然而,千万别忘了并行计算的开销(见后面)。</p>
+<p>master-slave模式也存在四个缺点。</p>
+<p>口可行性。并非在什么情况下都可使用 master-slave架构。必须划分工作、复制数据、启动从组件、控制从组件的执行、等待从组件的结果以及计算最终结果,所有这些操作都要占用处理时间和存储空间。</p>
+<p>口依赖于计算机。支持并行计算时 master-slave模式严重依赖于计算机的架构,详情请参阅”变种”部分。这可能降低 Master- Slave结构的可修改性和可移植性</p>
+<p>口难以实现。 master-slave模式实现起来不容易,用于支持并行计算时尤其如此。有很多方面需要考虑并精心实现,如如何划分工作、主组件和从组件应如何协作、应如何计算最终结果。必须应对各种错误,如从组件执行失败、主组件和从组件无法通信、无法启动并行从组件。因此,将模式 master-slave用于支持并行计算时,通常必须对目标计算机的架构有相当深入的认识。</p>
+<p>口可移植性。由于可能依赖于底层硬件架构,难以甚至根本不可能将 master-slave结构移植到其他计算机。 Master-Save模式用于支持并行计算时尤其如此。前面介绍的针对CM5计算机进行了优化的简单旅行商程序面临同样的问题。</p>
+<h4 id="3-访问控制"><a href="#3-访问控制" class="headerlink" title="3. 访问控制"></a>3. 访问控制</h4><p>​    有些组件甚至子系统不能或不应该由客户端直接访问。例如,不应授权所有客户端使用组件的服务或获取它提供的特定信息。</p>
+<p>本节介绍的设计模式有助于控制对特定组件的访问。</p>
+<p>口  设计模式 Proxy让客户端与代表而非组件本身通信。引入这样的代理可达成很多目的,如提高效率、简化访问以及禁止未经授权的访问</p>
+<p>GHV9s介绍的 Facade和 erator也属于访问控制模式。</p>
+<p>口  模式 Facade提供了一个统一接口,用于访问子系统中的一组对象。 Facade定义了一个高级接口,让子系统更容易使用。</p>
+<p>口  模式 Iterator在不暴露聚合对象底层表示的情况下,提供了一种顺序访问其元素的方式。</p>
+<p>​    与模式Proxy一样,模式Facade和 Iterator的应用范围也非常广泛。</p>
+<p>​    Facade模式保护子系统的组件,以免被客户端直接访问;反过来,客户端不依赖于子系统的内部结构。收到服务请求后,门面组件将其转发给子系统中实现了该服务的组件。模式 Facade的粒度比Poxy粗,因为模式Poxy控制对单个组件的访问。</p>
+<p>​    在面向对象的程序和类库中,几乎每个容器类都提供了选代器。选代器定义了客户端遍历和访问容器元素的顺序,例如,要访问二叉树的所有元素,可定义前序、中序和后序遍历选代器。</p>
+<h5 id="3-1-Proxy模式"><a href="#3-1-Proxy模式" class="headerlink" title="3.1 Proxy模式"></a>3.1 Proxy模式</h5><p>​    <strong>设计模式 Proxy</strong>让客户端与代表而非组件本身通信。引入这样的代理可达成很多目的提高效率、简化访问以及禁止未经授权的访问。</p>
+<p>​    <strong>实际例子：</strong></p>
+<p>​    公司的工程人员需要经常查询数据库，其中很多访问都类似甚至相同，且经常重复。显然，这里存在优化访问时间和开销的空间，但是不想在工程师使用的应用程序中进行优化。在很大程度上，不应让应用程序用户和程序员知道进行了优化。</p>
+<p>​    <strong>解决方案</strong></p>
+<p>​    让客户端与代表而非组件本身通信。这个代表(代理)提供了组件的接口,但执行额外的预处理和后处理,如访问控制检查或创建原件的只读副本。<br>​    <strong>结构</strong></p>
+<p>​    <em>原件( original)</em>实现了特定服务。这种服务可以是诸如返回或显示数据等简单操作,也可以是复杂的数据检索函数或涉及其他组件的计算。</p>
+<p>​    <em>客户端</em>负责执行特定任务。为完成工作,客户端通过访问代理间接地调用原件的功能,且调用行为和语法与调用本地组件时相同。</p>
+<p>​    <em>代理</em>提供与原件相同的接口,并确保客户端正确地访问原件。为此,代理维护着一个指向原件的引用。通常,原件和代理一一对|应,但也存在例外情况,如在变种 Remote Proxy和 Firewall Proxy中,详情请参阅“变种”部分。</p>
+<p>​    <em>抽象原件</em>提供了代理和原件实现的接口。在C+-等子类型化和继承没有明显差别的语言中,代理和原件都继承抽象原件。客户端根据这个接口编写访问原件的代码。</p>
+<p>​    下面的OMT图说明了这些类之间的关系:</p>
+<p><img src="\image\JAVA学习\Proxy模式OMT图.png" alt="Proxy模式OMT图"></p>
+<p><strong>动态</strong></p>
+<p>​    下图说明了Poxy结构的一个典型动态情景。请注意,代理执行的操作取决于于其实际规范。</p>
+<p>口  执行任务期间,客户端请求代理执行了一项服务。</p>
+<p>口收到服务请求后,代理对其进行预处理。预处理包括查找原件的地址或检查缓存看其中是否有请求的信息等操作。</p>
+<p>口如果必须让原件执行请求,代理使用合适的通信协议将请求转发给原件,并采取合适的安全措施。</p>
+<p>口收到请求后,原件执行请求并将响应发送给代理</p>
+<p>口收到响应后,代理将其转发给客户端,但在此之前或之后可能执行额外的后处理操作如缓存结果、调用原件的析构函数或对资源解除锁定。</p>
+<p><img src="\image\JAVA学习\Proxy模式时序图.png" alt="Proxy模式时序图"></p>
+<p><strong>效果</strong></p>
+<p>​    模式Proxy加油如下有点：</p>
+<ul>
+<li>效率更高、开销更低。 可以在代理中加入缓存机制。<ul>
+<li>将客户端与服务的位置分离。变种Remote Proxy模式将所有位置信息和寻址功能都放在代理中，客户端只用连接上代理就可以了，不需要清楚的知道服务器的位置。</li>
+<li>将管理代码与功能代码分离。 从广义上说，所有proxy变种都具备这个优点。代理避免了客户端承担原本不属于它的任务。</li>
+</ul>
+</li>
+</ul>
+<h4 id="4-管理模式"><a href="#4-管理模式" class="headerlink" title="4.  管理模式"></a>4.  管理模式</h4><p>​    系统通常必须处理一系列类似对象、服务甚至复杂组件。一个例子是,系统必须妥善地解读并调度来自用户或其他系统的事件;另一个例子是,在必须以各种方式显示应用程序特定数据的交互式系统中,必须妥善地处理这些视图图。</p>
+<p>结构良好的软件系统通常使用独立的“管理器”组件来处理一系列同质对象。本节介绍两个这样的设计模式。</p>
+<p>口 模式 Command Processor将服务的请求和执行分开。命令处理器组件将请求作为独立的对象进行管理,调度其执行并提供额外服务,如存储请求对象以便以后能够撤销请求。</p>
+<p>口 模式 View Handler有助于管理软件系统中的视图。视图管理者组件让客户端能够打开、操作和关闭视图,它还负责协调视图间依赖关系以及统筹视图更新。</p>
+<p>口 Command Processor和 Command模式[GlHV95都遵循了将服务请求」封装为命令对象的理念,但 Command processor还使用 Command模式打造了一个管理命令对象的结构。</p>
+<p>口 模式 Memento让你能够在不违反封装原则的情况下,记录并外部化对象的内部状态,以便<br>以后能够恢复对象的状态</p>
+<p>​    Memento有助于管理组件的状态。例如,撤销已执行的操作时可能需要恢复组件的状态。另一个例子是,客户端需要访问组件的状态,但又不能违反封装原则,在这种情况下, Memento你能够向客户端提供组件当前状态的副本。</p>
+<h6 id="4-1-Command-Processor模式-（记笔记，就参考这一个小节的样子写了）"><a href="#4-1-Command-Processor模式-（记笔记，就参考这一个小节的样子写了）" class="headerlink" title="4.1 Command Processor模式    （记笔记，就参考这一个小节的样子写了）"></a>4.1 Command Processor模式    （记笔记，就参考这一个小节的样子写了）</h6><p>​    <strong>设计模式 Command Processor</strong> 将服务的请求和执行分开。命令处理器组件将请求作为独立的对象进行管理,调度其执行并提供额外服务,如存储请求对象以便以后能够撒销请求。</p>
+<p><strong>实际例子：</strong></p>
+<p>​    文本编辑器会提供撤销操作，这就是一个命令。假设要开发一个编辑器TEDDI，可以支持多步撤销操作。</p>
+<p><strong>解决方案</strong></p>
+<p>​    Command Processor模式建立在[GHV95介绍的设计模式 Command的基础之上。这两个模都遵循将请求封装为对象的理念。每当用户调用应用程序的功能,都将请求转换为命令对象。</p>
+<p>​    在模式 Command Processor中,一个中央组件(命令处理器)负责管理所有命令对象,它调度命令的执行,可能存储命令对象以便能够撤销,还可能提供其他服务,如将命令序列写入日志以便测试。</p>
+<p><strong>结构</strong></p>
+<p>​    下图说明了该模式中重要的组件间关系，其中的命令处理器提供了一项额外服务——撤销。</p>
+<p><img src="\image\JAVA学习\Command Processor  模式结构图.png" alt="Command Processor  模式结构图"></p>
+<p><strong>动态</strong></p>
+<p>下图说明了实现了撤销机制的模式 Command Processor的一个典型情景 : 收到将选定单词转换为大写的请求,执行该请求,再撤销。具体步骤如下。</p>
+<p>口控制器在事件循环中收到用户的请求,并创建命令对象“大写转换”( capitalize)l</p>
+<p>口控制器将这个新命令对象传递给命令处理器,以便执行并做额外处理。</p>
+<p>口命令处理器启动命令,并存储它以便能够撤销</p>
+<p>口命令 capitalize从其供应者获取当前选定的文本,存储这些文本及其在文档中的位置再请求供应者将选定文本转换为大写。</p>
+<p>口收到撤销请求后,控制器将该请求传递给命令处理器。命令处理器调用最后一个命令的撤销过程。</p>
+<p>口命令 capitalize用存储的文本替换指定位置的文本,将供应者恢复到以前的状态</p>
+<p>口如果不再需要该命令,命令处理器将把它删除</p>
+<p><img src="\image\JAVA学习\Command Processor  时序图.png" alt="Command Processor  时序图"></p>
+<p><strong>效果</strong></p>
+<p>​    模式command processor有很多的<strong>优点</strong>。请求方式灵活，不同的执行功能都可以生成命令对象，然后由命令处理器来进行处理。并且，易于编写相关的服务，例如很容易再命令处理器中实现日志功能。可测试性，由于可以添加日志，所以排查错误的时候，非常的方便。并发性，可以让不同命令在不同的进程中执行。</p>
+<p>​    模式command processor也存在一些<strong>缺点</strong>。影响效率，与所有将组件解耦的模式一样，额外的间接性需要占用存储空间和处理时间。命令类可能太多，功能丰富的程序可能包含大量命令类。</p>
+<h6 id="4-2-View-Handler模式"><a href="#4-2-View-Handler模式" class="headerlink" title="4.2 View Handler模式"></a>4.2 View Handler模式</h6><p>​    <strong>设计模式 View Handler </strong> 有助于管理软件系统提供的所有视图。视图管理者组件让客户端能够打开、操作和关闭视图，它还负责协调视图间依赖关系以及统筹视图更新。</p>
+<p><strong>示例</strong></p>
+<p>​    在多文档编辑器中，用户可以同时处理多个文档，其中每个文档都显示在不同的窗口中。为了有效地使用这种编辑器，用户需要窗口管理方面地支持。例如，用户可能想克隆窗口，以便使用同一个文档的多个视图；另外，一个窗口的变化可能影响其他窗口，因此需要一种高效地更新机制在窗口间传播变更。</p>
+<p><strong>结构</strong></p>
+<p>​    视图管理者是这个模式的核心组件,负责打开新视图。客户端可指定想要的视图,视图管理者将实例化相应的视图组件,正确地初始化,并让新视图显示自己。如果请求的视图已打开,视图管理者将把它置于最前面;如果请求的视图已打开但处于最小化状态,视图管理者将让它最大化。</p>
+<p>​    视图管理者还提供了关闭视图的函数,这包括关闭单个视图以及关闭当前打开的所有视图(如退出应用程序时)的函数。</p>
+<p>​    然而,视图管理者的主要职责是提供视图管理服务,如执行如下功能的函数:将特定视图置于最前面,平铺所有视图,拆分视图,刷新所有视图以及克隆视图以提供同一个文档的多个视图。如果这种管理功能的实现分散在众多不同的视图组件中中,将难以组织</p>
+<p>​    视图管理者的另一项职责是协调。视图之间可能存在依赖关系,如多个视图显示复合文档(如ET+对象 vobjecttext[wGM88])的不同部分,平铺视图时,应将这些视图放在一起。如果用户修改了文档的一个视图,可能必须按预定义的顺序更新其他视图。例如,应首先更新显示的信息最全面的视图。</p>
+<p>​    抽象视图( abstract view)组件定义了所有视图通用的接口。视图管理者使用这个接口来创建、协调和关闭视图,系统的底层平台也使用它来执行用户事件,如调整窗口大小。对于可能对视图执行的每项操作,都必须在抽象视图的接口中提供相应的函数。</p>
+<p>​    具体视图( specific view)组件从抽象视图派生面来,并实现了抽象视图的接口。另外,每个视图都实现了各自的显示函数,这个函数从视图的供应者那里获取数据,为显示这些数据做好准备,再向用户显示它们。显示函数在打开或更新视图时被调用。</p>
+<p>​    供应者( supplier)组件提供视图组件显示的数据。为此,供应者提供了一个接口,让诸如视图等客户端能够获取和修改数据。当内部状态发生变化时,它们还通知依赖组件。依赖组件为视图或视图管理者(在它负责统筹更新时)。</p>
+<p>​    下面的OMT类图说明了模式View Handler的结构。</p>
+<p><img src="\image\JAVA学习\View Handler模式结构图.png" alt="View Handler模式结构图"></p>
+<p><strong>动态</strong></p>
+<p><strong>情景1</strong> 说明了视图管理者如何新建视图,包含四个阶段</p>
+<p>口客户端(可能是用户,也可能是系统的另一个组件)让视图管理者打开特定视图</p>
+<p>口视图管理者实例化并初始化所需的视图。视图依照模式 Publisher subscr向其供应者的<br>变更传播机制注册</p>
+<p>口视图管理者将新视图加入其内部的打开视图列表中</p>
+<p>口视图管理者让视图显示自己。视图打开一个新窗口,从供应者获取数据,为显示数据糖<br>好准备,再向用户显示数据。</p>
+<p><img src="\image\JAVA学习\View Handler模式时序图.png" alt="View Handler模式时序图"></p>
+<p><strong>效果</strong></p>
+<p>模式 View Handler具有如下<strong>优点</strong>。</p>
+<p>口 以统一的方式管理视图。所有视图的接口都相同,这让视图管理者以及系统的其他组件能够以统一的方式管理和操作所有视图,而不管它们显示的是什么,也不管它们是如何实现的。</p>
+<p>口视图的可扩展性和可修改性。视图组件被组织成包含抽象基类的继承层次结构,这使得可添加新视图,而无需修改既有视图和视图管理者。各个视图被封装成独立的组件,修改它们的实现不会影响系统的其他组件。</p>
+<p>口以应用程序特定的方式协调视图。视图由一个中央组件管理,因此可实现应用程序特定的视图协调策略。</p>
+<p>模式 View Handler也存在如下<strong>缺点</strong>。</p>
+<p>口适用范围有限。仅当系统必须支持大量不同的视图、视图在逻辑上相互依赖或需要给视图配置不同的供应者或输出设备时,才有必要使用模式 View Handler;如果系统必须实现应用程序特定的视图协调策略,这个模式也很有用。如果上述条件都不满足,使用模式View Handler只会徒增实现工作量和系统的内部复杂度。</p>
+<p>口影响效率。视图管理者组件在创建视图的流程中增加了一个间接层,如果视图管理者负责统筹视图更新,还将在变更通知传播链条中增加一环。这降低了性能,但在大多数情况下,降低程度都微不足道。</p>
+<h4 id="5-通信模式"><a href="#5-通信模式" class="headerlink" title="5. 通信模式"></a>5. 通信模式</h4><p>​    因为很多的应用系统都是分布式系统，分布式子系统必须相互协作，需要彼此通信的机制。</p>
+<h6 id="5-1-Forwarder-Receiver模式-（转发者-接收者模式）"><a href="#5-1-Forwarder-Receiver模式-（转发者-接收者模式）" class="headerlink" title="5.1 Forwarder-Receiver模式 （转发者-接收者模式）"></a>5.1 Forwarder-Receiver模式 （转发者-接收者模式）</h6><p>​    自己对转发者-接收者模式的理解：其实就是将应用程序的任务执行与消息传送机制进行了分离，在相互协作多个程序之间，是需要进行通信的，但是通信机制会随着平台和硬件的改变而发生变化，但是程序的任务执行不会随着通信机制的改变而变化。所以，就要将这种变化与不变进行分离，以增加应用程序的可移植性和适用性。</p>
+<p><strong>实际例子</strong></p>
+<p>​    一个系统由两台计算机组成，它们之间完成任务的时候需要通信。开发的系统，必须要能够适应网络通信机制的改变。</p>
+<p><strong>解决方案</strong></p>
+<p>​    分布式对等体相互协作以解决特定问题。对等体可充当请求服务的客户端:也可充当提供服务的服务器,还可融这两种角色于一身。将系统特定的功能封装在独立组件中,从而向对等体藏用于收发消息的底层PC机制的细节。这样的功能包括名称到物理位置的映射,通信信道的建立、消息的封送和解封送等。</p>
+<p><strong>结构</strong></p>
+<p>​    设计模式 Forwarder- Receiver包含三种组件:转发者、接收者和对等体。</p>
+<p><img src="\image\JAVA学习\转发器-接收器结构图.png" alt="转发器-接收器结构图"></p>
+<p><strong>动态特性</strong></p>
+<p>​    下面的场景说明了使用转发器一接收器结构的实例。两个对等体P1及P2相互通信。为此,P1使用转发器Forw1和接收器 Recv。P2处理所有用转发器Forw2和接收器Recv2传送的消息。</p>
+<ul>
+<li>P1从远程对等体P2请求服务。为此,P1向它的转发器Forw1发出请求,并且指定接收者的名字。</li>
+<li>Forw1确定远程对等体的物理位置并且列集消息。</li>
+<li>Forw1将消息传递给远程接收器Recv2</li>
+<li>早些时候P2已经请求其接收器Recv2等候即将到来的请求。现在,Recv2接收来自Fowl1的消息。</li>
+<li>Recv2散集消息并将它转发给它的对等体P2。</li>
+<li>此时,P1调用其接收器Recv1来等候一个响应</li>
+<li>P2执行被请求的服务,并将结果及接收者P1的名字发送给转发器Foxw2。转发器列集结果并将它传送给Recv1。</li>
+<li>Recv1接收来自P2的响应,散集响应并将它传送给P1。</li>
+</ul>
+<p><img src="\image\JAVA学习\转发器-接收器时序图.png" alt="转发器-接收器时序图"></p>
+<p><strong>效果</strong></p>
+<p>​    转发器一接收器设计模式有两个<strong>优点</strong>:<br>​    有效的进程间通信。这个模式提供了非常有效的进程间通信。组件间的通信以对等方式来构建,其中IPC消息的每个转发器都知道其潜在接收器的物理位置。因此,转发器不需要定位远程组件。然而,IPC功能与对等体的分离引入了间接方法的附加层。然而,相对于实际IPC的时间消耗,这个开销在大多数情况下应该忽略不计。</p>
+<p>​    KPC设备的封装。所有具体PC设备的附属物都被封装在转发器和接收器内。下层IPC机制的改变不会影响应用程序的其他组件,尤其不会影响通过转发器和接收器相互通信的对等体。</p>
+<p>但是,转发器一接收器设计模式有一个很大的<strong>不足</strong>:</p>
+<p>​    不能支持灵活的组件重新配置。如果对等体的分布在运行期间变更,那么转发器一接收器系统是很难适应的。这样的改变潜在地影响所有对等体与“迁移后”的对等体的协作。正如客户机分配器服务器设计模式中描汽的那样,这个问题可以通过为转发器一接收器结构增加一个中心分配器组件来解决。</p>
+<h6 id="5-2-Client-Dispatcher-Server模式"><a href="#5-2-Client-Dispatcher-Server模式" class="headerlink" title="5.2 Client-Dispatcher-Server模式"></a>5.2 Client-Dispatcher-Server模式</h6><p>​    <strong>设计模式 Client- dispatcher-server</strong>在客户端和服务器之间添加了一个中间层—分派器组件。它利用名称服务提供了位置透明性,并隐藏了在客户端和服务器之间建立通信连接的细节。</p>
+<p><strong>示例：</strong></p>
+<p>​    一个系统由多个服务器提供服务，可在客户端与服务器之间提供一个中间层（分派器），服务器向分派器注册，客户端在分派器上查找服务器。分派器中保存着服务器名称与物理地址的映射，这样对于客户端来说，服务器的位置就是透明的了。</p>
+<p><strong>实际例子：</strong></p>
+<p>​    打移动公司的电话10086，然后转人工服务，这就是一个客户端-分派器-服务器模式的例子。</p>
+<p><strong>结构</strong>:</p>
+<p>​    客户端的职责是执行领域特定的任务。为了执行任务，客户端访问服务器提供的操作。</p>
+<p>​    服务器向客户端提供一组操作，并向分派器注册其名称和地址，这种注册工作可以由服务器自己完成也可以由其他组件完成。</p>
+<p>​    客户端、服务器和分派器之间的静态关系如下图所示：</p>
+<p><img src="\image\JAVA学习\Client-Dispatcher-Server模式结构图.png" alt="Client-Dispatcher-Server模式结构图"></p>
+<p><strong>动态</strong></p>
+<p>设计模式 client- Dispatcher- Server的典型情景包含如下几个阶段。</p>
+<p>口 服务器向分派器组件注册。</p>
+<p>口 客户端请求分派器提供到指定服务器的通信信道</p>
+<p>口 分派器在注册表中查找与客户端指定的名称相关联的服务器</p>
+<p>口 分派器尝试建立一条到该服务器的通信链路。如果成功,就将该通信信道返回给客户端否则,向客户端发送一条错误消息。</p>
+<p>口 客户端使用该通信信道直接向服务器发送请求。</p>
+<p>口 收到请求后,服务器执行合适的服务。</p>
+<p>口 服务执行完毕后,服务器将结果发回客户端</p>
+<p><img src="\image\JAVA学习\Client-Dispatcher-Server模式时序图.png" alt="Client-Dispatcher-Server模式时序图"></p>
+<p>​    在实现Client-Dispatcher-Server模式的时候，要注意一下三者之间的协议：<br><img src="\image\JAVA学习\Client-Dispatcher-Server模式三者协议图.png" alt="Client-Dispatcher-Server模式三者协议图"></p>
+<p><strong>效果</strong></p>
+<p>​    设计模式Client-Dispatcher-Server具有多个<strong>优点</strong>。</p>
+<p>​    服务器可更换，可以更换或移动服务器，只要向分派器注册了就可以，不会影响到客户端。</p>
+<p>​    位置透明，客户端不需要知道服务器的位置——它们不依赖于任何位置信息。</p>
+<p>​    可重新配置，将服务器部署到哪个网络节点，可以推迟到系统的运行阶段。</p>
+<p>​    容错性，网络或服务器出现故障时，可在其他网络节点启动新服务器，而不会对客户端有任何的影响。</p>
+<p>​    设计模式Client-Dispatcher-Server也存在一些<strong>缺点</strong>。</p>
+<p>​    间接性和显示建立连接降低了效率。由于增减中间组件，所以会降低效率，而在分派器很重要，可能成为性能瓶颈。</p>
+<p>​    对分派器接口变化敏感。由于分派器在系统的作用很重要，如果它发生变化，可能会影响到系统。</p>
+<h6 id="5-3-Publisher-Subscriber模式"><a href="#5-3-Publisher-Subscriber模式" class="headerlink" title="5.3 Publisher-Subscriber模式"></a>5.3 Publisher-Subscriber模式</h6><p>​    <strong>设计模式 Publisher- Subscriber</strong>有助于让相互协作的组件的状态保持同步。为此,它实现了单向变更传播:发布者的状态发生变化时可通知任意数量的订阅者。</p>
+<p><strong>别名</strong></p>
+<p>​    Observer、Dependents。</p>
+<p><strong>问题</strong></p>
+<p>​    当一个地方的数据发生变化时，将影响大量依赖于这项数据的组件。典型的例子是用户界面元素：内部数据元素发生变化时，必须更新依赖于这些数据的所有视图。</p>
+<p><strong>解决方案</strong></p>
+<p>​    个组件扮演发布者((1HV9s)称之为监视对象)角色,发布者信息变化将影响的所有组件都是订阅者(GiHn95称之为观察者)。</p>
+<p>​    发布者维护一个注册表,其中包含当前所有的订阅者组件。要成为订阅者,组件可使用发布者提供的订阅接口;组件还可以退订。</p>
+<p>​    发布者修改状态后通知所有订阅者,订阅者再酌情获取修改后的数据。</p>
+<p>这个模式提供了如下灵活性。</p>
+<p>​    口  可像[GHuV951介绍的那样引入抽象类,以便轻松地添加发布者和订「阅者。<br>​    口  发布者可决定哪个内部状态发生变化时将通知订阅者;还可以将多项变更排队,等到队列中的变更达到一定数量后再调用otiy()。<br>​    口  同一个组件可以是很多发布者的订阅者。<br>​    口  同一个组件可同时扮演发布者和订阅者角色。<br>​    口  可订阅指定类型的事件,这样订阅者只会收到有关其感兴趣的事件的消息。<br>​    口  通知订阅者时,发布者可发送数据变更细节,也可只发送通知,让订阅者自己确定哪些数据发生了变化。</p>
+<p>​    这里将变更传播机制笼统地分为推模型和拉模型。在推模型中,发布者通知订阅者时发送所有修改后的数据。订阅者无权选择是否及何时获取数据,面只能被动地接受。在拉模型中,发布者发出变更通知时只发送最基本的信息,订阅者再根据需要获取数据。有很多变种介于这两种模型之间。</p>
+<p>​    推模型的动态行为几乎是固定不变的,而拉模型提供了更大的灵活性,但代价是在发布者和订阅者之间传输的消息更多。</p>
+<p>​    对复杂的数据变更而言,推模型可能是槽糕的选择,在发布者发送大量数据,而订阅者对这些数据不感兴趣时尤其如此。即便只推送描述数据变更特性的信息,开销也可能太高。这种情况可使用拉模型,让订阅者去确定发生了哪些类型的数据变更。可使用决策树来逐渐获悉有关数据变更的大量细节。</p>
+<p>​    一般而言,如果发布的信息在大部分情况下都是订阅者需要的,推模型将是更好的选择。仅<br>当订阅者能够判断它们是否需要以及何时需要特定的信息时,才使用拉模型。</p>
+<h3 id="三、成例"><a href="#三、成例" class="headerlink" title="三、成例"></a>三、成例</h3><p>​    成例是编程语言特定的低层模式，阐述了如何使用给定语言实现组件的特定方面面或组件之间的关系。</p>
+<p>​    可以这样说：成例演示了编程语言特性的标准用法，因此也有助于教授编程语言。</p>
+<p>​    成例要在平时工作中积累，或者看一下别人代码是怎么写。</p>
+<p>​    具体的一个成例：引用计数器</p>
+<p>​    在C++中，一个对象body可能被多个对象共享，可能一个对象消失的时候，会删除掉这个body对象，这样会导致其他的对象无法访问到这个共享body对象。同时也要保证当引用body的对象都小时的时候，要将body这个对象删除，以节省内存空间。</p>
+<p>​    为了解决上述的问题，可以为body对象添加一个引用计数器，每当增加一个对象引用body，就将计数器增加1，引用body对象消失的时候，就将引用计数器减少1。当引用计数器为0的时候，就将body对象删除。</p>
+<p>​    <strong>Counted Pointer成例静态结构</strong></p>
+<p>​    <img src="\image\JAVA学习\引用计数成例静态结构.png" alt="引用计数成例静态结构"></p>
+<p>​    引用计数成例有很多的变种。</p>
+<h3 id="四、模式系统"><a href="#四、模式系统" class="headerlink" title="四、模式系统"></a>四、模式系统</h3><p>​     模式系统将模式联系起来,阐述了模式之间的关系,模式的现方式及其对软件开发有何帮助。模式系统是描绘和打造软件架构的利器。<br>​    《面向模式的软件架构–模式系统》和GOF的《设计模式》中模式都归纳到下面得这个模式系统中了。GOF《设计模式》中得模式以斜体表示。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:left">架构模式</th>
+<th style="text-align:left">设计模式</th>
+<th>成例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">从混沌到有序</td>
+<td style="text-align:left">Layers(21)<br>Pipes and Filters(34)<br>Blackboard(46)</td>
+<td style="text-align:left"><em>Interpreter</em></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">分布式系统</td>
+<td style="text-align:left">Broker(63)<br>Pipes and Filters(34<br>Microkernel(10)</td>
+<td style="text-align:left"></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">交互式系统</td>
+<td style="text-align:left">MVC(79)<br>PAC(93)</td>
+<td style="text-align:left"></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">可适应系统</td>
+<td style="text-align:left">Microkernel (110) <br>Reflection(124)</td>
+<td style="text-align:left"></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">创建</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">Abstract  Factory <br><em>Prototype</em> <br><em>Builder</em></td>
+<td><em>Singleton</em> <br><em>Factory  Method</em></td>
+</tr>
+<tr>
+<td style="text-align:center">结构分解</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">Whole-Part(145) <br><em>Composite</em></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">工作组织</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">Master-Slave (158)  <br><em>Chain fo Responsibility</em> <br><em>Command</em> <br><em>Mediator</em></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">访问控制</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">Proxy(170)  <br><em>Facade</em> <br><em>Iterator</em></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">服务变更</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"><em>Bridge</em> <br><em>Strategy</em>  <br><em>State</em></td>
+<td><em>Template  Method</em></td>
+</tr>
+<tr>
+<td style="text-align:center">服务扩展</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"><em>Decorator</em> <br><em>Vistor</em></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">管理</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">Command Processor (179<br>View Handler (188) <br><em>Memento</em></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">适配</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"><em>Adapter</em></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">通信</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">Publisher-Subscriber(219<br>Forwarder-Receiver (199)<br>Client-Dispatcher-Server(209)</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">资源管理</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"><em>Flyweight</em></td>
+<td>Counted Pointer(228)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="五、模式与软件架构"><a href="#五、模式与软件架构" class="headerlink" title="五、模式与软件架构"></a>五、模式与软件架构</h3><p><strong>软件架构</strong>的定义</p>
+<p>​    软件架构描述了软件系统的子系统和组件以及它们之间的关系。通常使用不同的视图来说明子系统和组件,以展示软件系统的功能特征和非功能特征。系统的软件架构是人工制品,乃软件设计活动的结果。</p>
+<p><strong>组件</strong>的定义</p>
+<p>​    组件是被封装起来的软件系统的一部分,包含一个接口。组件是用于打造系统的构件在编程语言层面,组件可能由模块、类、对象或一组相关的函数表示。</p>
+<p><strong>关系</strong></p>
+<p>​    关系描述了组件之间的联系,可能是静态的,也可能是动态的。静态关系会在源代码中直接显现出来,它们指出了架构中组件的布局;动态关系指出了组件之间的临时联系和动态交互,可能不容易通过源代码的静态结构看出来。</p>
+<p><strong>视图</strong></p>
+<p>​    视图呈现软件架构的某个方面，展示软件系统的某些具体特征。</p>
+<p>《面向模式的软件架构–模式系统》  2018-2-4  读完</p>
+<h2 id="面向模式的软件架构——模式系统-读书笔记"><a href="#面向模式的软件架构——模式系统-读书笔记" class="headerlink" title="面向模式的软件架构——模式系统  读书笔记"></a>面向模式的软件架构——模式系统  读书笔记</h2><p>书的pdf放置位置：G:\桌面文件和文件夹\学习\java\面向模式的软件架构\面向模式的软件体系结构（卷1卷2中文）</p>
+<p>主要内容：软件架构模式</p>
+<h3 id="这本书的主要模式及其实践功能："><a href="#这本书的主要模式及其实践功能：" class="headerlink" title="这本书的主要模式及其实践功能："></a>这本书的主要模式及其实践功能：</h3><p><strong>结构分解</strong></p>
+<p>设计模式Whole-Part(参见3.2节)有助于将组件聚合成语义整体。</p>
+<p><strong>工作组织</strong></p>
+<p>设计模式Master-Slave(参见3.3节)有助于改善容错性以及计算的并行性和准确度，一个主组件将工作分配给多个相同的从到组件，并根据这些从组件返回的结果计算最终结果。</p>
+<p><strong>访问控制</strong></p>
+<p>设计模式Pro×y(参见3.4节)让客户端与代表而非组件本省通信。引人这样的代理可达成很多目的，如提高效率，简化访问以及禁止未经授权的访问。</p>
+<p><strong>管理</strong></p>
+<p>设计模式Command Processor(参见3.5.1节)将服务的请求和执行分开，并提供额外的服务，如存储请求对象以便以后能够撤销请求。</p>
+<p>设计模式View Handler(参见3.5.2节)有助于管理软件系统提供的所有视图，协调视图间<br>依赖关系以及统筹视图更新。</p>
+<p>在C十十中，成例[Cope92] Counted Pointer(参见4.4节)简化了动态分配的共享对象的内存管理。</p>
+<p><strong>通信</strong></p>
+<p>设计模式Forwarder-Receiver(参见3.6.1节)利用对等交互模型让软件系统能够透明地进行进程间通信。它通过引人转发者和接收者将对等体与底层通信机制解耦。</p>
+<p>设计模式Client-Dispatcher-Server(参廷3.6.2节)在客户端和服务器之间添加了一个中间层——分派器组件。它利用名称服务提供了位置透明性，并隐藏了在客户端和服务器之间建立通信连接的细节。</p>
+<p>设计模式Publisher-Subscriber(参见3.6.3节)有助于让相互协作的组件的状态保持同步。</p>
+<p><strong>从混沌到有序</strong></p>
+<p>架构模式Layers(参见2.2.1节)有助于将应工程序划分为多组子任务，其中每组子任务都位于特定抽象层。</p>
+<p>架构模式Pipes and Filters(参见2.2.2节)提供的结构适合处理数据流的系统。</p>
+<p>架构模式Blackboard(参见2.2.3节)对还未找到明确解决策略的问题很有帮助，多个专业子系统通过集思广议，获得可能的部分解或近似解。</p>
+<p><strong>分布式系统</strong></p>
+<p>架构模式Broker(参见2.3节)可用于设计这样的分布式软件系统、即包含通过远程服务调用交互的组件。</p>
+<p><strong>交互式系统</strong></p>
+<p>MvC架构模式Model-View-Controller(参见2.4.1节)将交互式应用程序划分为三种组件:核心功能组件、表示组件和控制组件，并使用变更传播机制确保这三部分一致。</p>
+<p>PAC架构模式Presentation-Abstraction-Control(参见2.4.2节)定义了一种适用于交互式软件系统的结构：由相互协作的智能体组成的层次结构。每个智能体都负责应用程序功能的特定方面，并包含三个组件:表示组件、抽象组件和控制组件，这将智能体的人机交互方面同功能核心和通信方面分离了。</p>
+<p><strong>可适应系统</strong></p>
+<p>架构模式Microkernel(参见2.5.1节)适用于必须能够适应需求不断变化的系统，它将最基本的功能核心与扩展的功能和随客户而异的部分分离。微核还充当插座，用于插入扩展及协调它们之间的协作。</p>
+<p>架构模式Reflection(参见2.5.2节)提供了一种动态修改软件系统的结构和行为的机制。它支持对基本方面(如类型结构和函数调用机制)进行修改。</p>
+<h3 id="第1章-模式"><a href="#第1章-模式" class="headerlink" title="第1章  模式"></a>第1章  模式</h3><h4 id="1-1什么是模式"><a href="#1-1什么是模式" class="headerlink" title="1.1什么是模式"></a>1.1什么是模式</h4><p>模式诠释了特定背景、问题和解决方案三个要素之间的关系。</p>
+<h4 id="1-2模式之所以为模式"><a href="#1-2模式之所以为模式" class="headerlink" title="1.2模式之所以为模式"></a>1.2模式之所以为模式</h4><p>模式设计两个方面，静态的方面：组件以及组件之间的关系。动态方面：模式的参与者如何协作。</p>
+<p>下图总结了整个模式纲要：</p>
+<center><img src=" \image\面向模式的软件架构\模式纲要.png" width="510" height="272"></center>
+
+<h4 id="1-3模式类型"><a href="#1-3模式类型" class="headerlink" title="1.3模式类型"></a>1.3模式类型</h4><p>将模式分为三类：</p>
+<ul>
+<li>架构模式</li>
+<li>设计模式</li>
+<li>成例</li>
+</ul>
+<h5 id="1-3-4-模式分类在软件开发中的用途"><a href="#1-3-4-模式分类在软件开发中的用途" class="headerlink" title="1.3.4  模式分类在软件开发中的用途"></a>1.3.4  模式分类在软件开发中的用途</h5><p>着手确定粗粒度设计时，可使用架构模式；在整个设计阶段，都可使用设计模式；在实现阶段可使用成例（就是具体的实现方案）。</p>
+<h4 id="1-5-模式的描述"><a href="#1-5-模式的描述" class="headerlink" title="1.5 模式的描述"></a>1.5 模式的描述</h4><h5 id="模式描述模板如下："><a href="#模式描述模板如下：" class="headerlink" title="模式描述模板如下："></a>模式描述模板如下：</h5><p><strong>名称</strong><br>模式名你用简餐</p>
+<p><strong>别名</strong><br>模式的其他名称——如果有的话</p>
+<p><strong>示例</strong><br>一个真实的例、讯明li】聴确实存在，时即将介绍的模式礴i实有需求，</p>
+<p>在整个模式的描述中、在必要或对大家有帮助的情况下，我们都将通过这个示例来说明解决方案和实现。</p>
+<p><strong>背景</strong><br>模式可能适用的情形。</p>
+<p><strong>问题</strong><br>模式解决的问题，包括涉及的作用力。</p>
+<p><strong>解决方案</strong><br>模式背后的基本解决原则。</p>
+<p><strong>结构</strong><br>详细说明模式的结构方面，包括每个参与组件的CRC卡【BeCu89】(参见本书后面的”表示法”)以及一个OMT类图[RBPEL91]。</p>
+<p><strong>动态</strong><br>通常是一些情景，描述了模式的运行阶段行为。<br>我们还使用对象消息序列图(参见本书后面的”表示法。)对情景做进一步说明。</p>
+<p><strong>实现</strong><br>模式实现指南。<br>这些指南只是建议，并非永恒的规则。你应根据需求调整实现：添加不同、额外或更详细的步骤，或调整步骤的顺序。 我们使用C++、Smalltalk、Java或pSather示例代码来演示可能的实现，它们通常描述了示例问题的细节。</p>
+<p><strong>示例解答</strong><br>对“解决方案”、“结构”、“动态”和”实现”等部分末涉及，但对解决示例问题至关重要的各个方面进行讨论。</p>
+<p><strong>变种</strong><br>简要地描述当前模式的变种或具体化(specialization)。</p>
+<p><strong>已知应用</strong><br>模式在既有系统中的应用。</p>
+<p><strong>效果</strong><br>模式提供的优点及潜在的缺点。</p>
+<p><strong>参见</strong><br>列举其他一些模式，它们要么解决了类似问题，要么有助于改进当前模式。</p>
+<h3 id="第2章-架构模式"><a href="#第2章-架构模式" class="headerlink" title="第2章  架构模式"></a>第2章  架构模式</h3><h4 id="2-1-导言"><a href="#2-1-导言" class="headerlink" title="2.1 导言"></a>2.1 导言</h4><p>将架构模式分为四类：</p>
+<ul>
+<li><p>从混乱到有序类  包括Layers、Pipes and Filters和Blackboard</p>
+</li>
+<li><p>分布式系统  只包括Broker模式。</p>
+</li>
+<li>交互式系统  包括Model-View-Controller和Presentation-Abstraction-Control模式。</li>
+<li>可适应系统  包括Reflection和Microkernel模式</li>
+</ul>
+<h4 id="2-2-从混乱到有序"><a href="#2-2-从混乱到有序" class="headerlink" title="2.2 从混乱到有序"></a>2.2 从混乱到有序</h4><h5 id="2-2-1-Layers模式"><a href="#2-2-1-Layers模式" class="headerlink" title="2.2.1 Layers模式"></a>2.2.1 Layers模式</h5><h5 id="2-2-2-Pipes-and-Filters模式"><a href="#2-2-2-Pipes-and-Filters模式" class="headerlink" title="2.2.2 Pipes and Filters模式"></a>2.2.2 Pipes and Filters模式</h5><h5 id="2-2-3-Blackboard模式"><a href="#2-2-3-Blackboard模式" class="headerlink" title="2.2.3 Blackboard模式"></a>2.2.3 Blackboard模式</h5><h4 id="2-3-分布式系统"><a href="#2-3-分布式系统" class="headerlink" title="2.3 分布式系统"></a>2.3 分布式系统</h4><p>使用的是Broker模式</p>
+<h4 id="2-4-交互式系统"><a href="#2-4-交互式系统" class="headerlink" title="2.4 交互式系统"></a>2.4 交互式系统</h4><h5 id="2-4-1-Model-View-Controller模式"><a href="#2-4-1-Model-View-Controller模式" class="headerlink" title="2.4.1 Model-View-Controller模式"></a>2.4.1 Model-View-Controller模式</h5><ul>
+<li>Model中封装了核心数据和功能</li>
+<li>View主要是向用户显示数据和功能</li>
+<li>Controller主要是处理用户的输入，并对事件进行处理，可能会修改模型中的数据。</li>
+</ul>
+<p>View和Controller会向Model的变更传播机制进行注册，当Model发生改变的时候，遍历这些注册了的组件，并调用它们的更新。</p>
+<h5 id="2-4-2-Presentation-Abstraction-Control模式"><a href="#2-4-2-Presentation-Abstraction-Control模式" class="headerlink" title="2.4.2 Presentation-Abstraction-Control模式"></a>2.4.2 Presentation-Abstraction-Control模式</h5><p>表示组件提供了PAC智能体的可视化行为；<br>抽象组件维护智能体的底层数据模型，并提供操作这些数据的功能；<br>控制组件是表示组件和抽象组件之间的桥梁，并提供了让智能体能够与其他PAC智能体通信的功能。</p>
+<p>整个PAC系统又分成了顶层智能体，中间智能体和底层智能体。<br>顶层智能体只要负责提供软件的全局数据模型。<br>底层PAC智能体表示应用领域的特定语义概念，例如展示选举投票的柱状图。<br>中间层智能体可承担两种不同的职责：组合和协调。<br>每一个的智能体中都可以包含表示组件、抽象组件和控制组件，不一定三个组件都包含有。</p>
+<p>PAC模式的主要作用是，完全分离不同系统任务的关注点。</p>
+<h4 id="2-5-可适应系统"><a href="#2-5-可适应系统" class="headerlink" title="2.5  可适应系统"></a>2.5  可适应系统</h4><ul>
+<li>Microkernel模式</li>
+<li>Reflection模式</li>
+</ul>
+<h5 id="2-5-1-Microkernel模式"><a href="#2-5-1-Microkernel模式" class="headerlink" title="2.5.1 Microkernel模式"></a>2.5.1 Microkernel模式</h5><p>主要是将基本的核心功能放在微核中，其他功能以服务的方式实现。</p>
+<h5 id="2-5-2-Reflection模式"><a href="#2-5-2-Reflection模式" class="headerlink" title="2.5.2 Reflection模式"></a>2.5.2 Reflection模式</h5><h3 id="第3章-设计模式"><a href="#第3章-设计模式" class="headerlink" title="第3章  设计模式"></a>第3章  设计模式</h3>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+            <a href="/tags/设计模式/" rel="tag"># 设计模式</a>
+          
+            <a href="/tags/软件架构/" rel="tag"># 软件架构</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/17/2_Linux学习笔记/" rel="next" title="Linux学习笔记">
+                <i class="fa fa-chevron-left"></i> Linux学习笔记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/12/18/数据库/Redis/" rel="prev" title="Redis">
+                Redis <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/zhg_avatar.jpg"
+                alt="zhongzhengang" />
+            
+              <p class="site-author-name" itemprop="name">zhongzhengang</p>
+              <p class="site-description motion-element" itemprop="description">一点一滴的积累</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/zhongzhengang" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/mu-cao-18-76/activities" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-globe"></i>知乎</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JAVA设计模式"><span class="nav-number">1.</span> <span class="nav-text">JAVA设计模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#设计模式"><span class="nav-number">1.1.</span> <span class="nav-text">设计模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#软件架构模式基本概念及三者区别"><span class="nav-number">1.1.1.</span> <span class="nav-text">软件架构模式基本概念及三者区别</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-架构模式-Architectural-Pattern"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">1. 架构模式(Architectural Pattern)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-设计模式-Design-Pattern"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">2. 设计模式(Design Pattern)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-代码模式-Coding-Pattern"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">3. 代码模式(Coding Pattern)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一、架构模式"><span class="nav-number">1.1.2.</span> <span class="nav-text">一、架构模式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-从混乱到有序"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">1.从混乱到有序</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-1-Layers模式"><span class="nav-number">1.1.2.1.1.</span> <span class="nav-text">1.1 Layers模式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-2-Pipes-and-Filters模式"><span class="nav-number">1.1.2.1.2.</span> <span class="nav-text">1.2 Pipes and Filters模式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-3-Blackboard模式"><span class="nav-number">1.1.2.1.3.</span> <span class="nav-text">1.3 Blackboard模式</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-分布式系统"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">2.分布式系统</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-Broker模式"><span class="nav-number">1.1.2.2.1.</span> <span class="nav-text">2.1 Broker模式</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#Server："><span class="nav-number">1.1.2.2.1.1.</span> <span class="nav-text">Server：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Client："><span class="nav-number">1.1.2.2.1.2.</span> <span class="nav-text">Client：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Broker："><span class="nav-number">1.1.2.2.1.3.</span> <span class="nav-text">Broker：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Client-Proxy："><span class="nav-number">1.1.2.2.1.4.</span> <span class="nav-text">Client_Proxy：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Bridge："><span class="nav-number">1.1.2.2.1.5.</span> <span class="nav-text">Bridge：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#应用场景一："><span class="nav-number">1.1.2.2.1.6.</span> <span class="nav-text">应用场景一：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#应用场景二："><span class="nav-number">1.1.2.2.1.7.</span> <span class="nav-text">应用场景二：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#应用场景三："><span class="nav-number">1.1.2.2.1.8.</span> <span class="nav-text">应用场景三：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#部署示意图："><span class="nav-number">1.1.2.2.1.9.</span> <span class="nav-text">部署示意图：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#总结："><span class="nav-number">1.1.2.2.1.10.</span> <span class="nav-text">总结：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-交互式系统"><span class="nav-number">1.1.2.3.</span> <span class="nav-text">3.交互式系统</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-1-Model-View-Controller模式"><span class="nav-number">1.1.2.3.1.</span> <span class="nav-text">3.1 Model-View-Controller模式</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#基本介绍"><span class="nav-number">1.1.2.3.1.1.</span> <span class="nav-text">基本介绍</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#为什么要使用-MVC"><span class="nav-number">1.1.2.3.1.2.</span> <span class="nav-text">为什么要使用 MVC</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#MVC的优点"><span class="nav-number">1.1.2.3.1.3.</span> <span class="nav-text">MVC的优点</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#MVC的缺点"><span class="nav-number">1.1.2.3.1.4.</span> <span class="nav-text">MVC的缺点</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-2-Presentation-Abstraction-Control模式"><span class="nav-number">1.1.2.3.2.</span> <span class="nav-text">3.2 Presentation-Abstraction-Control模式</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#已知应用："><span class="nav-number">1.1.2.3.2.1.</span> <span class="nav-text">已知应用：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#效果"><span class="nav-number">1.1.2.3.2.2.</span> <span class="nav-text">效果</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-可适应系统"><span class="nav-number">1.1.2.4.</span> <span class="nav-text">4.可适应系统</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#4-1-Microkernel模式"><span class="nav-number">1.1.2.4.1.</span> <span class="nav-text">4.1 Microkernel模式</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#模式描述"><span class="nav-number">1.1.2.4.1.1.</span> <span class="nav-text">模式描述</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#案例"><span class="nav-number">1.1.2.4.1.2.</span> <span class="nav-text">案例</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#注意事项"><span class="nav-number">1.1.2.4.1.3.</span> <span class="nav-text">注意事项</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#模式分析"><span class="nav-number">1.1.2.4.1.4.</span> <span class="nav-text">模式分析</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-2-Reflection模式"><span class="nav-number">1.1.2.4.2.</span> <span class="nav-text">4.2 Reflection模式</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#别名"><span class="nav-number">1.1.2.4.2.1.</span> <span class="nav-text">别名</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#模式描述-1"><span class="nav-number">1.1.2.4.2.2.</span> <span class="nav-text">模式描述</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#变种"><span class="nav-number">1.1.2.4.2.3.</span> <span class="nav-text">变种</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#优点"><span class="nav-number">1.1.2.4.2.4.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#缺点"><span class="nav-number">1.1.2.4.2.5.</span> <span class="nav-text">缺点</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#实际例子"><span class="nav-number">1.1.2.4.2.6.</span> <span class="nav-text">实际例子</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、设计模式"><span class="nav-number">1.1.3.</span> <span class="nav-text">二、设计模式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-结构分解模式"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">1. 结构分解模式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-1-Whole-Part模式"><span class="nav-number">1.1.3.1.1.</span> <span class="nav-text">1.1 Whole-Part模式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-2-Composite模式"><span class="nav-number">1.1.3.1.2.</span> <span class="nav-text">1.2 Composite模式</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-工作组织模式"><span class="nav-number">1.1.3.2.</span> <span class="nav-text">2. 工作组织模式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-Master-Slave模式"><span class="nav-number">1.1.3.2.1.</span> <span class="nav-text">2.1 Master-Slave模式</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-访问控制"><span class="nav-number">1.1.3.3.</span> <span class="nav-text">3. 访问控制</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-1-Proxy模式"><span class="nav-number">1.1.3.3.1.</span> <span class="nav-text">3.1 Proxy模式</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-管理模式"><span class="nav-number">1.1.3.4.</span> <span class="nav-text">4.  管理模式</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#4-1-Command-Processor模式-（记笔记，就参考这一个小节的样子写了）"><span class="nav-number">1.1.3.4.0.1.</span> <span class="nav-text">4.1 Command Processor模式    （记笔记，就参考这一个小节的样子写了）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#4-2-View-Handler模式"><span class="nav-number">1.1.3.4.0.2.</span> <span class="nav-text">4.2 View Handler模式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-通信模式"><span class="nav-number">1.1.3.5.</span> <span class="nav-text">5. 通信模式</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#5-1-Forwarder-Receiver模式-（转发者-接收者模式）"><span class="nav-number">1.1.3.5.0.1.</span> <span class="nav-text">5.1 Forwarder-Receiver模式 （转发者-接收者模式）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#5-2-Client-Dispatcher-Server模式"><span class="nav-number">1.1.3.5.0.2.</span> <span class="nav-text">5.2 Client-Dispatcher-Server模式</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#5-3-Publisher-Subscriber模式"><span class="nav-number">1.1.3.5.0.3.</span> <span class="nav-text">5.3 Publisher-Subscriber模式</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、成例"><span class="nav-number">1.1.4.</span> <span class="nav-text">三、成例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、模式系统"><span class="nav-number">1.1.5.</span> <span class="nav-text">四、模式系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#五、模式与软件架构"><span class="nav-number">1.1.6.</span> <span class="nav-text">五、模式与软件架构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面向模式的软件架构——模式系统-读书笔记"><span class="nav-number">1.2.</span> <span class="nav-text">面向模式的软件架构——模式系统  读书笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#这本书的主要模式及其实践功能："><span class="nav-number">1.2.1.</span> <span class="nav-text">这本书的主要模式及其实践功能：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第1章-模式"><span class="nav-number">1.2.2.</span> <span class="nav-text">第1章  模式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1什么是模式"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">1.1什么是模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2模式之所以为模式"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">1.2模式之所以为模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3模式类型"><span class="nav-number">1.2.2.3.</span> <span class="nav-text">1.3模式类型</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-3-4-模式分类在软件开发中的用途"><span class="nav-number">1.2.2.3.1.</span> <span class="nav-text">1.3.4  模式分类在软件开发中的用途</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-5-模式的描述"><span class="nav-number">1.2.2.4.</span> <span class="nav-text">1.5 模式的描述</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#模式描述模板如下："><span class="nav-number">1.2.2.4.1.</span> <span class="nav-text">模式描述模板如下：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第2章-架构模式"><span class="nav-number">1.2.3.</span> <span class="nav-text">第2章  架构模式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-导言"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">2.1 导言</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-从混乱到有序"><span class="nav-number">1.2.3.2.</span> <span class="nav-text">2.2 从混乱到有序</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-1-Layers模式"><span class="nav-number">1.2.3.2.1.</span> <span class="nav-text">2.2.1 Layers模式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-2-Pipes-and-Filters模式"><span class="nav-number">1.2.3.2.2.</span> <span class="nav-text">2.2.2 Pipes and Filters模式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-3-Blackboard模式"><span class="nav-number">1.2.3.2.3.</span> <span class="nav-text">2.2.3 Blackboard模式</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-分布式系统"><span class="nav-number">1.2.3.3.</span> <span class="nav-text">2.3 分布式系统</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4-交互式系统"><span class="nav-number">1.2.3.4.</span> <span class="nav-text">2.4 交互式系统</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-4-1-Model-View-Controller模式"><span class="nav-number">1.2.3.4.1.</span> <span class="nav-text">2.4.1 Model-View-Controller模式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-4-2-Presentation-Abstraction-Control模式"><span class="nav-number">1.2.3.4.2.</span> <span class="nav-text">2.4.2 Presentation-Abstraction-Control模式</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-5-可适应系统"><span class="nav-number">1.2.3.5.</span> <span class="nav-text">2.5  可适应系统</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-5-1-Microkernel模式"><span class="nav-number">1.2.3.5.1.</span> <span class="nav-text">2.5.1 Microkernel模式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-5-2-Reflection模式"><span class="nav-number">1.2.3.5.2.</span> <span class="nav-text">2.5.2 Reflection模式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第3章-设计模式"><span class="nav-number">1.2.4.</span> <span class="nav-text">第3章  设计模式</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zhongzhengang</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>

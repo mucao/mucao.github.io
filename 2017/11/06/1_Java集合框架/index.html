@@ -1,0 +1,1401 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Java,集合框架,容器," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="ZhongZhenGang's Notes" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="Java集合框架Java集合自己学习1. TreeSet集合重要操作TreeSet属于Set集合框架，可以保持元素的有序性。TreeSet是依赖TreeMap实现的，TreeMap内部（TreeMap分析）是采用红黑树实现的。 这篇博客主要介绍一下TreeSet的一些重要操作。 1. Ceiling(E e)和floor(E e)操作 这个Ceiling()操作可以获取在TreeSet集合中比指定">
+<meta name="keywords" content="Java,集合框架,容器">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java集合框架">
+<meta property="og:url" content="http://yoursite.com/2017/11/06/1_Java集合框架/index.html">
+<meta property="og:site_name" content="ZhongZhenGang&#39;s Notes">
+<meta property="og:description" content="Java集合框架Java集合自己学习1. TreeSet集合重要操作TreeSet属于Set集合框架，可以保持元素的有序性。TreeSet是依赖TreeMap实现的，TreeMap内部（TreeMap分析）是采用红黑树实现的。 这篇博客主要介绍一下TreeSet的一些重要操作。 1. Ceiling(E e)和floor(E e)操作 这个Ceiling()操作可以获取在TreeSet集合中比指定">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/image/java集合框架/java-collection-hierarchy.jpeg">
+<meta property="og:image" content="http://yoursite.com/image/java集合框架/MapClassHierarchy.jpg">
+<meta property="og:image" content="http://yoursite.com/image/java集合框架/集合框架图.gif">
+<meta property="og:image" content="http://yoursite.com/image/java集合框架/集合框架简化图.jpg">
+<meta property="og:image" content="http://yoursite.com/image/java集合框架/集合框架总体分析图.jpg">
+<meta property="og:image" content="http://yoursite.com/image/java集合框架/Collection接口中的方法.png">
+<meta property="og:image" content="http://yoursite.com/image/java集合框架/Map接口实现类之间的关系.png">
+<meta property="og:updated_time" content="2018-07-03T12:18:50.535Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java集合框架">
+<meta name="twitter:description" content="Java集合框架Java集合自己学习1. TreeSet集合重要操作TreeSet属于Set集合框架，可以保持元素的有序性。TreeSet是依赖TreeMap实现的，TreeMap内部（TreeMap分析）是采用红黑树实现的。 这篇博客主要介绍一下TreeSet的一些重要操作。 1. Ceiling(E e)和floor(E e)操作 这个Ceiling()操作可以获取在TreeSet集合中比指定">
+<meta name="twitter:image" content="http://yoursite.com/image/java集合框架/java-collection-hierarchy.jpeg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/11/06/1_Java集合框架/"/>
+
+
+
+
+
+  <title>Java集合框架 | ZhongZhenGang's Notes</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ZhongZhenGang's Notes</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/06/1_Java集合框架/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhongzhengang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/zhg_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZhongZhenGang's Notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Java集合框架</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-06T19:25:47+08:00">
+                2017-11-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java高级知识/" itemprop="url" rel="index">
+                    <span itemprop="name">Java高级知识</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Java集合框架"><a href="#Java集合框架" class="headerlink" title="Java集合框架"></a>Java集合框架</h1><h2 id="Java集合自己学习"><a href="#Java集合自己学习" class="headerlink" title="Java集合自己学习"></a>Java集合自己学习</h2><h3 id="1-TreeSet集合重要操作"><a href="#1-TreeSet集合重要操作" class="headerlink" title="1. TreeSet集合重要操作"></a>1. TreeSet集合重要操作</h3><p>TreeSet属于Set集合框架，可以保持元素的有序性。TreeSet是依赖TreeMap实现的，TreeMap内部（<a href="https://blog.csdn.net/chenssy/article/details/26668941" target="_blank" rel="noopener">TreeMap分析</a>）是采用红黑树实现的。</p>
+<p>这篇博客主要介绍一下TreeSet的一些重要操作。</p>
+<p><strong>1. Ceiling(E e)和floor(E e)操作</strong></p>
+<p>这个Ceiling()操作可以获取在TreeSet集合中比指定元素大于或等于的元素中的最小元素。相对应的floor()操作可以获取在TreeSet集合中比指定元素小于或等于的元素中的最大元素。</p>
+<p>形象的理解，这就是把指定元素当作是地板或者是天花板，然后在TreeSet集合中去截取元素。</p>
+<p><strong>2. first()和last()操作</strong></p>
+<p>这两个操作分别是返回集合中第一个元素（最小）和最后一个元素（最大）。</p>
+<p><strong>3. lower(E e)和higher(E e)操作</strong></p>
+<p>lower()返回在集合中严格小于e(<em>不包含e</em>)的元素中的最大元素。相应的higher()返回集合中严格大于e的元素中的最小元素。要是它们找不到合适的元素，那么就都返回null。</p>
+<p><strong>4. pollFirst()和pollLast()操作</strong></p>
+<p>可以类比队列中的poll()操作。pollFirst()返回并移除集合中的第一个元素（最小），pollLast()返回并移除集合中的最后一个元素（最大）。</p>
+<p><strong>5. headSet(E e)和tailSet(E e)操作</strong></p>
+<p>headSet()返回集合中所有严格小于e的元素的一个视图(SortedSet&lt; E&gt;)。tailSet()相对应的返回所有严格大于e的所有元素的一个视图。</p>
+<p>它都还有另外一个版本    headSet(E toElement, boolean inclusive)和    tailSet(E fromElement, boolean inclusive)。如果inclusive为true，那么这两个版本函数返回的视图中就会包含等于e的元素。</p>
+<p><strong>6. 求子集操作subSet(E fromElement, E toElement)</strong></p>
+<p>会返回一个从fromElement到toElement范围的元素集合视图(SortedSet&lt; E&gt;)。</p>
+<p>也有另外一个版本    subSet(E fromElement, boolean fromInclusive, E toElement, boolean toInclusive)。两个boolean值变量分别表示是否包含等于fromElement和toElement的集合元素。</p>
+<h2 id="一、Java集合框架综述"><a href="#一、Java集合框架综述" class="headerlink" title="一、Java集合框架综述"></a>一、Java集合框架综述</h2><p>​    JDK的集合框架在平时使用的频率很高，这些类非常的实用，掌握其实现能更好的优化程序；另一方面是学习借鉴JDK是如何实现了这么一套优雅高效的类库，提升编程能力。</p>
+<p>​    在介绍具体适合类之前，本篇文章对Java中的集合框架做一个大致描述，从一个高的角度俯视这个框架，了解了这个框架的一些理念与约定，会大大帮助后面分析某个具体类，让我们开始吧。</p>
+<h3 id="集合框架（collections-framework）"><a href="#集合框架（collections-framework）" class="headerlink" title="集合框架（collections framework）"></a>集合框架（collections framework）</h3><p>​    首先要明确，集合代表了一组对象（和数组一样，但数组长度不能变，而集合能）。Java中的集合框架定义了一套规范，用来表示、操作集合，使具体操作与实现细节解耦。</p>
+<p>​    其实说白了，可以把一个集合看成一个微型数据库，操作不外乎“增删改查”四种操作，我们在学习使用一个具体的集合类时，需要把这四个操作的<code>时空复杂度</code>弄清楚了，基本上就可以说掌握这个类了。</p>
+<h3 id="设计理念"><a href="#设计理念" class="headerlink" title="设计理念"></a>设计理念</h3><p>​    主要理念用一句话概括就是：提供一套“小而美”的API。API需要对程序员友好，增加新功能时能让程序员们快速上手。</p>
+<p>​    为了保证核心接口足够小，最顶层的接口（也就是Collection与Map接口）并不会区分该集合是否可变（mutability）,是否可更改（modifiability）,是否可改变大小（resizability）这些细微的差别。相反，一些操作是可选的，在实现时抛出<code>UnsupportedOperationException</code>即可表示集合不支持该操作。集合的实现者必须在文档中声明那些操作是不支持的。</p>
+<p>为了保证最顶层的核心接口足够小，它们只能包含下面情况下的方法：</p>
+<ol>
+<li><p>基本操作，像之前说的“增删改查”</p>
+</li>
+<li><p>There is a compelling performance reason why an important implementation would want to override it.</p>
+</li>
+</ol>
+<p>​    此外，所有的集合类都必须能提供友好的交互操作，这包括没有继承<code>Collection</code>类的数组对象。因此，框架提供一套方法，让集合类与数组可以相互转化，并且可以把<code>Map</code>看作成集合。</p>
+<h3 id="两大基类Collection与Map"><a href="#两大基类Collection与Map" class="headerlink" title="两大基类Collection与Map"></a>两大基类Collection与Map</h3><p>​    在集合框架的类继承体系中，最顶层有两个接口：</p>
+<ul>
+<li><code>Collection</code>表示一组纯数据</li>
+<li><code>Map</code>表示一组key-value对</li>
+</ul>
+<p>一般继承自<code>Collection</code>或<code>Map</code>的集合类，会提供两个“标准”的构造函数：</p>
+<ul>
+<li>没有参数的构造函数，创建一个空的集合类</li>
+<li><p>有一个类型与基类（<code>Collection</code>或<code>Map</code>）相同的构造函数，创建一个与给定参数具有相同元素的新集合类</p>
+<pre><code>因为接口中不能包含构造函数，所以上面这两个构造函数的约定并不是强制性的，但是在目前的集合框架中，所有继承自`Collection`或`Map`的子类都遵循这一约定。
+</code></pre></li>
+</ul>
+<h4 id="Collection"><a href="#Collection" class="headerlink" title="Collection"></a>Collection</h4><p><img src="\image\java集合框架\java-collection-hierarchy.jpeg" alt="ava-collection-hierarch"></p>
+<p>​                                        java-collection-hierarchy</p>
+<p>如上图所示，<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Collection.html" target="_blank" rel="noopener">Collection</a>类主要有三个接口：</p>
+<ul>
+<li><code>Set</code>表示不允许有重复元素的集合（A collection that contains no duplicate elements）</li>
+<li><code>List</code>表示允许有重复元素的集合（An ordered collection (also known as a sequence)）</li>
+<li><code>Queue</code> JDK1.5新增，与上面两个集合类主要是的区分在于<code>Queue</code>主要用于存储数据，而不是处理数据。（A collection designed for holding elements prior to processing.）</li>
+</ul>
+<h4 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h4><p><img src="\image\java集合框架\MapClassHierarchy.jpg" alt="apClassHierarch"></p>
+<p><a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html" target="_blank" rel="noopener">Map</a>并不是一个真正意义上的集合（are not true collections），但是这个接口提供了三种“集合视角”（collection views ），使得可以像操作集合一样操作它们，具体如下：</p>
+<ul>
+<li>把map的内容看作key的集合（map’s contents to be viewed as a set of keys）</li>
+<li>把map的内容看作value的集合（map’s contents to be viewed as a collection of values）</li>
+<li>把map的内容看作key-value映射的集合（map’s contents to be viewed as a set of key-value mappings）</li>
+</ul>
+<h3 id="集合的实现（Collection-Implementations）"><a href="#集合的实现（Collection-Implementations）" class="headerlink" title="集合的实现（Collection Implementations）"></a>集合的实现（Collection Implementations）</h3><p>实现集合接口的类一般遵循<code>&lt;实现方式&gt;+&lt;接口&gt;</code>的命名方式，通用的集合实现类如下表：</p>
+<table>
+<thead>
+<tr>
+<th>Interface</th>
+<th>Hash Table</th>
+<th>Resizable Array</th>
+<th>Balanced Tree</th>
+<th>Linked List</th>
+<th>Hash Table + Linked List</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Set</td>
+<td>HashSet</td>
+<td></td>
+<td>TreeSet</td>
+<td></td>
+<td>LinkedHashSet</td>
+</tr>
+<tr>
+<td>List</td>
+<td></td>
+<td>ArrayList</td>
+<td></td>
+<td>LinkedList</td>
+<td></td>
+</tr>
+<tr>
+<td>Deque</td>
+<td></td>
+<td>ArrayDeque</td>
+<td></td>
+<td>LinkedList</td>
+<td></td>
+</tr>
+<tr>
+<td>Map</td>
+<td><a href="http://liujiacai.net/blog/2015/09/03/java-hashmap/" target="_blank" rel="noopener">HashMap</a></td>
+<td></td>
+<td><a href="http://liujiacai.net/blog/2015/09/04/java-treemap/" target="_blank" rel="noopener">TreeMap</a></td>
+<td></td>
+<td><a href="http://liujiacai.net/blog/2015/09/12/java-linkedhashmap/" target="_blank" rel="noopener">LinkedHashMap</a></td>
+</tr>
+</tbody>
+</table>
+<p>参考资料： <a href="http://liujiacai.net/blog/2015/09/01/java-collection-overview/" target="_blank" rel="noopener">Java集合框架综述</a></p>
+<h2 id="java集合框架详解"><a href="#java集合框架详解" class="headerlink" title="java集合框架详解"></a>java集合框架详解</h2><h3 id="一、集合框架图"><a href="#一、集合框架图" class="headerlink" title="一、集合框架图"></a>一、集合框架图</h3><p><img src="\image\java集合框架\集合框架图.gif" alt="合框架"></p>
+<p>简化图：</p>
+<p><img src="\image\java集合框架\集合框架简化图.jpg" alt="合框架简化"></p>
+<p>说明：对于以上的框架图有如下几点说明</p>
+<p>1.  所有集合类都位于java.util包下。Java的集合类主要由两个接口派生而出：Collection和Map，Collection和Map是Java集合框架的根接口，这两个接口又包含了一些子接口或实现类。<br>2. 集合接口：6个接口（短虚线表示），表示不同集合类型，是集合框架的基础。<br>3. 抽象类：5个抽象类（长虚线表示），对集合接口的部分实现。可扩展为自定义集合类。<br>4. 实现类：8个实现类（实线表示），对接口的具体实现。<br>==5. Collection 接口是一组允许重复的对象。==<br>==6. Set 接口继承 Collection，集合元素不重复。==<br>==7. List 接口继承 Collection，允许重复，维护元素插入顺序。==<br>==8. Map接口是键－值对象，与Collection接口没有什么关系。==<br>9. Set、List和Map可以看做集合的三大类：<br>List集合是有序集合，集合中的元素可以重复，访问集合中的元素可以根据元素的索引来访问。<br>Set集合是无序集合，集合中的元素不可以重复，访问集合中的元素只能根据元素本身来访问（也是集合里元素不允许重复的原因）。<br>Map集合中保存Key-value对形式的元素，访问时只能根据每项元素的key来访问其value。</p>
+<h3 id="二、总体分析"><a href="#二、总体分析" class="headerlink" title="二、总体分析"></a>二、总体分析</h3><p><img src="\image\java集合框架\集合框架总体分析图.jpg" alt="合框架总体分析"></p>
+<p>大致说明：<br>看上面的框架图，先抓住它的主干，即Collection和Map。</p>
+<p>1、Collection是一个接口，是高度抽象出来的集合，它包含了集合的基本操作和属性。Collection包含了List和Set两大分支。<br>（1）List是一个==有序的队列==，每一个元素都有它的索引。第一个元素的索引值是0。List的实现类有LinkedList, ArrayList, Vector, Stack。</p>
+<p>（2）Set是一个==不允许有重复元素的集合==。Set的实现类有HastSet和TreeSet。==HashSet依赖于HashMap，它实际上是通过HashMap实现的；TreeSet依赖于TreeMap，它实际上是通过TreeMap实现的。==</p>
+<p>2、Map是一个映射接口，即==key-value键值对==。Map中的每一个元素包含“==一个key==”和“==key对应的value==”。AbstractMap是个抽象类，它实现了Map接口中的大部分API。而HashMap，TreeMap，WeakHashMap都是继承于AbstractMap。Hashtable虽然继承于Dictionary，但它实现了Map接口。</p>
+<p>3、接下来，再看Iterator。它是==遍历集合的工具==，即我们通常通过Iterator迭代器来遍历集合。我们说Collection依赖于Iterator，是==因为Collection的实现类都要实现iterator()函数，返回一个Iterator对象。ListIterator是专门为遍历List而存在的==。</p>
+<p>4、再看Enumeration，它是JDK 1.0引入的抽象类。作用和Iterator一样，也是遍历集合；但是Enumeration的功能要比Iterator少。在上面的框图中，==Enumeration只能在Hashtable, Vector, Stack中使用==。</p>
+<p>5、最后，看Arrays和Collections。它们是操作数组、集合的两个工具类。</p>
+<p>有了上面的整体框架之后，我们接下来对每个类分别进行分析。     </p>
+<h3 id="三、Collection接口"><a href="#三、Collection接口" class="headerlink" title="三、Collection接口"></a>三、Collection接口</h3><p>​    Collection接口是处理对象集合的根接口，其中定义了很多对元素进行操作的方法。Collection接口有两个主要的子接口List和Set，注意<strong>Map不是Collection的子接口，这个要牢记</strong>。<br>    Collection接口中的方法如下: </p>
+<p><img src="\image\java集合框架\Collection接口中的方法.png" alt="ollection接口中的方"></p>
+<p>​    其中，有几个比较常用的方法，比如方法add()添加一个元素到集合中，addAll()将指定集合中的所有元素添加到集合中，contains()方法检测集合中是否包含指定的元素，toArray()方法返回一个表示集合的数组。</p>
+<p>​    另外，Collection中有一个iterator()函数，它的作用是==返回一个Iterator接口==。通常，我们==通过Iterator迭代器来遍历集合==。ListIterator是List接口所特有的，==在List接口中，通过ListIterator()返回一个ListIterator对象。==</p>
+<p>​    Collection接口中函数的详细说明如下表：</p>
+<p>​<br>|返回值类型   | 方法名与含义|<br>| ————– | ———————————————————— |<br>| <code>boolean</code>     | <strong>add</strong>(E o)          确保此 collection 包含指定的元素（可选操作）。 |<br>| <code>boolean</code>     | <strong>addAll</strong>(Collection&lt;? extends E&gt; c)         将指定 collection 中的所有元素都添加到此 collection 中（可选操作）。 |<br>| <code>void</code>        | <strong>clear</strong>()          移除此 collection 中的所有元素（可选操作）。 |<br>| <code>boolean</code>     | <strong>contains</strong>(Object o)          如果此 collection 包含指定的元素，则返回 <code>true</code>。 |<br>| <code>boolean</code>     | <strong>containsAll</strong>(Collection&lt;?&gt; c)<code>如果此 collection 包含指定 collection 中的所有元素，则返回</code>true<code>。 |
+|</code> boolean<code>| **equals**(Object o)         比较此 collection 与指定对象是否相等。 |
+|</code> int<code>| **hashCode**()          返回此 collection 的哈希码值。     |
+|</code> boolean<code>| **isEmpty**()         如果此 collection 不包含元素，则返回</code>true<code>。 |
+|</code> Iterator<e><code>| **iterator**()         返回在此 collection 的元素上进行迭代的迭代器。 |
+|</code> boolean<code>| **remove**(Object o)          从此 collection 中移除指定元素的单个实例，如果存在的话（可选操作）。 |
+|</code> boolean<code>| **removeAll**(Collection&lt;?&gt; c)          移除此 collection 中那些也包含在指定 collection 中的所有元素（可选操作）。 |
+|</code> boolean<code>| **retainAll**(Collection&lt;?&gt; c)          仅保留此 collection 中那些也包含在指定 collection 的元素（可选操作）。 |
+|</code> int<code>| **size**()          返回此 collection 中的元素数。         |
+|</code> Object[]`    | <strong>toArray</strong>()          返回包含此 collection 中所有元素的数组。 |<br>| <figure class="highlight plain"><figcaption><span>T[]`    | **toArray**(T[] a)          返回包含此 collection 中所有元素的数组；返回数组的运行时类型与指定数组的运行时类型相同。 |</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">​	Collection接口有两个常用的子接口，下面详细介绍。</span><br><span class="line"></span><br><span class="line">#### 1.List接口</span><br><span class="line"></span><br><span class="line">​       ==List集合代表一个有序集合，集合中每个元素都有其对应的顺序索引。List集合允许使用重复元素，可以通过索引来访问指定位置的集合元素。== </span><br><span class="line"></span><br><span class="line">​	List接口继承于Collection接口，它可以定义一个**允许重复的有序集合**。因为List中的元素是有序的，所以我们可以通过使用索引（元素在List中的位置，类似于数组下标）来访问List中的元素，这类似于Java的数组。</span><br><span class="line"></span><br><span class="line">​	List接口为Collection直接接口。List所代表的是**有序的Collection**，即它用某种特定的插入顺序来维护元素顺序。用户可以对列表中每个元素的插入位置进行精确地控制，同时可以根据元素的整数索引（在列表中的位置）访问元素，并搜索列表中的元素。实现List接口的集合主要有：ArrayList、LinkedList、Vector、Stack。</span><br><span class="line"></span><br><span class="line">**（1）ArrayList**</span><br><span class="line"></span><br><span class="line">​      ArrayList是一个**动态数组**，也是我们最常用的集合。它允许任何符合规则的元素插入甚至包括null。每一个ArrayList都有一个初始容量（10），该容量代表了数组的大小。随着容器中的元素不断增加，容器的大小也会随着增加。在每次向容器中增加元素的同时都会进行容量检查，当快溢出时，就会进行扩容操作。所以**如果我们明确所插入元素的多少，最好指定一个初始容量值，避免过多的进行扩容操作而浪费时间、效率。**</span><br><span class="line"></span><br><span class="line">​      size、isEmpty、get、set、iterator 和 listIterator 操作都以固定时间运行。add 操作以分摊的固定时间运行，也就是说，添加 n 个元素需要 O(n) 时间（由于要考虑到扩容，所以这不只是添加元素会带来分摊固定时间开销那样简单）。</span><br><span class="line"></span><br><span class="line">​      **ArrayList擅长于随机访问。同时ArrayList是非同步的。**</span><br><span class="line"></span><br><span class="line">**（2）LinkedList**</span><br><span class="line"></span><br><span class="line">​      同样实现List接口的LinkedList与ArrayList不同，==ArrayList是一个动态数组，而LinkedList是一个双向链表。==所以它除了有ArrayList的基本操作方法外还额外提供了get，remove，insert方法在LinkedList的首部或尾部。</span><br><span class="line"></span><br><span class="line">​      由于实现的方式不同，**LinkedList不能随机访问**，它所有的操作都是要按照双重链表的需要执行。在列表中索引的操作将从开头或结尾遍历列表（从靠近指定索引的一端）。这样做的好处就是可以通过较低的代价在List中进行插入和删除操作。</span><br><span class="line"></span><br><span class="line">​      与ArrayList一样，**LinkedList也是非同步的**。如果多个线程同时访问一个List，则必须自己实现访问同步。一种解决方法是在创建List时构造一个同步的List： </span><br><span class="line">List list = Collections.synchronizedList(new LinkedList(...));</span><br><span class="line"></span><br><span class="line">​        **LinkedList是可以当作队列使用的**。offer(E e)会在队尾插入元素，也就是在链表尾部插入元素。poll()会返回并移除队首元素，也就是链表的第一个元素。peek()会查看队首元素（链表第一个元素），但是不会移除它。</span><br><span class="line"></span><br><span class="line">​        **LinkedList也可以当作栈使用**。pop()会返回并删除栈顶元素，也就是链表第一个元素。push(E e)会将元素插入到栈顶，也就是链表第一个位置。其实LinkedList作为栈(stack)使用的时候，是把第一个元素位置当作栈顶位置的。如果只是查看栈顶元素，使用peek()就行了。	</span><br><span class="line"></span><br><span class="line">**（3）Vector**</span><br><span class="line"></span><br><span class="line">​      与ArrayList相似，但是**Vector是同步**的。所以说**Vector是线程安全的动态数组**。它的操作与ArrayList几乎一样。</span><br><span class="line"></span><br><span class="line">**（4）Stack**</span><br><span class="line"></span><br><span class="line">​     Stack继承自Vector，实现一个后进先出的堆栈。Stack提供5个额外的方法使得Vector得以被当作堆栈使用。基本的push和pop 方法，还有peek方法得到栈顶的元素，empty方法测试堆栈是否为空，search方法检测一个元素在堆栈中的位置。Stack刚创建后是空栈。</span><br><span class="line"></span><br><span class="line">![ist接口实现类关系]( \image\java集合框架\List接口实现类关系图.png)</span><br><span class="line"></span><br><span class="line">#### 2.Set接口</span><br><span class="line"></span><br><span class="line">​     Set是一种**不包括重复元素的Collection**。它维持它自己的内部排序，所以随机访问没有任何意义。与List一样，它同样允许null的存在但是**仅有一个**。由于Set接口的特殊性，**所有传入Set集合中的元素都必须不同**，同时要注意任何可变对象，如果在对集合中元素进行操作时，导致e1.equals(e2)==true，则必定会产生某些问题。Set接口有三个具体实现类，分别是散列集HashSet、链式散列集LinkedHashSet和树形集TreeSet。</span><br><span class="line"></span><br><span class="line">​     ==Set是一种不包含重复的元素的Collection，无序，即任意的两个元素e1和e2都有e1.equals(e2)=false，Set最多有一个null元素。需要注意的是:虽然Set中元素没有顺序，但是元素在set中的位置是由该元素的HashCode决定的，其具体位置其实是固定的。==</span><br><span class="line"></span><br><span class="line">​     此外需要说明一点，在set接口中的不重复是有特殊要求的。</span><br><span class="line">     举一个例子:对象A和对象B，本来是不同的两个对象，正常情况下它们是能够放入到Set里面的，但是如果对象A和B的都重写了hashcode和equals方法，并且重写后的hashcode和equals方法是相同的话。那么A和B是不能同时放入到Set集合中去的，也就是Set集合中的去重和hashcode与equals方法直接相关。 </span><br><span class="line"></span><br><span class="line">　　为了更好地理解，请看下面的例子：</span><br><span class="line">```java</span><br><span class="line">public class Test&#123; </span><br><span class="line">    public static void main(String[] args) &#123; </span><br><span class="line">        Set&lt;String&gt; set=new HashSet&lt;String&gt;(); </span><br><span class="line">        set.add(&quot;Hello&quot;); </span><br><span class="line">        set.add(&quot;world&quot;); </span><br><span class="line">        set.add(&quot;Hello&quot;); </span><br><span class="line">        System.out.println(&quot;集合的尺寸为:&quot;+set.size()); </span><br><span class="line">        System.out.println(&quot;集合中的元素为:&quot;+set.toString()); </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></e></p>
+<p>​    运行结果：</p>
+<p>​    集合的尺寸为:2<br>    集合中的元素为:[world, Hello]</p>
+<p>​    分析：由于String类中重写了hashcode和equals方法，用来比较指向的字符串对象所存储的字符串是否相等。所以这里的第二个Hello是加不进去的。</p>
+<p>​    再看一个例子：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestSet</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        Set&lt;String&gt; books = <span class="keyword">new</span> HashSet&lt;String&gt;();</span><br><span class="line">        <span class="comment">//添加一个字符串对象</span></span><br><span class="line">        books.add(<span class="keyword">new</span> String(<span class="string">"Struts2权威指南"</span>));</span><br><span class="line"></span><br><span class="line">        <span class="comment">//再次添加一个字符串对象，</span></span><br><span class="line">        <span class="comment">//因为两个字符串对象通过equals方法比较相等，所以添加失败，返回false</span></span><br><span class="line">        <span class="keyword">boolean</span> result = books.add(<span class="keyword">new</span> String(<span class="string">"Struts2权威指南"</span>));</span><br><span class="line"></span><br><span class="line">        System.out.println(result);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//下面输出看到集合只有一个元素</span></span><br><span class="line">        System.out.println(books);    </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>​    运行结果：</p>
+<p>​    false<br>    [Struts2权威指南]</p>
+<p>​    说明：程序中，book集合两次添加的字符串对象明显不是一个对象（程序通过new关键字来创建字符串对象），当使用==运算符判断返回false，使用equals方法比较返回true，所以不能添加到Set集合中，最后只能输出一个元素。</p>
+<p><strong>（1）HashSet</strong></p>
+<p>​     HashSet 是一个没有重复元素的集合。它是由HashMap实现的，不保证元素的顺序(==这里所说的没有顺序是指：元素插入的顺序与输出的顺序不一致==)，而且HashSet允许使用null 元素。HashSet是非同步的，如果多个线程同时访问一个哈希set，而其中至少一个线程修改了该set，那么它必须保持外部同步。 ==HashSet按Hash算法来存储集合的元素，因此具有很好的存取和查找性能。==</p>
+<p>​    ==HashSet的实现方式大致如下，通过一个HashMap存储元素，元素是存放在HashMap的Key中，而Value统一使用一个Object对象。==</p>
+<p>​    HashSet使用和理解中容易出现的误区:</p>
+<p>​    a.HashSet中存放null值<br>      HashSet中是允许存入null值的，但是在HashSet中仅仅能够存入一个null值。</p>
+<p>​    b.HashSet中存储元素的位置是固定的<br>      HashSet中存储的元素的是无序的，这个没什么好说的，但是由于HashSet底层是基于Hash算法实现的，使用了hashcode，所以HashSet中相应的元素的位置是固定的。</p>
+<p>​    c.必须小心操作可变对象（Mutable Object）。如果一个Set中的可变元素改变了自身状态导致Object.equals (Object)=true将导致一些问题。</p>
+<p><strong>（2）LinkedHashSet</strong></p>
+<p>​      LinkedHashSet继承自HashSet，其底层是==基于LinkedHashMap来实现的==，有序，非同步。LinkedHashSet集合同样是根据元素的hashCode值来决定元素的存储位置，但是它同时使用链表维护元素的次序。这样使得元素看起来像是以插入顺序保存的，也就是说，当遍历该集合时候，==LinkedHashSet将会以元素的添加顺序访问集合的元素。==</p>
+<p><strong>（3）TreeSet</strong></p>
+<p>​         TreeSet是一个有序集合，其底层是基于TreeMap实现的，非线程安全。TreeSet可以确保集合元素处于排序状态。TreeSet支持两种排序方式，自然排序和定制排序，其中自然排序为默认的排序方式。当我们构造TreeSet时，若使用不带参数的构造函数，则TreeSet的使用自然比较器；若用户需要使用自定义的比较器，则需要使用带比较器的参数。</p>
+<p>​        <strong>注意：</strong>TreeSet集合不是通过hashcode和equals函数来比较元素的.它是通过compare或者comparaeTo函数来判断元素是否相等.compare函数通过判断两个对象的id，相同的id判断为重复元素，不会被加入到集合中。</p>
+<h4 id="3-Queue接口"><a href="#3-Queue接口" class="headerlink" title="3. Queue接口"></a>3. Queue接口</h4><p>​    队列的特点是，只能在队尾插入元素，在队首移除元素。Queue接口里面重要的方法是：入队offer(E e)，出队poll()，查看队首元素peek()。</p>
+<p>​    element()也是查看队首元素，和peek()的区别是，当队列为空的时候peek()返回null，而element()会抛出异常。</p>
+<p>​    remove()也是返回并移除元素，和poll()的区别是，当队列为空的时候poll()返回null，而remove()会抛出异常。</p>
+<p>​    下面是Queue接口方法摘要：</p>
+<table>
+<thead>
+<tr>
+<th>Modifier and Type</th>
+<th>Method and Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>boolean</code></td>
+<td><code>add(E e)</code><br>Inserts the specified element into this queue if it is possible to do so immediately without violating capacity restrictions, returning <code>true</code> upon success and throwing an <code>IllegalStateException</code> if no space is currently available.</td>
+</tr>
+<tr>
+<td><code>E</code></td>
+<td><code>element()</code><br>Retrieves, but does not remove, the head of this queue.</td>
+</tr>
+<tr>
+<td><code>boolean</code></td>
+<td><code>offer(E e)</code><br>Inserts the specified element into this queue if it is possible to do so immediately without violating capacity restrictions.</td>
+</tr>
+<tr>
+<td><code>E</code></td>
+<td><code>peek()</code><br>Retrieves, but does not remove, the head of this queue, or returns <code>null</code> if this queue is empty.</td>
+</tr>
+<tr>
+<td><code>E</code></td>
+<td><code>poll()</code><br>Retrieves and removes the head of this queue, or returns <code>null</code> if this queue is empty.</td>
+</tr>
+<tr>
+<td><code>E</code></td>
+<td><code>remove()</code><br>Retrieves and removes the head of this queue.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>(1) LinkedList作为队列</strong></p>
+<p>​    LinkedLIst是链表，它实现了Queue接口，可以作为一个队列来使用。作为队列时，队列尾部就是链表的尾部，队列首部就是链表的首部。主要的方法就是：入队offer(E e)，出队poll()，查看队首元素peek()。</p>
+<p>​    并且LinkedList也是可以当作<strong>双端队列</strong>来使用的。 </p>
+<p><strong>(2) PriorityQueue优先级队列</strong></p>
+<p>​    PriorityQueue内部是使用堆实现的，会依据元素的自然顺序排序，或者在构造PriorityQueue时指定比较器Comparator。主要的操作还是，入队offer，出队poll，查看队首元素peek。队首元素就是具体元素顺序中的最小那一个元素。（The <em>head</em> of this queue is the <em>least</em> element with respect to the specified ordering. ）</p>
+<p>​     this implementation provides O(log(n)) time for the enqueuing and dequeuing methods (offer, poll, remove() and add); linear time for the remove(Object) and contains(Object) methods; and constant time for the retrieval methods (peek, element, and size). </p>
+<h3 id="四、Map接口"><a href="#四、Map接口" class="headerlink" title="四、Map接口"></a>四、Map接口</h3><p>​     Map与List、Set接口不同，它是由一系列键值对组成的集合，提供了key到Value的映射。同时它也没有继承Collection。在Map中它保证了key与value之间的一一对应关系。也就是说一个key对应一个value，所以它==不能存在相同的key值，当然value值可以相同。==</p>
+<h4 id="1-HashMap"><a href="#1-HashMap" class="headerlink" title="1.HashMap"></a>1.HashMap</h4><p>​          以哈希表数据结构实现，查找对象时通过哈希函数计算其位置，它是为快速查询而设计的，其内部定义了一个hash表数组（Entry[] table），元素会通过哈希转换函数将元素的哈希地址转换成数组中存放的索引，如果有冲突，则使用散列链表的形式将所有相同哈希地址的元素串起来，可能通过查看HashMap.Entry的源码它是一个单链表结构。</p>
+<h4 id="2-LinkedHashMap"><a href="#2-LinkedHashMap" class="headerlink" title="2.LinkedHashMap"></a>2.LinkedHashMap</h4><p>​         LinkedHashMap是HashMap的一个子类，它保留插入的顺序，如果需要输出的顺序和输入时的相同，那么就选用LinkedHashMap。<br>         LinkedHashMap是Map接口的哈希表和链接列表实现，具有可预知的迭代顺序。此实现提供所有可选的映射操作，并允许使用null值和null键。此类不保证映射的顺序，特别是它不保证该顺序恒久不变。<br>         LinkedHashMap实现与HashMap的不同之处在于，后者维护着一个运行于所有条目的双重链接列表。此链接列表定义了迭代顺序，该迭代顺序可以是插入顺序或者是访问顺序。<br>         根据链表中元素的顺序可以分为：按插入顺序的链表，和按访问顺序(调用get方法)的链表。默认是按插入顺序排序，如果指定按访问顺序排序，那么调用get方法后，会将这次访问的元素移至链表尾部，不断访问可以形成按访问顺序排序的链表。<br>         <strong>注意</strong>，此实现不是同步的。如果多个线程同时访问链接的哈希映射，而其中至少一个线程从结构上修改了该映射，则它必须保持外部同步。<br>    由于LinkedHashMap需要维护元素的插入顺序，因此性能略低于HashMap的性能，但在迭代访问Map里的全部元素时将有很好的性能，因为它以链表来维护内部顺序。</p>
+<h4 id="3-TreeMap"><a href="#3-TreeMap" class="headerlink" title="3.TreeMap"></a>3.TreeMap</h4><p>​         TreeMap 是一个有序的key-value集合，非同步，基于红黑树（Red-Black tree）实现，每一个key-value节点作为红黑树的一个节点。TreeMap存储时会进行排序的，会根据key来对key-value键值对进行排序，其中排序方式也是分为两种，一种是自然排序，一种是定制排序，具体取决于使用的构造方法。</p>
+<p>​    自然排序：TreeMap中所有的key必须实现Comparable接口，并且所有的key都应该是同一个类的对象，否则会报ClassCastException异常。</p>
+<p>​    定制排序：定义TreeMap时，创建一个comparator对象，该对象对所有的treeMap中所有的key值进行排序，采用定制排序的时候不需要TreeMap中所有的key必须实现Comparable接口。</p>
+<p>​    TreeMap判断两个元素相等的标准：==两个key通过compareTo()方法返回0，则认为这两个key相等。==</p>
+<p>​    如果使用自定义的类来作为TreeMap中的key值，且想让TreeMap能够良好的工作，则必须重写自定义类中的equals()方法，TreeMap中判断相等的标准是：两个key通过equals()方法返回为true，并且通过compareTo()方法比较应该返回为0。</p>
+<p><img src="\image\java集合框架\Map接口实现类之间的关系.png" alt="ap接口实现类之间的关"></p>
+<h3 id="五、Iterator-与-ListIterator详解"><a href="#五、Iterator-与-ListIterator详解" class="headerlink" title="五、Iterator 与 ListIterator详解"></a>五、Iterator 与 ListIterator详解</h3><h4 id="1-Iterator"><a href="#1-Iterator" class="headerlink" title="1.Iterator"></a>1.Iterator</h4><p>​    Iterator的定义如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Iterator</span>&lt;<span class="title">E</span>&gt; </span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+<p>​    Iterator是一个接口，它是集合的迭代器。集合可以通过Iterator去遍历集合中的元素。Iterator提供的API接口如下：</p>
+<p>​    boolean hasNext()：判断集合里是否存在下一个元素。如果有，hasNext()方法返回 true。<br>    Object next()：返回集合里下一个元素。<br>    void remove()：删除集合里上一次next方法返回的元素。</p>
+<p>​    使用示例：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IteratorExample</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        ArrayList&lt;String&gt; a = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line">        a.add(<span class="string">"aaa"</span>);</span><br><span class="line">        a.add(<span class="string">"bbb"</span>);</span><br><span class="line">        a.add(<span class="string">"ccc"</span>);</span><br><span class="line">        System.out.println(<span class="string">"Before iterate : "</span> + a);</span><br><span class="line">        Iterator&lt;String&gt; it = a.iterator();</span><br><span class="line">        <span class="keyword">while</span> (it.hasNext()) &#123;</span><br><span class="line">            String t = it.next();</span><br><span class="line">            <span class="keyword">if</span> (<span class="string">"bbb"</span>.equals(t)) &#123;</span><br><span class="line">                it.remove();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">"After iterate : "</span> + a);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>​    输出结果如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Before iterate : [aaa, bbb, ccc]</span><br><span class="line">After iterate : [aaa, ccc]</span><br></pre></td></tr></table></figure>
+<p>​    <strong>注意：</strong></p>
+<p>​    （1）Iterator只能单向移动。</p>
+<p>​    （2）Iterator.remove()是唯一安全的方式来在迭代过程中修改集合；如果在迭代过程中以任何其它的方式修改了基本集合将会产生未知的行为。而且每调用一次next()方法，remove()方法只能被调用一次，如果违反这个规则将抛出一个异常。</p>
+<h4 id="2-ListIterator"><a href="#2-ListIterator" class="headerlink" title="2.ListIterator"></a>2.ListIterator</h4><p>​    ListIterator是一个功能更加强大的迭代器, 它继承于Iterator接口,只能用于各种List类型的访问。可以通过调用listIterator()方法产生一个指向List开始处的ListIterator, 还可以调用listIterator(n)方法创建一个一开始就指向列表索引为n的元素处的ListIterator.</p>
+<p>​    ListIterator接口定义如下:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">ListIterator</span>&lt;<span class="title">E</span>&gt; <span class="keyword">extends</span> <span class="title">Iterator</span>&lt;<span class="title">E</span>&gt; </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">hasNext</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">E <span class="title">next</span><span class="params">()</span></span>;</span><br><span class="line">     </span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">hasPrevious</span><span class="params">()</span></span>;</span><br><span class="line">     </span><br><span class="line">    <span class="function">E <span class="title">previous</span><span class="params">()</span></span>;</span><br><span class="line">     </span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">nextIndex</span><span class="params">()</span></span>;</span><br><span class="line">     </span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">previousIndex</span><span class="params">()</span></span>;</span><br><span class="line">     </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">remove</span><span class="params">()</span></span>;</span><br><span class="line">     </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">set</span><span class="params">(E e)</span></span>;</span><br><span class="line">     </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(E e)</span></span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>​    由以上定义我们可以推出ListIterator可以:</p>
+<p>​    (1)双向移动（向前/向后遍历）.</p>
+<p>​    (2)产生相对于迭代器在列表中指向的当前位置的前一个和后一个元素的索引.</p>
+<p>​    (3)可以使用set()方法替换它访问过的最后一个元素.</p>
+<p>​    (4)可以使用add()方法在next()方法返回的元素之前或previous()方法返回的元素之后插入一个元素.</p>
+<p>​    使用示例：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ListIteratorExample</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        ArrayList&lt;String&gt; a = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line">        a.add(<span class="string">"aaa"</span>);</span><br><span class="line">        a.add(<span class="string">"bbb"</span>);</span><br><span class="line">        a.add(<span class="string">"ccc"</span>);</span><br><span class="line">        System.out.println(<span class="string">"Before iterate : "</span> + a);</span><br><span class="line">        ListIterator&lt;String&gt; it = a.listIterator();</span><br><span class="line">        <span class="keyword">while</span> (it.hasNext()) &#123;</span><br><span class="line">            System.out.println(it.next() + <span class="string">", "</span> + it.previousIndex() + <span class="string">", "</span> + it.nextIndex());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span> (it.hasPrevious()) &#123;</span><br><span class="line">            System.out.print(it.previous() + <span class="string">" "</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println();</span><br><span class="line">        it = a.listIterator(<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">while</span> (it.hasNext()) &#123;</span><br><span class="line">            String t = it.next();</span><br><span class="line">            System.out.println(t);</span><br><span class="line">            <span class="keyword">if</span> (<span class="string">"ccc"</span>.equals(t)) &#123;</span><br><span class="line">                it.set(<span class="string">"nnn"</span>);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                it.add(<span class="string">"kkk"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">"After iterate : "</span> + a);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>​    输出结果如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Before iterate : [aaa, bbb, ccc]</span><br><span class="line">aaa, <span class="number">0</span>, <span class="number">1</span></span><br><span class="line">bbb, <span class="number">1</span>, <span class="number">2</span></span><br><span class="line">ccc, <span class="number">2</span>, <span class="number">3</span></span><br><span class="line">ccc bbb aaa </span><br><span class="line">bbb</span><br><span class="line">ccc</span><br><span class="line">After iterate : [aaa, bbb, kkk, nnn]</span><br></pre></td></tr></table></figure></p>
+<h3 id="六、异同点"><a href="#六、异同点" class="headerlink" title="六、异同点"></a>六、异同点</h3><h4 id="1-ArrayList和LinkedList"><a href="#1-ArrayList和LinkedList" class="headerlink" title="1.  ArrayList和LinkedList"></a>1.  ArrayList和LinkedList</h4><p>（1）ArrayList是实现了基于动态数组的数据结构，LinkedList基于链表的数据结构。<br>（2）对于随机访问get和set，ArrayList绝对优于LinkedList，因为LinkedList要移动指针。<br>（3）对于新增和删除操作add和remove，LinedList比较占优势，因为ArrayList要移动数据。<br>    这一点要看实际情况的。若只对单条数据插入或删除，ArrayList的速度反而优于LinkedList。但若是批量随机的插入删除数据，LinkedList的速度大大优于ArrayList. 因为ArrayList每插入一条数据，要移动插入点及之后的所有数据。</p>
+<h4 id="2-HashTable与HashMap"><a href="#2-HashTable与HashMap" class="headerlink" title="2.  HashTable与HashMap"></a>2.  HashTable与HashMap</h4><p><strong>相同点：</strong></p>
+<p>（1）都实现了Map、Cloneable、java.io.Serializable接口。<br>（2）都是存储”键值对(key-value)”的散列表，而且都是采用拉链法实现的。</p>
+<p><strong>不同点：</strong></p>
+<p>（1）历史原因:HashTable是基于陈旧的Dictionary类的，HashMap是Java 1.2引进的Map接口的一个实现 。<br>（2）同步性:HashTable是线程安全的，也就是说是同步的，而HashMap是线程序不安全的，不是同步的 。<br>（3）对null值的处理：HashMap的key、value都可为null，HashTable的key、value都不可为null 。<br>（4）基类不同：HashMap继承于AbstractMap，而Hashtable继承于Dictionary。</p>
+<p>​    Dictionary是一个抽象类，它直接继承于Object类，没有实现任何接口。Dictionary类是JDK 1.0的引入的。虽然Dictionary也支持“添加key-value键值对”、“获取value”、“获取大小”等基本操作，但它的API函数比Map少；而且Dictionary一般是通过Enumeration(枚举类)去遍历，Map则是通过Iterator(迭代M器)去遍历。 然而由于Hashtable也实现了Map接口，所以，它即支持Enumeration遍历，也支持Iterator遍历。</p>
+<p>​    AbstractMap是一个抽象类，它实现了Map接口的绝大部分API函数；为Map的具体实现类提供了极大的便利。它是JDK 1.2新增的类。</p>
+<p>（5）支持的遍历种类不同：HashMap只支持Iterator(迭代器)遍历。而Hashtable支持Iterator(迭代器)和Enumeration(枚举器)两种方式遍历。</p>
+<h4 id="3-HashMap、Hashtable、LinkedHashMap和TreeMap比较"><a href="#3-HashMap、Hashtable、LinkedHashMap和TreeMap比较" class="headerlink" title="3.HashMap、Hashtable、LinkedHashMap和TreeMap比较"></a>3.HashMap、Hashtable、LinkedHashMap和TreeMap比较</h4><p>​     Hashmap 是一个最常用的Map，它根据键的HashCode 值存储数据，根据键可以直接获取它的值，具有很快的访问速度。遍历时，取得数据的顺序是完全随机的。HashMap最多只允许一条记录的键为Null;允许多条记录的值为Null;HashMap不支持线程的同步，即任一时刻可以有多个线程同时写HashMap;可能会导致数据的不一致。如果需要同步，可以用Collections的synchronizedMap方法使HashMap具有同步的能力。</p>
+<p>​     Hashtable 与 HashMap类似，不同的是:它不允许记录的键或者值为空;它支持线程的同步，即任一时刻只有一个线程能写Hashtable，因此也导致了Hashtale在写入时会比较慢。</p>
+<p>​     LinkedHashMap保存了记录的插入顺序，在用Iterator遍历LinkedHashMap时，先得到的记录肯定是先插入的，也可以在构造时用带参数，按照应用次数排序。在遍历的时候会比HashMap慢，不过有种情况例外，当HashMap容量很大，实际数据较少时，遍历起来可能会比LinkedHashMap慢，因为LinkedHashMap的遍历速度只和实际数据有关，和容量无关，而HashMap的遍历速度和他的容量有关。如果需要输出的顺序和输入的相同，那么用LinkedHashMap可以实现，它还可以按读取顺序来排列，像连接池中可以应用。LinkedHashMap实现与HashMap的不同之处在于，后者维护着一个运行于所有条目的双重链表。此链接列表定义了迭代顺序，该迭代顺序可以是插入顺序或者是访问顺序。对于LinkedHashMap而言，它继承与HashMap、底层使用哈希表与双向链表来保存所有元素。其基本操作与父类HashMap相似，它通过重写父类相关的方法，来实现自己的链接列表特性。</p>
+<p>​     TreeMap实现SortMap接口，内部实现是红黑树。能够把它保存的记录根据键排序，默认是按键值的升序排序，也可以指定排序的比较器，当用Iterator 遍历TreeMap时，得到的记录是排过序的。TreeMap不允许key的值为null。非同步的。 </p>
+<p>​    一般情况下，我们用的最多的是HashMap，HashMap里面存入的键值对在取出的时候是随机的，它根据键的HashCode值存储数据，根据键可以直接获取它的值，具有很快的访问速度。在Map 中插入、删除和定位元素，HashMap 是最好的选择。</p>
+<p>​     TreeMap取出来的是排序后的键值对。但如果您要按自然顺序或自定义顺序遍历键，那么TreeMap会更好。</p>
+<p>​    LinkedHashMap 是HashMap的一个子类，如果需要输出的顺序和输入的相同，那么用LinkedHashMap可以实现，它还可以按读取顺序来排列，像连接池中可以应用。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.Iterator;</span><br><span class="line"><span class="keyword">import</span> java.util.LinkedHashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.TreeMap;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MapTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//HashMap</span></span><br><span class="line">        HashMap&lt;String,String&gt; hashMap = <span class="keyword">new</span> HashMap();</span><br><span class="line">        hashMap.put(<span class="string">"4"</span>, <span class="string">"d"</span>);</span><br><span class="line">        hashMap.put(<span class="string">"3"</span>, <span class="string">"c"</span>);</span><br><span class="line">        hashMap.put(<span class="string">"2"</span>, <span class="string">"b"</span>);</span><br><span class="line">        hashMap.put(<span class="string">"1"</span>, <span class="string">"a"</span>);</span><br><span class="line"></span><br><span class="line">        Iterator&lt;String&gt; iteratorHashMap = hashMap.keySet().iterator();</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"HashMap--&gt;"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (iteratorHashMap.hasNext())&#123;</span><br><span class="line"></span><br><span class="line">            Object key1 = iteratorHashMap.next();</span><br><span class="line">            System.out.println(key1 + <span class="string">"--"</span> + hashMap.get(key1));</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//LinkedHashMap</span></span><br><span class="line">        LinkedHashMap&lt;String,String&gt; linkedHashMap = <span class="keyword">new</span> LinkedHashMap();</span><br><span class="line">        linkedHashMap.put(<span class="string">"4"</span>, <span class="string">"d"</span>);</span><br><span class="line">        linkedHashMap.put(<span class="string">"3"</span>, <span class="string">"c"</span>);</span><br><span class="line">        linkedHashMap.put(<span class="string">"2"</span>, <span class="string">"b"</span>);</span><br><span class="line">        linkedHashMap.put(<span class="string">"1"</span>, <span class="string">"a"</span>);</span><br><span class="line"></span><br><span class="line">        Iterator&lt;String&gt; iteratorLinkedHashMap = linkedHashMap.keySet().iterator();</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"LinkedHashMap--&gt;"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (iteratorLinkedHashMap.hasNext())&#123;</span><br><span class="line"></span><br><span class="line">            Object key2 = iteratorLinkedHashMap.next();</span><br><span class="line">            System.out.println(key2 + <span class="string">"--"</span> + linkedHashMap.get(key2));</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//TreeMap</span></span><br><span class="line">        TreeMap&lt;String,String&gt; treeMap = <span class="keyword">new</span> TreeMap();</span><br><span class="line">        treeMap.put(<span class="string">"4"</span>, <span class="string">"d"</span>);</span><br><span class="line">        treeMap.put(<span class="string">"3"</span>, <span class="string">"c"</span>);</span><br><span class="line">        treeMap.put(<span class="string">"2"</span>, <span class="string">"b"</span>);</span><br><span class="line">        treeMap.put(<span class="string">"1"</span>, <span class="string">"a"</span>);</span><br><span class="line"></span><br><span class="line">        Iterator&lt;String&gt; iteratorTreeMap = treeMap.keySet().iterator();</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"TreeMap--&gt;"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (iteratorTreeMap.hasNext())&#123;</span><br><span class="line"></span><br><span class="line">            Object key3 = iteratorTreeMap.next();</span><br><span class="line">            System.out.println(key3 + <span class="string">"--"</span> + treeMap.get(key3));</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>输出结果：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">HashMap--&gt;</span><br><span class="line"><span class="number">3</span>--c</span><br><span class="line"><span class="number">2</span>--b</span><br><span class="line"><span class="number">1</span>--a</span><br><span class="line"><span class="number">4</span>--d</span><br><span class="line">LinkedHashMap--&gt;</span><br><span class="line"><span class="number">4</span>--d</span><br><span class="line"><span class="number">3</span>--c</span><br><span class="line"><span class="number">2</span>--b</span><br><span class="line"><span class="number">1</span>--a</span><br><span class="line">TreeMap--&gt;</span><br><span class="line"><span class="number">1</span>--a</span><br><span class="line"><span class="number">2</span>--b</span><br><span class="line"><span class="number">3</span>--c</span><br><span class="line"><span class="number">4</span>--d</span><br></pre></td></tr></table></figure></p>
+<h4 id="4-HashSet、LinkedHashSet、TreeSet比较"><a href="#4-HashSet、LinkedHashSet、TreeSet比较" class="headerlink" title="4.HashSet、LinkedHashSet、TreeSet比较"></a>4.HashSet、LinkedHashSet、TreeSet比较</h4><p><strong>Set接口</strong><br>Set不允许包含相同的元素，如果试图把两个相同元素加入同一个集合中，add方法返回false。<br>Set判断两个对象相同不是使用==运算符，而是根据equals方法。也就是说，只要两个对象用equals方法比较返回true，Set就不会接受这两个对象。</p>
+<p><strong>HashSet</strong><br>HashSet有以下特点：<br>==-&gt;  不能保证元素的排列顺序，顺序有可能发生变化。==<br>==-&gt;  不是同步的。==<br>==-&gt;  集合元素可以是null，但只能放入一个null。==</p>
+<p>​    当向HashSet结合中存入一个元素时，HashSet会调用该对象的hashCode()方法来得到该对象的hashCode值，然后根据 hashCode值来决定该对象在HashSet中存储位置。简单的说，==HashSet集合判断两个元素相等的标准是两个对象通过equals方法比较相等，并且两个对象的hashCode()方法返回值也相等。==</p>
+<p>​    <strong>注意</strong>，如果要把一个对象放入HashSet中，==重写该对象对应类的equals方法，也应该重写其hashCode()方法。其规则是如果两个对象通过equals方法比较返回true时，其hashCode也应该相同==。另外，对象中用作equals比较标准的属性，都应该用来计算 hashCode的值。</p>
+<p><strong>LinkedHashSet</strong><br>        LinkedHashSet集合同样是根据元素的hashCode值来决定元素的存储位置，但是它同时使用链表维护元素的次序。这样使得元素看起来像是以插入顺序保存的，也就是说，==当遍历该集合时候，LinkedHashSet将会以元素的添加顺序访问集合的元素==。<br>        LinkedHashSet在迭代访问Set中的全部元素时，性能比HashSet好，但是插入时性能稍微逊色于HashSet。</p>
+<p><strong>TreeSet类</strong><br>        TreeSet是SortedSet接口的唯一实现类，==TreeSet可以确保集合元素处于排序状态==。TreeSet支持两种排序方式，自然排序和定制排序，其中自然排序为默认的排序方式。向TreeSet中加入的应该是同一个类的对象。<br>        ==TreeSet判断两个对象不相等的方式是两个对象通过equals方法返回false，或者通过CompareTo方法比较没有返回0。==<br><strong>自然排序</strong><br>        自然排序使用要排序元素的CompareTo（Object obj）方法来比较元素之间大小关系，然后将元素==按照升序排列==。<br>        Java提供了一个Comparable接口，该接口里定义了一个compareTo(Object obj)方法，该方法返回一个整数值，实现了该接口的对象就可以比较大小。obj1.compareTo(obj2)方法如果返回0，则说明被比较的两个对象相等，如果返回一个正数，则表明obj1大于obj2，如果是负数，则表明obj1小于obj2。==如果我们将两个对象的equals方法总是返回true，则这两个对象的compareTo方法返回应该返回0。==<br><strong>定制排序</strong><br>        自然排序是根据集合元素的大小，以升序排列，如果要定制排序，应该使用Comparator接口，实现 int compare(T o1,T o2)方法。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.test;  </span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.HashSet;  </span><br><span class="line"><span class="keyword">import</span> java.util.LinkedHashSet;  </span><br><span class="line"><span class="keyword">import</span> java.util.TreeSet;  </span><br><span class="line"></span><br><span class="line"><span class="comment">/**  </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@description</span> 几个set的比较  </span></span><br><span class="line"><span class="comment"> * HashSet：哈希表是通过使用称为散列法的机制来存储信息的，元素并没有以某种特定顺序来存放；  </span></span><br><span class="line"><span class="comment"> * LinkedHashSet：以元素插入的顺序来维护集合的链接表，允许以插入的顺序在集合中迭代；  </span></span><br><span class="line"><span class="comment"> * TreeSet：提供一个使用树结构存储Set接口的实现，对象以升序顺序存储，访问和遍历的时间很快。    </span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment">    */</span>  </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SetDemo</span> </span>&#123;  </span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;  </span><br><span class="line"></span><br><span class="line">        HashSet&lt;String&gt; hs = <span class="keyword">new</span> HashSet&lt;String&gt;();  </span><br><span class="line">        hs.add(<span class="string">"B"</span>);  </span><br><span class="line">        hs.add(<span class="string">"A"</span>);  </span><br><span class="line">        hs.add(<span class="string">"D"</span>);  </span><br><span class="line">        hs.add(<span class="string">"E"</span>);  </span><br><span class="line">        hs.add(<span class="string">"C"</span>);  </span><br><span class="line">        hs.add(<span class="string">"F"</span>);  </span><br><span class="line">        System.out.println(<span class="string">"HashSet 顺序:\n"</span>+hs);  </span><br><span class="line"></span><br><span class="line">        LinkedHashSet&lt;String&gt; lhs = <span class="keyword">new</span> LinkedHashSet&lt;String&gt;();  </span><br><span class="line">        lhs.add(<span class="string">"B"</span>);  </span><br><span class="line">        lhs.add(<span class="string">"A"</span>);  </span><br><span class="line">        lhs.add(<span class="string">"D"</span>);  </span><br><span class="line">        lhs.add(<span class="string">"E"</span>);  </span><br><span class="line">        lhs.add(<span class="string">"C"</span>);  </span><br><span class="line">        lhs.add(<span class="string">"F"</span>);  </span><br><span class="line">        System.out.println(<span class="string">"LinkedHashSet 顺序:\n"</span>+lhs);  </span><br><span class="line"></span><br><span class="line">        TreeSet&lt;String&gt; ts = <span class="keyword">new</span> TreeSet&lt;String&gt;();  </span><br><span class="line">        ts.add(<span class="string">"B"</span>);  </span><br><span class="line">        ts.add(<span class="string">"A"</span>);  </span><br><span class="line">        ts.add(<span class="string">"D"</span>);  </span><br><span class="line">        ts.add(<span class="string">"E"</span>);  </span><br><span class="line">        ts.add(<span class="string">"C"</span>);  </span><br><span class="line">        ts.add(<span class="string">"F"</span>);  </span><br><span class="line">        System.out.println(<span class="string">"TreeSet 顺序:\n"</span>+ts);  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>输出结果：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">HashSet 顺序:[D, E, F, A, B, C]</span><br><span class="line">LinkedHashSet 顺序:[B, A, D, E, C, F]</span><br><span class="line">TreeSet 顺序:[A, B, C, D, E, F]</span><br></pre></td></tr></table></figure>
+<h4 id="5、Iterator和ListIterator区别"><a href="#5、Iterator和ListIterator区别" class="headerlink" title="5、Iterator和ListIterator区别"></a>5、Iterator和ListIterator区别</h4><p>​    我们在使用List，Set的时候，为了实现对其数据的遍历，我们经常使用到了Iterator(迭代器)。使用迭代器，你不需要干涉其遍历的过程，只需要每次取出一个你想要的数据进行处理就可以了。但是在使用的时候也是有不同的。List和Set都有iterator()来取得其迭代器。对List来说，你也可以通过listIterator()取得其迭代器，两种迭代器在有些时候是不能通用的，Iterator和ListIterator主要区别在以下方面：</p>
+<p>==（1）ListIterator有add()方法，可以向List中添加对象，而Iterator不能==<br>==（2）ListIterator和Iterator都有hasNext()和next()方法，可以实现顺序向后遍历，但是ListIterator有hasPrevious()和previous()方法，可以实现逆向（顺序向前）遍历。Iterator就不可以。==<br>==（3）ListIterator可以定位当前的索引位置，nextIndex()和previousIndex()可以实现。Iterator没有此功能。==<br>==（4）都可实现删除对象，但是ListIterator可以实现对象的修改，set()方法可以实现。Iierator仅能遍历，不能修改。==<br>因为ListIterator的这些功能，可以实现对LinkedList等List数据结构的操作。其实，数组对象也可以用迭代器来实现。</p>
+<h4 id="6、Collection-和-Collections区别"><a href="#6、Collection-和-Collections区别" class="headerlink" title="6、Collection 和 Collections区别"></a>6、Collection 和 Collections区别</h4><p>（1）java.util.Collection 是一个==集合接口（集合类的一个顶级接口）==。它提供了对集合对象进行基本操作的通用接口方法。Collection接口在Java 类库中有很多具体的实现。Collection接口的意义是==为各种具体的集合提供了最大化的统一操作方式，其直接继承接口有List与Set==。</p>
+<p> Collection<br>├List<br>│├LinkedList<br>│├ArrayList<br>│└Vector<br>│　└Stack<br>└Set </p>
+<p>（2）java.util.Collections 是一个==包装类==（工具类/帮助类）。它包含有各种有关集合操作的静态多态方法。此类不能实例化，就像一个工具类，用于对集合中元素进行排序、搜索以及线程安全等各种操作，服务于Java的Collection框架。</p>
+<p>代码示例：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList; </span><br><span class="line"><span class="keyword">import</span> java.util.Collections; </span><br><span class="line"><span class="keyword">import</span> java.util.List; </span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestCollections</span> </span>&#123; </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123; </span><br><span class="line">        <span class="comment">//注意List是实现Collection接口的 </span></span><br><span class="line">        List list = <span class="keyword">new</span> ArrayList(); </span><br><span class="line">        <span class="keyword">double</span> array[] = &#123; <span class="number">112</span>, <span class="number">111</span>, <span class="number">23</span>, <span class="number">456</span>, <span class="number">231</span> &#125;; </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; array.length; i++) &#123; </span><br><span class="line">            list.add(<span class="keyword">new</span> Double(array[i])); </span><br><span class="line">        &#125; </span><br><span class="line">        Collections.sort(list); </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; array.length; i++) &#123; </span><br><span class="line">            System.out.println(list.get(i)); </span><br><span class="line">        &#125; </span><br><span class="line">        <span class="comment">// 结果：23.0 111.0 112.0 231.0 456.0 </span></span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>参考资料：<a href="https://blog.csdn.net/qq_18395603/article/details/79253315" target="_blank" rel="noopener">java集合框架综述</a></p>
+<h2 id="Java集合框架常被问到的面试问题"><a href="#Java集合框架常被问到的面试问题" class="headerlink" title="Java集合框架常被问到的面试问题"></a>Java集合框架常被问到的面试问题</h2><p>　    Java集合框架是最常被问到的Java面试问题，要理解Java技术强大特性就有必要掌握集合框架。这里有一些实用问题，常在核心Java面试中问到。</p>
+<p><strong>1、什么是Java集合API</strong></p>
+<p>　　Java集合框架API是用来表示和操作集合的统一框架，它包含接口、实现类、以及帮助程序员完成一些编程的算法。简言之，API在上层完成以下几件事：</p>
+<p>　　● 编程更加省力，提高城程序速度和代码质量</p>
+<p>　　● 非关联的API提高互操作性</p>
+<p>　　● 节省学习使用新API成本</p>
+<p>　　● 节省设计新API的时间</p>
+<p>　　● 鼓励、促进软件重用</p>
+<p>　　具体来说，有6个集合接口，最基本的是Collection接口，由三个接口Set、List、SortedSet继承，另外两个接口是Map、SortedMap，这两个接口不继承Collection，表示映射而不是真正的集合。</p>
+<p><strong>2、什么是Iterator</strong></p>
+<p>　　一些集合类提供了内容遍历的功能，通过java.util.Iterator接口。这些接口允许遍历对象的集合。依次操作每个元素对象。当使用 Iterators时，在获得Iterator的时候包含一个集合快照。通常在遍历一个Iterator的时候不建议修改集合本身。</p>
+<p><strong>3、Iterator与ListIterator有什么区别？</strong></p>
+<p>　　Iterator：只能正向遍历集合，适用于获取移除元素。ListIerator：继承Iterator，可以双向列表的遍历，同样支持元素的修改。</p>
+<p><strong>4、什么是HashMap和Map？</strong></p>
+<p>　　Map是接口，Java 集合框架中一部分，用于存储键值对，HashMap是用哈希算法实现Map的类。</p>
+<p><strong>5、HashMap与HashTable有什么区别？对比Hashtable VS HashMap</strong></p>
+<p>　　两者都是用key-value方式获取数据。Hashtable是原始集合类之一（也称作遗留类）。HashMap作为新集合框架的一部分在Java2的1.2版本中加入。它们之间有一下区别：</p>
+<p>　　● HashMap和Hashtable大致是等同的，除了非同步和空值（HashMap允许null值作为key和value，而Hashtable不可以）。</p>
+<p>　　● HashMap没法保证映射的顺序一直不变，但是作为HashMap的子类LinkedHashMap，如果想要预知的顺序迭代（默认按照插入顺序），你可以很轻易的置换为HashMap，如果使用Hashtable就没那么容易了。</p>
+<p>　　● HashMap不是同步的，而Hashtable是同步的。</p>
+<p>　　● 迭代HashMap采用快速失败机制，而Hashtable不是，所以这是设计的考虑点。</p>
+<p><strong>6、在Hashtable上下文中同步是什么意思？</strong></p>
+<p>　　同步意味着在一个时间点只能有一个线程可以修改哈希表，任何线程在执行hashtable的更新操作前需要获取对象锁，其他线程等待锁的释放。</p>
+<p><strong>7、什么叫做快速失败特性</strong></p>
+<p>　　从高级别层次来说快速失败是一个系统或软件对于其故障做出的响应。一个快速失败系统设计用来即时报告可能会导致失败的任何故障情况，它通常用来停止正常的操作而不是尝试继续做可能有缺陷的工作。当有问题发生时，快速失败系统即时可见地发出错误告警。在Java中，快速失败与iterators有关。如果一个iterator在集合对象上创建了，其它线程欲“结构化”的修改该集合对象，并发修改异常 （ConcurrentModificationException） 抛出。</p>
+<p><strong>8、怎样使Hashmap同步？</strong></p>
+<p>　　HashMap可以通过Map m = Collections.synchronizedMap（hashMap）来达到同步的效果。</p>
+<p><strong>9、什么时候使用Hashtable，什么时候使用HashMap</strong></p>
+<p>　　基本的不同点是Hashtable同步HashMap不是的，所以无论什么时候有多个线程访问相同实例的可能时，就应该使用Hashtable，反之使用HashMap。非线程安全的数据结构能带来更好的性能。</p>
+<p>　　如果在将来有一种可能—你需要按顺序获得键值对的方案时，HashMap是一个很好的选择，因为有HashMap的一个子类 LinkedHashMap。所以如果你想可预测的按顺序迭代（默认按插入的顺序），你可以很方便用LinkedHashMap替换HashMap。反观要是使用的Hash table就没那么简单了。同时如果有多个线程访问HashMap，Collections.synchronized Map（）可以代替，总的来说HashMap更灵活。</p>
+<p><strong>10、为什么Vector类认为是废弃的或者是非官方地不推荐使用？或者说为什么我们应该一直使用ArrayList而不是Vector</strong></p>
+<p>　　你应该使用ArrayList而不是Vector是因为默认情况下你是非同步访问的，Vector同步了每个方法，你几乎从不要那样做，通常有想要同步的是整个操作序列。同步单个的操作也不安全（如果你迭代一个Vector，你还是要加锁，以避免其它线程在同一时刻改变集合）.而且效率更慢。当然同样有锁的开销即使你不需要，这是个很糟糕的方法在默认情况下同步访问。你可以一直使用Collections.sychronizedList来装饰一个集合。</p>
+<p>　　事实上Vector结合了“可变数组”的集合和同步每个操作的实现。这是另外一个设计上的缺陷。Vector还有些遗留的方法在枚举和元素获取的方法，这些方法不同于List接口，如果这些方法在代码中程序员更趋向于想用它。尽管枚举速度更快，但是他们不能检查如果集合在迭代的时候修改了，这样将导致问题。尽管以上诸多原因，oracle也从没宣称过要废弃Vector。</p>
+<p>参考资料： <a href="https://blog.csdn.net/u014136713/article/details/52089156" target="_blank" rel="noopener">Java集合类详解</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+            <a href="/tags/集合框架/" rel="tag"># 集合框架</a>
+          
+            <a href="/tags/容器/" rel="tag"># 容器</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/18/2_Linux基础知识/" rel="next" title="Linux 基础知识">
+                <i class="fa fa-chevron-left"></i> Linux 基础知识
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/14/数据库/MySQL/" rel="prev" title="MySQL">
+                MySQL <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/zhg_avatar.jpg"
+                alt="zhongzhengang" />
+            
+              <p class="site-author-name" itemprop="name">zhongzhengang</p>
+              <p class="site-description motion-element" itemprop="description">一点一滴的积累</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/zhongzhengang" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/mu-cao-18-76/activities" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-globe"></i>知乎</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Java集合框架"><span class="nav-number">1.</span> <span class="nav-text">Java集合框架</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Java集合自己学习"><span class="nav-number">1.1.</span> <span class="nav-text">Java集合自己学习</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-TreeSet集合重要操作"><span class="nav-number">1.1.1.</span> <span class="nav-text">1. TreeSet集合重要操作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一、Java集合框架综述"><span class="nav-number">1.2.</span> <span class="nav-text">一、Java集合框架综述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#集合框架（collections-framework）"><span class="nav-number">1.2.1.</span> <span class="nav-text">集合框架（collections framework）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设计理念"><span class="nav-number">1.2.2.</span> <span class="nav-text">设计理念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#两大基类Collection与Map"><span class="nav-number">1.2.3.</span> <span class="nav-text">两大基类Collection与Map</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Collection"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">Collection</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Map"><span class="nav-number">1.2.3.2.</span> <span class="nav-text">Map</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集合的实现（Collection-Implementations）"><span class="nav-number">1.2.4.</span> <span class="nav-text">集合的实现（Collection Implementations）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#java集合框架详解"><span class="nav-number">1.3.</span> <span class="nav-text">java集合框架详解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、集合框架图"><span class="nav-number">1.3.1.</span> <span class="nav-text">一、集合框架图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、总体分析"><span class="nav-number">1.3.2.</span> <span class="nav-text">二、总体分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、Collection接口"><span class="nav-number">1.3.3.</span> <span class="nav-text">三、Collection接口</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-Queue接口"><span class="nav-number">1.3.3.1.</span> <span class="nav-text">3. Queue接口</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、Map接口"><span class="nav-number">1.3.4.</span> <span class="nav-text">四、Map接口</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-HashMap"><span class="nav-number">1.3.4.1.</span> <span class="nav-text">1.HashMap</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-LinkedHashMap"><span class="nav-number">1.3.4.2.</span> <span class="nav-text">2.LinkedHashMap</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-TreeMap"><span class="nav-number">1.3.4.3.</span> <span class="nav-text">3.TreeMap</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#五、Iterator-与-ListIterator详解"><span class="nav-number">1.3.5.</span> <span class="nav-text">五、Iterator 与 ListIterator详解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Iterator"><span class="nav-number">1.3.5.1.</span> <span class="nav-text">1.Iterator</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-ListIterator"><span class="nav-number">1.3.5.2.</span> <span class="nav-text">2.ListIterator</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#六、异同点"><span class="nav-number">1.3.6.</span> <span class="nav-text">六、异同点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-ArrayList和LinkedList"><span class="nav-number">1.3.6.1.</span> <span class="nav-text">1.  ArrayList和LinkedList</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-HashTable与HashMap"><span class="nav-number">1.3.6.2.</span> <span class="nav-text">2.  HashTable与HashMap</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-HashMap、Hashtable、LinkedHashMap和TreeMap比较"><span class="nav-number">1.3.6.3.</span> <span class="nav-text">3.HashMap、Hashtable、LinkedHashMap和TreeMap比较</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-HashSet、LinkedHashSet、TreeSet比较"><span class="nav-number">1.3.6.4.</span> <span class="nav-text">4.HashSet、LinkedHashSet、TreeSet比较</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5、Iterator和ListIterator区别"><span class="nav-number">1.3.6.5.</span> <span class="nav-text">5、Iterator和ListIterator区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6、Collection-和-Collections区别"><span class="nav-number">1.3.6.6.</span> <span class="nav-text">6、Collection 和 Collections区别</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java集合框架常被问到的面试问题"><span class="nav-number">1.4.</span> <span class="nav-text">Java集合框架常被问到的面试问题</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zhongzhengang</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>

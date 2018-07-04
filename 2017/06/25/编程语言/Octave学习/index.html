@@ -1,0 +1,1390 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Octave," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="ZhongZhenGang's Notes" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="Octave学习常用命令清屏命令: ctrl+l Octave入门基础一，简介1.1 Octave是什么?Octave是一款用于数值计算和绘图的开源软件。和Matlab一样,Octave 尤其精于矩阵运算:求解联立方程组、计算矩阵特征值和特征向量等等。 1.2 Octave的适用对象Octave和Matlab被工程人员和科研人员广泛使用来进行各种工业和学术上的数值计算和仿真。如,NASA 使用它来">
+<meta name="keywords" content="Octave">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Octave学习">
+<meta property="og:url" content="http://yoursite.com/2017/06/25/编程语言/Octave学习/index.html">
+<meta property="og:site_name" content="ZhongZhenGang&#39;s Notes">
+<meta property="og:description" content="Octave学习常用命令清屏命令: ctrl+l Octave入门基础一，简介1.1 Octave是什么?Octave是一款用于数值计算和绘图的开源软件。和Matlab一样,Octave 尤其精于矩阵运算:求解联立方程组、计算矩阵特征值和特征向量等等。 1.2 Octave的适用对象Octave和Matlab被工程人员和科研人员广泛使用来进行各种工业和学术上的数值计算和仿真。如,NASA 使用它来">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-07-04T14:18:03.105Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Octave学习">
+<meta name="twitter:description" content="Octave学习常用命令清屏命令: ctrl+l Octave入门基础一，简介1.1 Octave是什么?Octave是一款用于数值计算和绘图的开源软件。和Matlab一样,Octave 尤其精于矩阵运算:求解联立方程组、计算矩阵特征值和特征向量等等。 1.2 Octave的适用对象Octave和Matlab被工程人员和科研人员广泛使用来进行各种工业和学术上的数值计算和仿真。如,NASA 使用它来">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/06/25/编程语言/Octave学习/"/>
+
+
+
+
+
+  <title>Octave学习 | ZhongZhenGang's Notes</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ZhongZhenGang's Notes</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/25/编程语言/Octave学习/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhongzhengang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/zhg_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZhongZhenGang's Notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Octave学习</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-25T11:32:38+08:00">
+                2017-06-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/编程语言/" itemprop="url" rel="index">
+                    <span itemprop="name">编程语言</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/编程语言/学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Octave学习"><a href="#Octave学习" class="headerlink" title="Octave学习"></a><center>Octave学习</center></h1><h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><p>清屏命令: ctrl+l</p>
+<h2 id="Octave入门基础"><a href="#Octave入门基础" class="headerlink" title="Octave入门基础"></a>Octave入门基础</h2><h3 id="一，简介"><a href="#一，简介" class="headerlink" title="一，简介"></a>一，简介</h3><h4 id="1-1-Octave是什么"><a href="#1-1-Octave是什么" class="headerlink" title="1.1 Octave是什么?"></a>1.1 Octave是什么?</h4><p>Octave是一款用于数值计算和绘图的开源软件。和Matlab一样,Octave 尤其精于矩阵运算:求解联立方程组、计算矩阵特征值和特征向量等等。</p>
+<h4 id="1-2-Octave的适用对象"><a href="#1-2-Octave的适用对象" class="headerlink" title="1.2 Octave的适用对象"></a>1.2 Octave的适用对象</h4><p>Octave和Matlab被工程人员和科研人员广泛使用来进行各种工业和学术上的数值计算和仿真。如,NASA 使用它来开发飞行器的对接系统;Jaguar Racing使用它来可视化和分析从 F1 赛车传来的数 据;Sheffield大学用它来开发用于识别癌细胞的软件。Octave这样的软件让编写数值处理程序变得简单,并提供数据可视化的多种方式。</p>
+<h4 id="1-3-Octave的下载与安装"><a href="#1-3-Octave的下载与安装" class="headerlink" title="1.3 Octave的下载与安装"></a>1.3 Octave的下载与安装</h4><p>参照网上相关教程； </p>
+<h3 id="二，简单计算"><a href="#二，简单计算" class="headerlink" title="二，简单计算"></a>二，简单计算</h3><h4 id="2-1-Octave使用方式"><a href="#2-1-Octave使用方式" class="headerlink" title="2.1 Octave使用方式"></a>2.1 Octave使用方式</h4><p>Octave最简单的使用方式就是像使用一个计算器一样在命令提示符下输入相应的计算式。Octave能识别通常的计算表达式。例如,在终端输入</p>
+<p>octave:##&gt;2+2</p>
+<p>并按回车键, 你将得到以下的结果ans=4</p>
+<p>各种计算符号的优先级与常规的一致,比如括号有最大优先级,其次为乘方,其次为乘除运算,最后为加减运算</p>
+<h4 id="2-2-内建函数"><a href="#2-2-内建函数" class="headerlink" title="2.2 内建函数"></a>2.2 内建函数</h4><p>Octave中有很多内建函数，可以通过输入函数名和括号中的输入参数来调用函数,例如:</p>
+<p>octave:##&gt; exp(1)</p>
+<p>ans=2.71813</p>
+<p>又如另一个更长的表达式:计算 1.2 sin(40◦ + ln(2.42)), 输入octave:##&gt;1.2<em>sin(40</em>pi/180+log(2.4^2))</p>
+<p>ans=0.76618</p>
+<p>其中基本的数学函数有：sin, cos, tan, log, exp, abs, floor, ceil等；</p>
+<p>如果你要退出Octave,只需要在命令提示符下输入quit或者exit即可。</p>
+<h3 id="三，Octave变量"><a href="#三，Octave变量" class="headerlink" title="三，Octave变量"></a>三，Octave变量</h3><h4 id="3-1-变量"><a href="#3-1-变量" class="headerlink" title="3.1 变量"></a>3.1 变量</h4><p>同C++，Java等变成语言一样我们可以定义变量，但Octave 为解释性语言。因此Octave中变量的类型是不用声明的，但Octave中变量名是区分大小的,即变量a和变量A是不同的变量。</p>
+<p>octave:##&gt; deg=pi/180</p>
+<p>deg=0.017453</p>
+<p>如果你需要从当前的变量空间中删除某个变量,clear命令能移出所有的变量,或者移出某个特定变量, 如:</p>
+<p>clear namels将移出名为 name 的某个变量。</p>
+<h4 id="3-2-载入和保存数据"><a href="#3-2-载入和保存数据" class="headerlink" title="3.2 载入和保存数据"></a>3.2 载入和保存数据</h4><p>当你退出Octave的时候,你将丢失你所创建的变量。如果你需要在工作的中途退出Octave,那么你可以保存当前会话的数据并在之后重新载入它。如果你输入</p>
+<p>octave:##&gt; save anynamels</p>
+<p>这将整个工作空间上的变量存储到当前目录下一个名为anyname.mat 的文件中 (注意.mat是Octave自动添加的)。这样你可以退出Octave,之后重新启动Octave程序,通过输入</p>
+<p>octave:##&gt; loadanyname</p>
+<p>将重新载入之前保存的命名空间,并从你中断的地方重新开始工作。同样的,你可以载入或者保存特定的变量。格式为</p>
+<p>octave:##&gt;save filename var1 var2 …</p>
+<p>例如,如果你想存储deg变量,那么你可以输入</p>
+<p>octave:##&gt; save degconv degls</p>
+<p>这样将deg变量存储于名为degconv.mat的文件中,你可以通过以下命令重新载入变量</p>
+<p> octave:##&gt; loaddegconv</p>
+<font color="red">Octave 同样能从文件中导入数据,这样的功能在你使用其他的数据来源进行画图或者计算的时候变得非常有用。</font>
+
+<p><strong>例如：</strong></p>
+<p>X=load(‘featureX.txt’);</p>
+<h4 id="3-3-获得帮助"><a href="#3-3-获得帮助" class="headerlink" title="3.3 获得帮助"></a>3.3 获得帮助</h4><p>如果你不清楚某个命令或者函数的用法，可也用help命令来获得其详细的用法。</p>
+<p>help commandname</p>
+<p>例如：help plot</p>
+<h4 id="3-4-分号和隐藏结果"><a href="#3-4-分号和隐藏结果" class="headerlink" title="3.4 分号和隐藏结果"></a>3.4 分号和隐藏结果</h4><p>分号在通常的编程语言中被用来表示程序块或者单个语句的结束。在 Octave 中分号不是必需的,但它也有一个特殊的功能。我们目前的例子中,我们只要输入一个 Octave 命令并不以分号结尾的话,Octave 总 会将语句执行的结果随即显示出来。但是,如果我们在一行语句的末尾添上分号,Octave将不会显出相应的 结果。</p>
+<h3 id="四-数组和向量及矩阵"><a href="#四-数组和向量及矩阵" class="headerlink" title="四 数组和向量及矩阵"></a>四 数组和向量及矩阵</h3><p>前面介绍过Octave的优势就是可以很方便的进行矩阵的相关计算。</p>
+<h4 id="4-1-构造向量"><a href="#4-1-构造向量" class="headerlink" title="4.1 构造向量"></a>4.1 构造向量</h4><p>构造矩阵或者向量的方法有很多。其中最直接简单的方法就是在一个方括号 [] 中给出其元素,例如</p>
+<p>octave:##&gt; a=[1 4 5]</p>
+<p>a=1 4 5</p>
+<p>octave:##&gt; b=[2,1,0]</p>
+<p> b=2 1 0</p>
+<p>octave:##&gt; c=[4;7;10]</p>
+<p>c=4</p>
+<p>  7</p>
+<p> 10</p>
+<p>在方括号中由空格或者逗号隔开的一组数据被定义为行向量; 而由分号或者回车隔开的一组数据被定义为列向量。你可以通过已经定义的向量来定义新的向量,例如</p>
+<p>octave:##&gt; a=[1 4 5]</p>
+<p>a=1 4 5</p>
+<p>octave:##&gt; d=[a 6]</p>
+<p> d=1 4 5 6</p>
+<h4 id="4-2-冒号表达式"><a href="#4-2-冒号表达式" class="headerlink" title="4.2 冒号表达式"></a>4.2 冒号表达式</h4><p>利用冒号能够非常方便的创建一些特殊的向量</p>
+<p>octave:##&gt; e=2:6</p>
+<pre><code>e=2 3 4 5 6
+</code></pre><p>冒号表达式的规则是告诉octave创建一个以第一个数字开始并以一递增至第二个数的向量。在第一和第 二个数之间可以插入第三个参数来声明向量中元素之间的递增量,形如 a : b : c。</p>
+<h4 id="4-3-向量构造函数"><a href="#4-3-向量构造函数" class="headerlink" title="4.3 向量构造函数"></a>4.3 向量构造函数</h4><p>zeros(M,N) 创建一个MXN的全零矩阵</p>
+<p>ones(M,N)  创建一个MXN的全一矩阵</p>
+<p>linspace(x1,x2,N) 创建一个N个元素的向量，均匀分布于x1和下x2</p>
+<p>eye(M) 创建一个MXM的单位矩阵</p>
+<p>rand(M,N) 创建一个MXN的矩阵，元素为随机值</p>
+<h4 id="4-4-向量中的元素操作"><a href="#4-4-向量中的元素操作" class="headerlink" title="4.4 向量中的元素操作"></a>4.4 向量中的元素操作</h4><p>向量中的元素通过括号(),而第一个元素的编号为1, 而不是像C或者 C++那样从0开始。例如</p>
+<p> octave:##&gt;a=[1:2:6 -1 0]</p>
+<pre><code>a= 1 3 5 -1 0
+</code></pre><p>我们可以通过以下命令访问到该向量的第三个元素</p>
+<p> octave:##&gt; a(3)</p>
+<pre><code>ans=5
+</code></pre><p>冒号的表示法同样可以用于声明向量中的元素的范围</p>
+<p> octave:##&gt;a(3:5)</p>
+<pre><code>ans=5 -1 0
+</code></pre><p> octave:##&gt;a(1:2:5)</p>
+<p> ans= 1 5 0</p>
+<h4 id="4-5-向量的计算"><a href="#4-5-向量的计算" class="headerlink" title="4.5 向量的计算"></a>4.5 向量的计算</h4><p>将一组数据存入一个向量之后能够使用很多的Octave函数来进行计算。在C++中如果你想进行相同的计算,例如每个元素乘以2, 你需要使用for循环来对每个元素操作。在Octave中虽然也可以使用for循环来实现,但是Octave本身由有简单的向量操作方式。</p>
+<p>向量中每个都乘以一个数可以通过对该向量乘以一个数来实现。以之前定义的 a 向量为例:</p>
+<p>octave:1&gt; a=[1:2:6 -1 0]</p>
+<p>a= 1 3 5 -1 0</p>
+<p>octave:2&gt; a*2</p>
+<p>ans=2 6 10 -2 0</p>
+<p>对向量中所有元素都除以一个数的操作与乘法类似。使用+−算符,你同样可以对该向量中的每个元素都加上或者减去一个数值。两个向量的相乘遵循矩阵的乘法法则,向量乘法并不是对应元素的相乘。如果要进行对应元素的乘除法,你可以使用.* 以及./ 算符注意每个算符前的‘.’表示为一个元素对元素的计算。例如:</p>
+<p>octave:3&gt; b=1:5</p>
+<p>b= 1 2 3 4 5</p>
+<p>octave:4&gt; a.*b</p>
+<p>ans=1 6 15 -4 0</p>
+<p>逐个元素的乘方计算同样也很有用。该计算的算符为,例如</p>
+<p>octave:5&gt; b.^2</p>
+<p>ans =1 4 9 16 25</p>
+<p>octave:6&gt; 2.^b</p>
+<p>ans =2 4 8 16 32</p>
+<p>octave:7&gt; a.^b</p>
+<p>ans = 1 9 125 1 0</p>
+<p>只要两个向量又相同的大小和形状,它们就可以进行元素之间的(element-by-element) 加减乘除和乘方运算。</p>
+<h4 id="4-6-函数操作向量"><a href="#4-6-函数操作向量" class="headerlink" title="4.6 函数操作向量"></a>4.6 函数操作向量</h4><p>前面讲到过的函数也是可以适用于向量。</p>
+<p>例如：exp, log,abs等</p>
+<p>octave:##&gt;abs([-1 2 -3])</p>
+<p>ans=1 2 3</p>
+<p>此外max, length,size, sum, mean, std, floor, ceil等函数也许要掌握，可以通过help命令获得详细用法。</p>
+<h4 id="4-7-矩阵的转置"><a href="#4-7-矩阵的转置" class="headerlink" title="4.7 矩阵的转置"></a>4.7 矩阵的转置</h4><p>一个向量的转置将其由行向量转为列向量或者由列向量转换为行向量。矩阵的转置将其行和列交换。在数学上,矩阵A的转置表示为AT 在octave中转置操作用上引号实现:</p>
+<p>octave:6&gt; A=[5 7 9;-1 3 -2]</p>
+<p>A= 5  7  9</p>
+<p>-1  3 - 2</p>
+<p>octave:7&gt; A’</p>
+<p>ans =5   -1</p>
+<p>7   3</p>
+<p> 9   -2</p>
+<p>此外inv求矩阵的逆，det求矩阵的特征值，trace求矩阵的迹。</p>
+<h3 id="五-画图"><a href="#五-画图" class="headerlink" title="五 画图"></a>五 画图</h3><p>Octave通过调用另一个开源软件 GNUPLOT来实现非常丰富的画图功能。最基本的画图命令是 plot(x,y), 其中 x,y 分别为横轴和纵轴数据。可以进行相应地颜色和样式的选择如:’ro’代表们红色圆圈，’b.’代表蓝色点点等；可以通过title，xlabel，ylabel添加标题以及x,y轴名称；legend命令为该图片添加相应的图例。</p>
+<h4 id="5-1保存当前的图片内容并将新创建的图片层叠到原图片上"><a href="#5-1保存当前的图片内容并将新创建的图片层叠到原图片上" class="headerlink" title="5.1保存当前的图片内容并将新创建的图片层叠到原图片上"></a>5.1保存当前的图片内容并将新创建的图片层叠到原图片上</h4><p>如果你想保存当前的图片内容并将新创建的图片层叠到原图片上,你可以通过使用 hold on命令来实现。使用该命令,我们可以实现在同一幅图上呈现由两个plot 命令绘制的线条。</p>
+<p>octave:##&gt; x=linspace(-10,10);</p>
+<p>octave:##&gt; plot(x,sin(x),’r-’);</p>
+<p>octave:##&gt; hold on</p>
+<p>octave:##&gt; plot(x,sin(x)./x,’b*’)</p>
+<p>octave:##&gt;title(‘Figure’)</p>
+<p>octave:##&gt;xlabel(‘X’)</p>
+<p>octave:##&gt;ylabel(‘Y’)</p>
+<p>octave:##&gt;legend(‘sin(x)’,’sin(x)/x’)</p>
+<h4 id="5-2-subplot-2-3-2-表示在一个格子中画图"><a href="#5-2-subplot-2-3-2-表示在一个格子中画图" class="headerlink" title="5.2 subplot(2,3,2)表示在一个格子中画图"></a>5.2 subplot(2,3,2)表示在一个格子中画图</h4><p>subplot(2,3,2)表示在一个格子中画图。因此该条语句的意思是分成一个2X3的格子，并在第2个格子里画图；其中子格的顺序为从左到右从上到下递增，即 </p>
+<pre><code>1   2
+
+3   4
+
+5   6
+</code></pre><p>例如：</p>
+<p>octave:##&gt; x=linspace(-10,10);</p>
+<p>octave:##&gt; subplot(2,1,1)</p>
+<p>octave:##&gt; plot(x,sin(x));</p>
+<p>octave:##&gt; subplot(2,1,2)</p>
+<p>octave:##&gt; plot(x,sin(x)./x)</p>
+<h4 id="5-3-多幅图片可以用figure命令来实现"><a href="#5-3-多幅图片可以用figure命令来实现" class="headerlink" title="5.3 多幅图片可以用figure命令来实现."></a>5.3 多幅图片可以用figure命令来实现.</h4><h4 id="5-4-绘制曲面"><a href="#5-4-绘制曲面" class="headerlink" title="5.4 绘制曲面"></a>5.4 绘制曲面</h4><p>octave:##&gt; x=2:0.2:4;</p>
+<p>octave:##&gt;y=1:0.2:3;</p>
+<p>octave:##&gt;[X,Y]=meshgrid(x,y);% make the grid</p>
+<p>octave:##&gt; Z=(X-3).^2-(Y-2).^2;</p>
+<p>octave:##&gt; subplot(2,2,1);surf(Z);title(‘surf’)</p>
+<p>octave:##&gt; subplot(2,2,2);mesh(Z);title(‘mesh’)</p>
+<p>octave:##&gt; subplot(2,2,3);meshz(Z);title(‘meshz’)</p>
+<p>octave:##&gt; subplot(2,2,4);contour(Z);title(‘contour’)</p>
+<h3 id="六-Octave脚本"><a href="#六-Octave脚本" class="headerlink" title="六 Octave脚本"></a>六 Octave脚本</h3><p>如果你有一些重复输入的命令的,你可以将这一系列的命令存入一个Octave 脚本之中。这种包含 Octave 命令的文本文件是 Octave 程序的基本形式。当你在 Octave 中执行这样的脚本的时候,其效果与将这些命令一行行输入 Octave 中的效果是一样的。而且当你对一系列要输入 Octave 的命令不是很拿的准的时候,在一个脚本中修改这些命令会比在 Octave 终端中重新调出及修改命令要简单方便许多。</p>
+<p>Octave的脚本是普通的文本文件,但是他们需要有一个.m 的后缀 (e.g.run.m)。因此,它们通常也被称为M文件。除去后缀的文件名部分是你在执行该命令时需要向 Octave 终端输入的部分。</p>
+<p>你可以在任何的文本编辑器 (如,emacs, vi,notepad) 中创建并编辑一个脚本文件。在Octave中可以通过以下命令</p>
+<p> octave:##&gt; edit</p>
+<p>在新窗口中调出文本编辑器emacs。如果你想编辑一个已存在的脚本,你可以在edit命令后加上脚本的名字。例如,比如你有个名为 run.m的脚本,输入edit run 将调出编辑器并打开该文件供你编辑。</p>
+<p>然后在 Octave中输入 run执行脚本:</p>
+<p> octave:##&gt; run</p>
+<p>Octave将运行该脚本中的命令并得到相应的结果。</p>
+<h3 id="七-控制语句"><a href="#七-控制语句" class="headerlink" title="七 控制语句"></a>七 控制语句</h3><p>到目前为止我们所看到的程序或者表达式都是一些简单的顺序执行的操作。向量和矩阵的使用能够让Octave执行更加高级的计算,但是要实现更加复杂的功能,我们还需要一些标准的程序语言。Octave提供了通常的循环和选择语句。其语法类似于我们熟知的C,C++,Java等编程语言。</p>
+<p>在这里仅仅举一个例子：</p>
+<p>octave:##&gt; x=1;</p>
+<p>octave:##&gt; while 1+x&gt;1</p>
+<p>x=x/2;</p>
+<p>end</p>
+<p>octave:##&gt;x</p>
+<pre><code>x=
+</code></pre><p>1.1102e-16</p>
+<h3 id="八-Octave函数"><a href="#八-Octave函数" class="headerlink" title="八 Octave函数"></a>八 Octave函数</h3><p>Octave中的脚本能实现一些简单的程序,但是比脚本更加强大的是用户自定义函数。自定义函数能够让你在命令行、其他函数中和脚本中调用。</p>
+<p>在Octave函数中参数是通过值传递的而不是通过reference传递并能返回多个返回值。Octave函数如同脚本一样,是写入一个纯文本文件中的,不同的是函数文件的第一行遵循如下的格式</p>
+<p> function[output1,output2,…]=name(input1,input2,…)</p>
+<p>每个函数都卸载了不同的M文件中,而且该M文件名不须与函数名一致。例如名为sind()的函数必需被定义在名为sind.m的M文件中。每个函数接受一定的参数输入并输出一定的数值。</p>
+<p>当你需要重复性的执行一定表达式,这表明你需要将这与的操作封装为一个函数。封装为函数之后 Octave 将更加易用,增加了代码的可读性并可以供他人使用。</p>
+<p>我们可以创建这么一个函数,创建一个名为 sind.m 的 文本文件并包含以下内容:</p>
+<p>function s=sind(x)</p>
+<p>  % SIND(x)Calculates sine(x) in degrees</p>
+<p>  s=sin(x*pi/180);</p>
+<p>end</p>
+<p>然后就可以使用该函数了，例如：</p>
+<p>octave:##&gt; sind(0)</p>
+<pre><code>ans=0
+</code></pre><p>octave:##&gt; sind(45)</p>
+<p> ans= 0.7071</p>
+<p>octave:##&gt; t=sind([30 60 90])</p>
+<pre><code>t= 0.50000.8660 1.0000
+</code></pre><p>参考资料：<a href="http://blog.csdn.net/cstopcoder/article/details/40477431" title="Octave入门基础" target="_blank" rel="noopener">Octave入门基础</a></p>
+<h2 id="Octave简单使用"><a href="#Octave简单使用" class="headerlink" title="Octave简单使用"></a>Octave简单使用</h2><h3 id="1-四则运算"><a href="#1-四则运算" class="headerlink" title="1. 四则运算:"></a>1. 四则运算:</h3><ul>
+<li>1 + 2 </li>
+<li>1 * 2 </li>
+<li>1 / 2 </li>
+<li>1 - 2</li>
+</ul>
+<h3 id="2-变量"><a href="#2-变量" class="headerlink" title="2. 变量"></a>2. 变量</h3><ul>
+<li>a = 1</li>
+<li>a = 1;  % 不显示赋值结果</li>
+<li>clear a % 删除a这个变量</li>
+</ul>
+<h3 id="3-注释"><a href="#3-注释" class="headerlink" title="3. 注释: %"></a>3. 注释: %</h3><h3 id="4-相等-不等"><a href="#4-相等-不等" class="headerlink" title="4. 相等 / 不等 :"></a>4. 相等 / 不等 :</h3><ul>
+<li>1 == 2 %结果是0,表示为假</li>
+<li>1 ~= 2 %结果为1<h3 id="5-逻辑-位运算"><a href="#5-逻辑-位运算" class="headerlink" title="5. 逻辑 / 位运算:"></a>5. 逻辑 / 位运算:</h3></li>
+<li>1 || 0    % 1</li>
+<li>1 &amp;&amp; 0 % 0</li>
+<li>xor(1, 0) % 1, 异或<h3 id="6-打印变量"><a href="#6-打印变量" class="headerlink" title="6. 打印变量:"></a>6. 打印变量:</h3></li>
+<li>a</li>
+<li>disp(a)</li>
+<li>disp(sprintf(‘pi is %.2f’, pi))<h3 id="7-矩阵"><a href="#7-矩阵" class="headerlink" title="7. 矩阵:"></a>7. 矩阵:</h3></li>
+<li>A = [1,2;3,4;5,6] % 3*2矩阵</li>
+<li>A = ones(2,3) % 2*3矩阵,元素均为1.</li>
+<li>A = 3<em>ones(2,3) % 2</em>3矩阵,元素均为3.</li>
+<li>A = rand(3,3) %3*3矩阵,元素随机.均值为0.5,幅度在0~1间.</li>
+<li>A = randn(3,3) % 3*3, 元素均值为0方差为1,服从高斯分布.</li>
+<li>A = eye(5) %5阶单位矩阵.<h3 id="8-向量"><a href="#8-向量" class="headerlink" title="8. 向量:"></a>8. 向量:</h3></li>
+<li>v = [1,2,3] %行向量</li>
+<li>v = [1;2;3] %列向量</li>
+<li>v = 1:0.1:1 %从1开始,步长为0.1,直到1.得到一个行向量</li>
+<li>v = 1:6 % 1 2 3 4 5 6 得到这个行向量<h3 id="9-直方图"><a href="#9-直方图" class="headerlink" title="9. 直方图:"></a>9. 直方图:</h3></li>
+<li>hist(1+2*randn(2,10))</li>
+<li>hist(1+2*randn(2,10), 20) %第二个参数指定条数.<h3 id="10-帮助命令-help-‘命令’"><a href="#10-帮助命令-help-‘命令’" class="headerlink" title="10. 帮助命令: help ‘命令’"></a>10. 帮助命令: help ‘命令’</h3></li>
+<li>help eye</li>
+<li>help rand<h3 id="11-size"><a href="#11-size" class="headerlink" title="11. size:"></a>11. size:</h3></li>
+<li>size(A) %返回3 2, A是3*2的矩阵</li>
+<li>size(A,1) % 3, A的行数</li>
+<li>lenght(v) % 3, v是3维向量</li>
+<li>lenght(A) % 3, A最大的维度是3<h3 id="12-pwd-cd-ls-与Linux功能相同"><a href="#12-pwd-cd-ls-与Linux功能相同" class="headerlink" title="12. pwd cd ls  与Linux功能相同"></a>12. pwd cd ls  与Linux功能相同</h3></li>
+<li>load xx.dat 可以加载文件</li>
+<li>who / whos 可以显示当前工作空间的所有变量</li>
+<li>save A testSave.mat % A存储在testSave文件中<h3 id="13-矩阵操作"><a href="#13-矩阵操作" class="headerlink" title="13. 矩阵操作"></a>13. 矩阵操作</h3></li>
+<li>索引: A(1,2)</li>
+<li>A(1,:) 第一行  “:”表示所有元素</li>
+<li>A([1 3],:) 第一行和第三行所有元素</li>
+<li>A = [A, [1;2;3]] % A右侧添加一列</li>
+<li>A(:) A所有元素放到一个向量中</li>
+<li>C = [A B] 行连接</li>
+<li>C = [A;B] 列连接<h3 id="14-矩阵计算"><a href="#14-矩阵计算" class="headerlink" title="14. 矩阵计算"></a>14. 矩阵计算</h3></li>
+<li>A*B</li>
+<li>A.*B % .表示对每个元素操作</li>
+<li>A.^2 % 每个元素取平方</li>
+<li>1./A % A每个元素取倒数</li>
+<li>log(A) % 对数</li>
+<li>exp(A) % e的幂次</li>
+<li>abs(A) % 绝对值</li>
+<li>-A % 等价-1*A</li>
+<li>A’ % A的转置</li>
+<li>[val, indx] = max(v) % 向量v中最大值与索引.  </li>
+<li>max(A) % A为矩阵,将对A中每一列求最大值</li>
+<li>v &lt; 2 % 每个元素与2相比,小于2为真返回1,否则为0.得到相同向量/矩阵.</li>
+<li>[r,c] = find(v &lt; 2) % 返回小于2的元素的索引.</li>
+<li>sum(A) % 所有元素和</li>
+<li>sum(A, 1) sum(A, 2) % 每列/行的元素和</li>
+<li>prod(A) % 所有元素乘积</li>
+<li>floor(A) / cell(A) % 向下 向上取整</li>
+<li>max(A,B) % 每个元素比较,取大值</li>
+<li>max(A,[],1) % 对每列取最大值</li>
+<li>max(A,[],2) % 每行取最大值</li>
+<li>max(A) % 默认是对每列取最大值</li>
+<li>flipud(eye(3)) % 矩阵上下翻转</li>
+<li>pinv(A) % A求逆矩阵<h3 id="15-画图：plot"><a href="#15-画图：plot" class="headerlink" title="15. 画图：plot"></a>15. 画图：plot</h3></li>
+<li>plot（x,y） % x向量为x轴取值，y向量为y轴取值</li>
+<li>hold on % 多个图间hold on，可以将后续图叠加画到前一幅图中</li>
+<li>xlable(‘’) ylable(‘’) % x y轴名称</li>
+<li>title(‘’) % 图的标题</li>
+<li>legend(‘line1’,’line2’) % 标记图中每条线的名称</li>
+<li>print -dpng ‘name.png’ % 保存成png图片</li>
+<li>close % 关闭图像</li>
+<li>figure(1) figue(2) % 给图像编号，可以同时显示多个图像</li>
+<li>subplot(m,n,i) % 图像划分为m*n个格子，当前使用第i个作图。</li>
+<li>axis([-1 1 2 3]) % 调整轴坐标范围 x轴-1到1，y轴2到3<h3 id="16-条件控制"><a href="#16-条件控制" class="headerlink" title="16. 条件控制"></a>16. 条件控制</h3></li>
+<li><p>for, if, else</p>
+<pre><code>v = [1:5];
+for i = v,
+      if i &gt;= 4,
+        break;
+       elseif i == 2,
+        continue
+       end
+  disp(i)
+   end;
+</code></pre></li>
+<li><p>while </p>
+<pre><code>i=1
+while i&lt;=5,
+      disp(i)
+      i = i+1;
+end
+</code></pre></li>
+</ul>
+<h3 id="17-函数定义"><a href="#17-函数定义" class="headerlink" title="17. 函数定义"></a>17. 函数定义</h3><ul>
+<li><p>新建文件 testFunction.m  内容：</p>
+<pre><code>function [x,y] = testFunction(a,b)
+x = a * b;
+y = a + b;
+</code></pre></li>
+<li><p>调用：a = testFunction(2,3)</p>
+</li>
+</ul>
+<p>参考资料:<a href="http://blog.csdn.net/endlu/article/details/77607451" title="Octave简单使用" target="_blank" rel="noopener">机器学习入门笔记(三)—-Octave简单使用</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Octave/" rel="tag"># Octave</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/05/26/编程知识/" rel="next" title="编程知识">
+                <i class="fa fa-chevron-left"></i> 编程知识
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/07/25/IDEA开发工具学习/" rel="prev" title="IDEA开发工具学习">
+                IDEA开发工具学习 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/zhg_avatar.jpg"
+                alt="zhongzhengang" />
+            
+              <p class="site-author-name" itemprop="name">zhongzhengang</p>
+              <p class="site-description motion-element" itemprop="description">一点一滴的积累</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/zhongzhengang" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/mu-cao-18-76/activities" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-globe"></i>知乎</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Octave学习"><span class="nav-number">1.</span> <span class="nav-text">Octave学习</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#常用命令"><span class="nav-number">1.1.</span> <span class="nav-text">常用命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Octave入门基础"><span class="nav-number">1.2.</span> <span class="nav-text">Octave入门基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一，简介"><span class="nav-number">1.2.1.</span> <span class="nav-text">一，简介</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-Octave是什么"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">1.1 Octave是什么?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-Octave的适用对象"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">1.2 Octave的适用对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-Octave的下载与安装"><span class="nav-number">1.2.1.3.</span> <span class="nav-text">1.3 Octave的下载与安装</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二，简单计算"><span class="nav-number">1.2.2.</span> <span class="nav-text">二，简单计算</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-Octave使用方式"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">2.1 Octave使用方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-内建函数"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">2.2 内建函数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三，Octave变量"><span class="nav-number">1.2.3.</span> <span class="nav-text">三，Octave变量</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-变量"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">3.1 变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-载入和保存数据"><span class="nav-number">1.2.3.2.</span> <span class="nav-text">3.2 载入和保存数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-获得帮助"><span class="nav-number">1.2.3.3.</span> <span class="nav-text">3.3 获得帮助</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-分号和隐藏结果"><span class="nav-number">1.2.3.4.</span> <span class="nav-text">3.4 分号和隐藏结果</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四-数组和向量及矩阵"><span class="nav-number">1.2.4.</span> <span class="nav-text">四 数组和向量及矩阵</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-构造向量"><span class="nav-number">1.2.4.1.</span> <span class="nav-text">4.1 构造向量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-冒号表达式"><span class="nav-number">1.2.4.2.</span> <span class="nav-text">4.2 冒号表达式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-3-向量构造函数"><span class="nav-number">1.2.4.3.</span> <span class="nav-text">4.3 向量构造函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-4-向量中的元素操作"><span class="nav-number">1.2.4.4.</span> <span class="nav-text">4.4 向量中的元素操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-5-向量的计算"><span class="nav-number">1.2.4.5.</span> <span class="nav-text">4.5 向量的计算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-6-函数操作向量"><span class="nav-number">1.2.4.6.</span> <span class="nav-text">4.6 函数操作向量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-7-矩阵的转置"><span class="nav-number">1.2.4.7.</span> <span class="nav-text">4.7 矩阵的转置</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#五-画图"><span class="nav-number">1.2.5.</span> <span class="nav-text">五 画图</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-1保存当前的图片内容并将新创建的图片层叠到原图片上"><span class="nav-number">1.2.5.1.</span> <span class="nav-text">5.1保存当前的图片内容并将新创建的图片层叠到原图片上</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-2-subplot-2-3-2-表示在一个格子中画图"><span class="nav-number">1.2.5.2.</span> <span class="nav-text">5.2 subplot(2,3,2)表示在一个格子中画图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-3-多幅图片可以用figure命令来实现"><span class="nav-number">1.2.5.3.</span> <span class="nav-text">5.3 多幅图片可以用figure命令来实现.</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-4-绘制曲面"><span class="nav-number">1.2.5.4.</span> <span class="nav-text">5.4 绘制曲面</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#六-Octave脚本"><span class="nav-number">1.2.6.</span> <span class="nav-text">六 Octave脚本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#七-控制语句"><span class="nav-number">1.2.7.</span> <span class="nav-text">七 控制语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#八-Octave函数"><span class="nav-number">1.2.8.</span> <span class="nav-text">八 Octave函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Octave简单使用"><span class="nav-number">1.3.</span> <span class="nav-text">Octave简单使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-四则运算"><span class="nav-number">1.3.1.</span> <span class="nav-text">1. 四则运算:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-变量"><span class="nav-number">1.3.2.</span> <span class="nav-text">2. 变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-注释"><span class="nav-number">1.3.3.</span> <span class="nav-text">3. 注释: %</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-相等-不等"><span class="nav-number">1.3.4.</span> <span class="nav-text">4. 相等 / 不等 :</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-逻辑-位运算"><span class="nav-number">1.3.5.</span> <span class="nav-text">5. 逻辑 / 位运算:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-打印变量"><span class="nav-number">1.3.6.</span> <span class="nav-text">6. 打印变量:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-矩阵"><span class="nav-number">1.3.7.</span> <span class="nav-text">7. 矩阵:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-向量"><span class="nav-number">1.3.8.</span> <span class="nav-text">8. 向量:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-直方图"><span class="nav-number">1.3.9.</span> <span class="nav-text">9. 直方图:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-帮助命令-help-‘命令’"><span class="nav-number">1.3.10.</span> <span class="nav-text">10. 帮助命令: help ‘命令’</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-size"><span class="nav-number">1.3.11.</span> <span class="nav-text">11. size:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-pwd-cd-ls-与Linux功能相同"><span class="nav-number">1.3.12.</span> <span class="nav-text">12. pwd cd ls  与Linux功能相同</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#13-矩阵操作"><span class="nav-number">1.3.13.</span> <span class="nav-text">13. 矩阵操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14-矩阵计算"><span class="nav-number">1.3.14.</span> <span class="nav-text">14. 矩阵计算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#15-画图：plot"><span class="nav-number">1.3.15.</span> <span class="nav-text">15. 画图：plot</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#16-条件控制"><span class="nav-number">1.3.16.</span> <span class="nav-text">16. 条件控制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#17-函数定义"><span class="nav-number">1.3.17.</span> <span class="nav-text">17. 函数定义</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zhongzhengang</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>

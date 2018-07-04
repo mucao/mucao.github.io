@@ -1,0 +1,1578 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Linux,编程小知识点," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="ZhongZhenGang's Notes" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="Linux学习笔记 0. linux小知识点积累(1) 重新启动X窗口X 的画面中按下『[alt]+ [crtl] + [backspace] 』 三个组合按键， 就能够重新启动 X 窗口 1. Ubuntu创建新用户并增加管理员权限From http://www.linuxidc.com/Linux/2016-06/132218.htm$是普通管员，#是系统管理员，在Ubuntu下，root用户">
+<meta name="keywords" content="Linux,编程小知识点">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux学习笔记">
+<meta property="og:url" content="http://yoursite.com/2017/11/17/2_Linux学习笔记/index.html">
+<meta property="og:site_name" content="ZhongZhenGang&#39;s Notes">
+<meta property="og:description" content="Linux学习笔记 0. linux小知识点积累(1) 重新启动X窗口X 的画面中按下『[alt]+ [crtl] + [backspace] 』 三个组合按键， 就能够重新启动 X 窗口 1. Ubuntu创建新用户并增加管理员权限From http://www.linuxidc.com/Linux/2016-06/132218.htm$是普通管员，#是系统管理员，在Ubuntu下，root用户">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="g:/桌面文件和文件夹/学习/知识积累_md文件/image/hadoop_配置环境变量.png">
+<meta property="og:image" content="http://yoursite.com/image/hadoop_master_启动后jps.png">
+<meta property="og:image" content="http://yoursite.com/image/hadoop_slave_启动后jps.png">
+<meta property="og:updated_time" content="2018-07-04T11:14:53.980Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux学习笔记">
+<meta name="twitter:description" content="Linux学习笔记 0. linux小知识点积累(1) 重新启动X窗口X 的画面中按下『[alt]+ [crtl] + [backspace] 』 三个组合按键， 就能够重新启动 X 窗口 1. Ubuntu创建新用户并增加管理员权限From http://www.linuxidc.com/Linux/2016-06/132218.htm$是普通管员，#是系统管理员，在Ubuntu下，root用户">
+<meta name="twitter:image" content="g:/桌面文件和文件夹/学习/知识积累_md文件/image/hadoop_配置环境变量.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/11/17/2_Linux学习笔记/"/>
+
+
+
+
+
+  <title>Linux学习笔记 | ZhongZhenGang's Notes</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ZhongZhenGang's Notes</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/17/2_Linux学习笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhongzhengang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/zhg_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZhongZhenGang's Notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Linux学习笔记</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-17T10:26:28+08:00">
+                2017-11-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/操作系统/" itemprop="url" rel="index">
+                    <span itemprop="name">操作系统</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/操作系统/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/操作系统/Linux/编程常用知识/" itemprop="url" rel="index">
+                    <span itemprop="name">编程常用知识</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Linux学习笔记"><a href="#Linux学习笔记" class="headerlink" title="Linux学习笔记"></a><center>Linux学习笔记</center></h1><p><br></p>
+<h2 id="0-linux小知识点积累"><a href="#0-linux小知识点积累" class="headerlink" title="0. linux小知识点积累"></a>0. linux小知识点积累</h2><h3 id="1-重新启动X窗口"><a href="#1-重新启动X窗口" class="headerlink" title="(1) 重新启动X窗口"></a>(1) 重新启动X窗口</h3><p>X 的画面中按下『[alt]+ [crtl] + [backspace] 』 三个组合按键， 就能够重新启动 X 窗口</p>
+<h2 id="1-Ubuntu创建新用户并增加管理员权限"><a href="#1-Ubuntu创建新用户并增加管理员权限" class="headerlink" title="1. Ubuntu创建新用户并增加管理员权限"></a>1. Ubuntu创建新用户并增加管理员权限</h2><p><strong>From <a href="http://www.linuxidc.com/Linux/2016-06/132218.htm" target="_blank" rel="noopener">http://www.linuxidc.com/Linux/2016-06/132218.htm</a></strong><br>$是普通管员，#是系统管理员，在Ubuntu下，root用户默认是没有密码的，因此也就无法使用（据说是为了安全）。想用root的话，得给root用户设置一个密码：  </p>
+<pre><code>sudo passwd root  
+</code></pre><p>然后登录时用户名输入root，再输入密码就行了。<br>ubuntu建用户最好用adduser，虽然adduser和useradd是一样的在别的linux糸统下，但是我在ubuntu下用useradd时，并没有创建同名的用户主目录。 例子：adduser user1<br>这样他就会自动创建用户主目录，创建用户同名的组。  </p>
+<pre><code>root@ubuntu:~# sudo adduser linuxidc  
+[sudo] password for xx:
+</code></pre><p>输入xx用户的密码，出现如下信息  </p>
+<pre><code>正在添加用户&quot;linuxidc&quot;…  
+正在添加新组&quot;linuxidc&quot; (1006)…      
+正在添加新用户&quot;linuxidc&quot; (1006) 到组&quot;linuxidc&quot;…  
+创建主目录&quot;/home/linuxidc&quot;…  
+正在从&quot;/etc/skel&quot;复制文件…    
+输入新的 UNIX 口令：  
+重新输入新的 UNIX 口令：  
+</code></pre><p>两次输入linuxidc的初始密码，出现的信息如下  </p>
+<pre><code>passwd: password updated successfully  
+Changing the user information for linuxidc  
+Enter the new value, or press ENTER for the default  
+Full Name []:  
+Room Number []:  
+Work Phone []:  
+Home Phone []:  
+Other []:  
+Full Name []:  
+</code></pre><p>等信息一路回车  </p>
+<pre><code>这个信息是否正确？ [Y/n] y  
+</code></pre><p>到此，用户添加成功。如果需要让此用户有root权限，执行命令：  </p>
+<pre><code>root@ubuntu:~# sudo vim /etc/sudoers  
+</code></pre><p>修改文件如下：  </p>
+<pre><code># User privilege specification  
+root ALL=(ALL) ALL  
+linuxidc ALL=(ALL) ALL  
+</code></pre><p>保存退出，linuxidc用户就拥有了root权限。</p>
+<h2 id="2-Ubuntu14-04设置SSH无密码登录"><a href="#2-Ubuntu14-04设置SSH无密码登录" class="headerlink" title="2. Ubuntu14.04设置SSH无密码登录"></a>2. Ubuntu14.04设置SSH无密码登录</h2><h3 id="1-安装Openssh服务端"><a href="#1-安装Openssh服务端" class="headerlink" title="(1) 安装Openssh服务端"></a>(1) 安装Openssh服务端</h3><p>首先，我们需要更新我们的本地库索引。所以如下所见，我们需要先输入“apt-get update”</p>
+<pre><code>1. $ sudo apt-get update
+</code></pre><p>通过以下命令安装openssh-server：</p>
+<pre><code>2. $ sudo apt-get install openssh-server
+</code></pre><h3 id="2-开启openssh服务"><a href="#2-开启openssh服务" class="headerlink" title="(2) 开启openssh服务"></a>(2) 开启openssh服务</h3><p>在OpenSSH已经成功安装在Ubuntu14.04操作系统上了之后，我们要启动OpenSSH的服务。以下命令让你启动/开启服务。</p>
+<pre><code>1. $ sudo service ssh start
+</code></pre><p>或</p>
+<pre><code>1. $ sudo /etc/init.d/ssh start
+</code></pre><h3 id="3-配置密钥对"><a href="#3-配置密钥对" class="headerlink" title="(3) 配置密钥对"></a>(3) 配置密钥对</h3><p>安装并启动了OpenSSH服务以后。接下来就是要搞定公私钥对的时候了，在终端中运行以下命令：</p>
+<pre><code>1. mucao@study ~ $ ssh-keygen -t rsa
+</code></pre><p>在运行完以上命令了以后，我们需要回答一系列的问题。首先选择保存密钥的路径，按回车将会选择默认路径即家目录的一个隐藏的.ssh文件夹。下一个提示是请输入口令提醒。我个人将此留空（直接回车）。之后密钥对就会创建，大功告成。</p>
+<p>在密钥对生成以后，我们需要将<strong>客户端上的公钥复制到SSH服务端或者主机</strong>，来创建对客户端的信任关系。运行以下命令复制客户端的公钥到服务端。</p>
+<pre><code>1. mucao@study ~$ ssh-copy-id user@ip_address
+</code></pre><p>在公钥上传之后，我们现在可以禁用通过密码登陆SSH的方式了。为此，我们需要通过以下命令用文本编辑器打开/etc/ssh/ssh_config。</p>
+<pre><code>1. mucao@study ~$ sudo vim /etc/ssh/sshd_config
+</code></pre><p>主要找到下面的三行，修改成下面的样子</p>
+<pre><code>RSAAuthentication yes
+PubkeyAuthentication yes
+AuthorizedKeysFile      %h/.ssh/authorized_keys
+</code></pre><h3 id="4-重启SSH服务"><a href="#4-重启SSH服务" class="headerlink" title="(4) 重启SSH服务"></a>(4) 重启SSH服务</h3><p>最后，在我们配置完SSH服务端后，为了使改动生效我们需要重启SSH服务。在终端或控制台运行以下命令重启。</p>
+<pre><code>1. mucao@study ~$ sudo service ssh restart
+</code></pre><p>或</p>
+<pre><code>1. mucao@study ~$ sudo /etc/init.d/ssh restart
+</code></pre><p>现在，我们可以试试不用密码仅用密钥对的方式登录ssh服务端了。</p>
+<p><strong>总结</strong></p>
+<p>太好了！我们成功的配置了无密码登录SSH。使用加密密钥对进行SSH服务器认证是非常安全的一种做法，如果你想为SSH的单一用户登录实施安全的认证这也是备受推崇的方式。所以，如果你还有什么问题或建议，请在意见框中向我们反馈。很欣慰你能读完，希望你能喜欢加密的SSH安全登录 :-)</p>
+<p>提高Ubuntu的SSH登陆认证速度的办法 <a href="http://www.linuxidc.com/Linux/2014-09/106810.htm" target="_blank" rel="noopener">http://www.linuxidc.com/Linux/2014-09/106810.htm</a></p>
+<p>开启SSH服务让Android手机远程访问 Ubuntu 14.04  <a href="http://www.linuxidc.com/Linux/2014-09/106809.htm" target="_blank" rel="noopener">http://www.linuxidc.com/Linux/2014-09/106809.htm</a></p>
+<p>如何为Linux系统中的SSH添加双重认证 <a href="http://www.linuxidc.com/Linux/2014-08/105998.htm" target="_blank" rel="noopener">http://www.linuxidc.com/Linux/2014-08/105998.htm</a></p>
+<p>在 Linux 中为非 SSH 用户配置 SFTP 环境 <a href="http://www.linuxidc.com/Linux/2014-08/105865.htm" target="_blank" rel="noopener">http://www.linuxidc.com/Linux/2014-08/105865.htm</a></p>
+<p>Linux 上SSH 服务的配置和管理 <a href="http://www.linuxidc.com/Linux/2014-06/103627.htm" target="_blank" rel="noopener">http://www.linuxidc.com/Linux/2014-06/103627.htm</a></p>
+<p>SSH入门学习基础教程 <a href="http://www.linuxidc.com/Linux/2014-06/103008.htm" target="_blank" rel="noopener">http://www.linuxidc.com/Linux/2014-06/103008.htm</a></p>
+<p>SSH免密码登录详解  <a href="http://www.linuxidc.com/Linux/2015-03/114709.htm" target="_blank" rel="noopener">http://www.linuxidc.com/Linux/2015-03/114709.htm</a></p>
+<h2 id="3-Ubuntu14-04安装hadoop2-6-5"><a href="#3-Ubuntu14-04安装hadoop2-6-5" class="headerlink" title="3. Ubuntu14.04安装hadoop2.6.5"></a>3. Ubuntu14.04安装hadoop2.6.5</h2><h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>环境:ubuntu 14.04,<br>创建用户  用户名: <strong>glusr</strong>  密  码: <strong>123456</strong></p>
+<pre><code>#  adduser glusr
+</code></pre><p>创建完用户后，修改/etc/sudoers文件：</p>
+<pre><code>root@ubuntu:~# sudo visudo
+root ALL=(ALL) ALL
+glusr ALL=(ALL) ALL
+</code></pre><p>hadoop 2.6.5下载地址:<a href="http://mirrors.hust.edu.cn/apache/hadoop/common/" target="_blank" rel="noopener">http://mirrors.hust.edu.cn/apache/hadoop/common/</a></p>
+<h3 id="修改host配置文件"><a href="#修改host配置文件" class="headerlink" title="修改host配置文件"></a>修改host配置文件</h3><p>将机器名称与机器ip对应，方便后续对应；  </p>
+<pre><code>vim /etc/hosts 
+</code></pre><p>添加如下内容： </p>
+<pre><code>192.168.193.130 Master.Hadoop 
+192.168.193.131 Salve1.Hadoop 
+192.168.193.132 Salve2.Hadoop 
+</code></pre><p>然后将三台机器均进行相同的操作，测试机器间是否可以相互ping通，如下：<br>分别用ping Salve1.Hadoop或ping 192.168.193.131尝试。</p>
+<h3 id="ssh无密码登陆"><a href="#ssh无密码登陆" class="headerlink" title="ssh无密码登陆"></a>ssh无密码登陆</h3><p>  首先，在每一台机器上建立对localhost的无密码登陆。然后建立三台机器之间的无密码ssh登陆。<br>  在master上执行：</p>
+<pre><code>glusr@1307-03 ~$ ssh-keygen
+</code></pre><p>然后一路回车，所有选项都采用默认值。接下来执行：</p>
+<pre><code>glusr@1307-03:~$ cat id_rsa.pub &gt;&gt; authorized_keys
+</code></pre><p>修改authorized_keys权限，默认权限是700</p>
+<pre><code>chmod 600 ~/.ssh/authorized_keys
+</code></pre><p>修改ssh配置文件，需切换root用户 </p>
+<pre><code>vim /etc/ssh/sshd_config 
+</code></pre><p>找到如下三项： </p>
+<pre><code>RSAAuthentication yes # 启用 RSA 认证 
+PubkeyAuthentication yes # 启用公钥私钥配对认证方式 
+AuthorizedKeysFile .ssh/authorized_keys # 公钥文件路径 
+</code></pre><p>重启ssh服务 </p>
+<pre><code>service sshd restart 
+</code></pre><p>测试是否成功 </p>
+<pre><code>ssh localhost 
+</code></pre><p>中间填入yes，再次输入，不要求填写密码即成功。</p>
+<p>接下来就是要执行三台之间的SSH无密码登陆了。在master上执行下面的命令：</p>
+<pre><code>ssh-copy-id glusr@slave1
+ssh-copy-id glusr@slave2
+</code></pre><p>接下来，master使用SSH登录slave1,slave2就不用输入密码了。<br>进行验证：</p>
+<pre><code>ssh glusr@slave1
+ssh glusr@slave1
+</code></pre><p>同样的在slave1,slave2上执行相应的操作。所有操作完成后，三台机器之间就可以相互SSH无密码登陆了！</p>
+<h3 id="安装jdk"><a href="#安装jdk" class="headerlink" title="安装jdk"></a>安装jdk</h3><ol>
+<li><p>切换至root用户</p>
+</li>
+<li><p>上传jdk文件<br>将jdk文件上传到虚拟机上自定义的文件夹中，这里放到/home/hortonworks下，安装在/usr/java中;</p>
+</li>
+<li><p>将文件copy到其他机器上<br>在各个节点上创建文件 mkdir /usr/java，并将jdk文件传输到Slave上，以Salve1为例</p>
+<pre><code>scp /home/hortonworks/jdk-7u67-linux-x64.tar.gz root@Salve1.Hadoop:/usr/java
+</code></pre></li>
+<li><p>解压文件<br>解压至文件夹 /usr/java中,进入到文件路径下 </p>
+<pre><code>cd /usr/java
+tar -zxvf /usr/java/jdk-7u67-linux-x64.tar.gz
+</code></pre></li>
+</ol>
+<ol start="5">
+<li><p>删除导入的jdk文件 </p>
+<pre><code>rm /usr/java/jdk-7u67-linux-x64.tar.gz
+</code></pre></li>
+<li><p>配置环境变量  </p>
+<pre><code>vim /etc/profile   
+</code></pre><p>在文件底部加入JAVA_HOME、ClASS_PATH、PATH    </p>
+<pre><code>#set java environment  
+export JAVA_HOME=/usr/java/jdk1.7.0_67   
+export PATH=$PATH:$JAVA_HOME/bin:$JAVA_HOME/jre/bin   
+export CLASSPATH=.:$JAVA_HOME/lib:$JAVA_HOME/jre/lib   
+</code></pre><p>使配置生效   </p>
+<pre><code>source /etc/profile
+</code></pre></li>
+<li><p>验证 java是否安装成功 </p>
+<pre><code>java -version 
+</code></pre><p>ok验证成功  </p>
+</li>
+<li><p>赋予hadoop用户操作权限  </p>
+<p> 用root用户，进入/usr文件夹，将java文件夹操作权限赋予hadoop用户 </p>
+<pre><code>chown -R hadoop:hadoop ./usr/java
+</code></pre></li>
+</ol>
+<h3 id="安装hadoop集群"><a href="#安装hadoop集群" class="headerlink" title="安装hadoop集群"></a>安装hadoop集群</h3><ol>
+<li><p>设置安装路径  </p>
+<p> 各个节点上创建hadoop文件夹 mkdir /usr/hadoop</p>
+</li>
+<li><p>解压缩文件  </p>
+<p> 将hadoop-2.6.5文件解压到/opt/hadoop文件夹下，Master上:</p>
+<pre><code>tar -zxvf ~/hadoop-2.6.5.tar.gz -C /opt/hadoop 
+</code></pre></li>
+<li><p>将hadoop文件夹赋予hadoop用户读权限 </p>
+<pre><code>chown –R hadoop:hadoop hadoop
+</code></pre></li>
+<li><p>添加tmp文件夹  </p>
+<p> 因为HDFS把namenode的格式化信息存在了系统的tmp目录下，该目录每次开机会被清空，因此每次重新启动机器，都需要重新格式化HDFS。解决方案是配置一个新的tmp目录给hadoop，这样无需每次重新格式化hdfs。 </p>
+<pre><code>mkdir /usr/hadoop/hadoop-2.6.5/tmp
+</code></pre></li>
+<li><p>hadoop环境配置</p>
+<pre><code>vim /etc/profile
+</code></pre><p> 在底部加入</p>
+<p> <img src="G:/桌面文件和文件夹/学习/知识积累_md文件/image/hadoop_配置环境变量.png" alt="hadoop 配置环境变量"></p>
+<pre><code>#set hadoop path
+export HADOOP_HOME=/usr/hadoop/hadoop-2.6.5
+export PATH=$HADOOP_HOME/sbin:$HADOOP_HOME/bin:$PATH
+</code></pre></li>
+<li><p>hadoop配置</p>
+<p> core-site.xml和hdfs-site.xml是站在HDFS角度上配置文件；core-site.xml和mapred-site.xml是站在MapReduce角度上配置文件 </p>
+<p> 1、配置hadoop-env.sh</p>
+<pre><code>vim /usr/hadoop/hadoop-2.6.5/etc/hadoop/hadoop-env.sh
+</code></pre><p> 配置java环境，在文件中找到export JAVA_HOME，更改为：</p>
+<pre><code>export JAVA_HOME=/usr/java/jdk1.7.0_67  #自己java的home
+</code></pre><p> 2、配置core-site.xml</p>
+<p> 核心配置文件，设置临时目录及配置的是HDFS的地址和端口号，注：须将截图中的value中ip修改为192.168.193.130，也就是master节点的IP地址。</p>
+<pre><code>vim /usr/hadoop/hadoop-2.6.5/etc/hadoop/core-site.xml 
+</code></pre><p> 节点configuration中添加内容如下： </p>
+<pre><code>&lt;configuration&gt;
+    &lt;property&gt;
+        &lt;name&gt;hadoop.tmp.dir&lt;/name&gt;
+        &lt;value&gt;/opt/hadoop/hadoop-2.6.5/tmp&lt;/value&gt;
+        &lt;description&gt;A base for other temporary directories.&lt;/description&gt;
+    &lt;!-- file system properties  --&gt;
+    &lt;/property&gt;
+
+    &lt;property&gt;
+        &lt;name&gt;fs.default.name&lt;/name&gt;
+        &lt;!-- 下面要配置成自己master节点的IP地址 --&gt;
+        &lt;value&gt;hdfs://192.168.0.104:9000&lt;/value&gt;
+    &lt;/property&gt;
+
+&lt;/configuration&gt;
+</code></pre><p> 3、配置hdfs-site.xml</p>
+<p> 修改Hadoop中HDFS的配置，配置的备份方式默认为3,Salve少于3则会报错 </p>
+<pre><code>vim /usr/hadoop/hadoop-2.6.5/etc/hadoop/hdfs-site.xml  
+</code></pre><p> 配置文件内容：</p>
+<pre><code>&lt;configuration&gt;
+    &lt;property&gt;
+        &lt;name&gt;dfs.replication&lt;/name&gt;
+        &lt;value&gt;1&lt;/value&gt;
+    &lt;/property&gt;
+&lt;/configuration&gt;
+</code></pre><p> 4、配置mapred-site.xml</p>
+<pre><code>cp /usr/hadoop/hadoop-2.6.5/etc/hadoop/mapred-site.xml.template /usr/hadoop/hadoop-2.6.5/etc/hadoop/ mapred-site.xml 
+vim /usr/hadoop/hadoop-2.6.5/etc/hadoop/ mapred-site.xml 
+</code></pre><p> 添加如下内容</p>
+<pre><code>&lt;configuration&gt;
+    &lt;property&gt;
+        &lt;name&gt;mapred.job.tracker&lt;/name&gt;
+        &lt;value&gt;http://192.168.0.104:9001&lt;/value&gt;
+    &lt;/property&gt;
+&lt;/configuration&gt;
+</code></pre><p> 5、配置Master文件</p>
+<pre><code>vim /usr/hadoop/hadoop-2.6.5/etc/hadoop/ masters 
+</code></pre><p> 添加master主机ip，这里填入192.168.193.130 </p>
+<p> 6、配置Salves文件</p>
+<p> Master主机特有 </p>
+<pre><code>vim /usr/hadoop/hadoop-2.6.5/etc/hadoop/slaves 
+</code></pre><p> 添加：  </p>
+<pre><code>192.168.193.131
+192.168.193.132 
+192.168.193.133 
+</code></pre><p> 9、配置Salve的hadoop，可以单机采用上述1-5；也可直接将master节点上的hadoop文件夹复制过去，salve机器上的slaves文件是无需配置的，但无所谓。</p>
+<p> 9.1、scp -r /usr/hadoop <a href="mailto:root@Salve1.Hadoop" target="_blank" rel="noopener">root@Salve1.Hadoop</a>:/usr/   </p>
+<p> 9.2、切换至salve机器的root用户， 例如ssh :Salve1.Hadoop。 </p>
+<p> 9.3、配置hadoop环境 </p>
+<pre><code>vim /etc/profile 
+</code></pre><p> 在底部加入 </p>
+<pre><code>#set hadoop path
+export HADOOP_HOME=/usr/hadoop/hadoop-2.6.5
+export PATH=$HADOOP_HOME/sbin:$HADOOP_HOME/bin:$PATH
+</code></pre><p> 9.4、usr下，将hadoop文件夹赋予hadoop用户读权限 </p>
+<pre><code>chown -R hadoop:hadoop hadoop
+</code></pre></li>
+</ol>
+<h3 id="启动和验证"><a href="#启动和验证" class="headerlink" title="启动和验证"></a>启动和验证</h3><ol>
+<li><p>关闭iptables服务  </p>
+<p> 查看iptables状态：service iptables status  </p>
+<p> 关闭iptables服务：chkconfig iptables off(重启后生效)      </p>
+<p> 临时关闭ptables服务：service iptables stop  </p>
+</li>
+<li><p>启动hadoop </p>
+<p> 2.1格式化namenode  </p>
+<pre><code>hadoop namenode -format 
+</code></pre><p> 2.2启动：start-all.sh </p>
+<p> 发现存在警告：WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform… using builtin-java classes where applicable； </p>
+<p> 解决方案:网上查找资料说是由于hadoop是32bit编译的，而系统为64位的所导致的；<br>下载文件：  </p>
+<p> <a href="http://dl.bintray.com/sequenceiq/sequenceiq-bin/hadoop-native-64-2.6.0.tar" target="_blank" rel="noopener">http://dl.bintray.com/sequenceiq/sequenceiq-bin/hadoop-native-64-2.6.0.tar</a> </p>
+<p> 下载完以后，解压到hadoop的native目录下，覆盖原有文件即可。重新启动，就没有警告了。</p>
+</li>
+<li><p>验证是否启动成功  </p>
+<p> jps查看启动项  </p>
+<p> master显示：</p>
+<p> <img src="\image\hadoop_master_启动后jps.png" alt="hadoop_master_启动后jps"></p>
+<p> slave显示：</p>
+<p> <img src="\image\hadoop_slave_启动后jps.png" alt="hadoop_slave_启动后jps"></p>
+<p> 也可运行命令查看个节点信息： </p>
+<pre><code>hadoop dfsadmin -report 
+</code></pre><p> 网页版检测： </p>
+<pre><code>http:192.168.193.130:50070
+</code></pre></li>
+<li><p>其他： </p>
+<p> 若修改了ip，解决修改密码之后，无法上网的问题 </p>
+<p> 1、切换root用户运行： </p>
+<pre><code>system-config-network 
+</code></pre><p> 会弹出对话框 </p>
+<p> 选择Device configuration，回车 </p>
+<p> 选择eth0，回车 </p>
+<p> 只保留name，device，use dhcp在中括号中添加*，其他均修改为空 </p>
+<p> 保存设置； </p>
+<p> 重启网络服务：</p>
+<pre><code>service network restart 
+</code></pre><p> ok，可以上网了，缺点：修改的ip失效，回复原始ip，所以就返回修改，使用原本的ip，如果最初使用原始的ip也就无需这步了.</p>
+</li>
+</ol>
+<h3 id="应用mapreduce"><a href="#应用mapreduce" class="headerlink" title="应用mapreduce"></a>应用mapreduce</h3><ol>
+<li><p>启动hadoop集群 </p>
+<p> start-all.sh</p>
+</li>
+<li><p>在hadoop文件系统中增加文件 </p>
+<p> hadoop fs 查看hdfs操作系统命令集合</p>
+</li>
+<li><p>创建hdfs目录 </p>
+<p> hadoop fs -mkdir /input</p>
+</li>
+<li><p>上传文件 </p>
+<p> hadoop fs -put /usr/hadoop/hadoop-2.6.5/README.txt /input/</p>
+</li>
+<li><p>修改文件名称 </p>
+<p> hadoop fs -mv /input/README.txt /input/readme.txt</p>
+</li>
+<li><p>查看文件 </p>
+<p> hadoop fs -ls /input </p>
+<p> 输出文件夹为output，无需新建，若已存在需删除</p>
+</li>
+<li><p>运行hadoop自带例子 </p>
+<p> hadoop jar /usr/hadoop/hadoop-2.6.5/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.6.5.jar wordcount /input /output</p>
+</li>
+<li><p>查看文件输出结果 </p>
+<p> hadoop fs -ls /output</p>
+</li>
+<li><p>查看词频统计结果 </p>
+</li>
+</ol>
+<pre><code>hadoop fs cat /output/part-r-00000
+</code></pre><ol start="10">
+<li><p>将hdfs上文件导出到本地 </p>
+<p>hadoop fs -get /output/part-r-00000 /home/hadoop/data/pacc</p>
+</li>
+</ol>
+<h3 id="实例学习"><a href="#实例学习" class="headerlink" title="实例学习"></a>实例学习</h3><p>安装完成了，终于可以好好学习一些实例了。</p>
+<p><strong>参考网址</strong>：<a href="http://www.linuxidc.com/Linux/2017-03/142051.htm" target="_blank" rel="noopener">http://www.linuxidc.com/Linux/2017-03/142051.htm</a></p>
+<h2 id="4-SSH免密码登录详解"><a href="#4-SSH免密码登录详解" class="headerlink" title="4. SSH免密码登录详解"></a>4. SSH免密码登录详解</h2><p>From: <a href="http://www.linuxidc.com/Linux/2015-03/114709.htm" target="_blank" rel="noopener">http://www.linuxidc.com/Linux/2015-03/114709.htm</a></p>
+<p>为了更好的理解SSH免密码登录原理，我们先来说说SSH的安全验证，SSH采用的是”非对称密钥系统”，即耳熟能详的公钥私钥加密系统，其安全验证又分为两种级别。</p>
+<h3 id="1-基于口令的安全验证"><a href="#1-基于口令的安全验证" class="headerlink" title="1. 基于口令的安全验证"></a>1. 基于口令的安全验证</h3><p>这种方式使用用户名密码进行联机登录，一般情况下我们使用的都是这种方式。整个过程大致如下：  </p>
+<p>（1）客户端发起连接请求。</p>
+<p>（2）远程主机收到用户的登录请求，把自己的公钥发给客户端。</p>
+<p>（3）客户端接收远程主机的公钥，然后使用远程主机的公钥加密登录密码，紧接着将加密后的登录密码连同自己的公钥一并发送给远程主机。</p>
+<p>（4）远程主机接收客户端的公钥及加密后的登录密码，用自己的私钥解密收到的登录密码，如果密码正确则允许登录，到此为止双方彼此拥有了对方的公钥，开始双向加密解密。</p>
+<p>PS：当网络中有另一台冒牌服务器冒充远程主机时，客户端的连接请求被服务器B拦截，服务器B将自己的公钥发送给客户端，客户端就会将密码加密后发送给冒牌服务器，冒牌服务器就可以拿自己的私钥获取到密码，然后为所欲为。因此当第一次链接远程主机时，在上述步骤的第（3）步中，会提示您当前远程主机的”公钥指纹”，以确认远程主机是否是正版的远程主机，如果选择继续后就可以输入密码进行登录了，当远程的主机接受以后，该台服务器的公钥就会保存到 ~/.ssh/known_hosts文件中。</p>
+<h3 id="2-基于密匙的安全验证"><a href="#2-基于密匙的安全验证" class="headerlink" title="2. 基于密匙的安全验证"></a>2. 基于密匙的安全验证</h3><p>这种方式你需要在当前用户家目录下为自己创建一对密匙，并把公匙放在需要登录的服务器上。当你要连接到服务器上时，客户端就会向服务器请求使用密匙进行安全验证。服务器收到请求之后，会在该服务器上你所请求登录的用户的家目录下寻找你的公匙，然后与你发送过来的公匙进行比较。如果两个密匙一致，服务器就用该公匙加密“质询”并把它发送给客户端。客户端收到“质询”之后用自己的私匙解密再把它发送给服务器。与第一种级别相比，第二种级别不需要在网络上传送口令。</p>
+<p>PS：简单来说，就是将客户端的公钥放到服务器上，那么客户端就可以免密码登录服务器了，那么客户端的公钥应该放到服务器上哪个地方呢？默认为你要登录的用户的家目录下的 .ssh 目录下的 authorized_keys 文件中（即：~/.ssh/authorized_keys）。</p>
+<h3 id="3-使用场景"><a href="#3-使用场景" class="headerlink" title="3. 使用场景"></a>3. 使用场景</h3><p>rsync自动备份时免密码登录，集群环境中需要主机间互相通信如：Hadoop，目前小编只涉及到这两处，日后有其它地方用到再来补充~</p>
+<h3 id="3-相关配置项"><a href="#3-相关配置项" class="headerlink" title="3. 相关配置项"></a>3. 相关配置项</h3><p>SSHD服务的配置文件位于/etc/ssh/sshd_config</p>
+<p>配置项一：PubkeyAuthentication 是否允许使用密钥验证方式登录</p>
+<p>配置项二：AuthorizedKeysFile允许登录主机的公钥存放文件，默认为用户家目录下的 .ssh/authorized_keys</p>
+<h3 id="4-权限问题"><a href="#4-权限问题" class="headerlink" title="4. 权限问题"></a>4. 权限问题</h3><p>.ssh文件夹 700 chmod 700 .ssh</p>
+<p>authorized_keys文件 644 chmod 644 .ssh/authorized_keys</p>
+<h3 id="5-配置实现"><a href="#5-配置实现" class="headerlink" title="5. 配置实现"></a>5. 配置实现</h3><p>服务器：192.168.0.10 用户：server</p>
+<p>客户端：192.168.0.11 用户：client</p>
+<p>​    </p>
+<h4 id="客户端配置"><a href="#客户端配置" class="headerlink" title="客户端配置"></a>客户端配置</h4><p># 使用client用户登录并进入家目录</p>
+<p># cd /home/client</p>
+<p># 建立认证公钥和私钥</p>
+<p># ssh-keygen -t rsa （会有提示输入密码，直接回车即可）</p>
+<p># 之后会在家目录下建立 .ssh 文件夹，内有id_rsa（私钥）和id_rsa.pub（公钥）两个文件</p>
+<p># 将公钥文件上传到服务器上server的家目录</p>
+<p># scp ~/.ssh/id_rsa.pub <a href="mailto:server@192.168.0.10" target="_blank" rel="noopener">server@192.168.0.10</a>:~</p>
+<h4 id="服务器端配置"><a href="#服务器端配置" class="headerlink" title="服务器端配置"></a>服务器端配置</h4><p># 使用server用户登录并进入家目录</p>
+<p># cd /home/server</p>
+<p># 建立 .ssh 文件夹</p>
+<p># mkdir .ssh;</p>
+<p># 修改文件夹权限</p>
+<p># chmod 700 .ssh</p>
+<p># 将客户端传过来的id_rsa.pub文件中的内容加入到authorized_keys中</p>
+<p># cat id_rsa.pub &gt;&gt; .ssh/authorized_keys</p>
+<p># chmod 644 .ssh/authorized_keys</p>
+<p>之后你从客户端使用 client 用户登录服务器的server用户时就不需要再输入密码了，但是第一次连接时还是会提示你进行远程主机公钥指纹核对并将其存入 ~/.ssh/known_hosts 文件。</p>
+<h2 id="5-linux服务名称后面为什么有”d”"><a href="#5-linux服务名称后面为什么有”d”" class="headerlink" title="5. linux服务名称后面为什么有”d”"></a>5. linux服务名称后面为什么有”d”</h2><p>以 crontab 来说，他的主要执行程序名称应该是 cron 或 at 才对，为啥要加个 d 在后面？而成为 crond, atd 呢？就是因为 Linux 希望我们可以简单的判断该程序是否为 daemon， 所以，一般daemon 类型的程序都会加上 d 在文件名后头～包括服务器篇我们会看到的 httpd, vsftpd 等等都是 ^_^。</p>
+<p><font color="red">2017-11-29</font> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;学习《鸟哥的Linux私房菜-基础篇》</p>
+<h2 id="6-make命令与makefile-Makefile-文件"><a href="#6-make命令与makefile-Makefile-文件" class="headerlink" title="6. make命令与makefile(Makefile)文件"></a>6. make命令与makefile(Makefile)文件</h2><p>make 就是要将原始码编译成为可以被执行的可执行文件。执行make命令的时候，回去找到当前目录下的makefile文件，或者是Makefile文件。makefile文件的基本规则如下：</p>
+<pre><code>目标(target): 目标文件 1 目标文件 2
+&lt;tab&gt; gcc -o 欲建立的执行文件 目标文件 1 目标文件 2
+</code></pre><p>下面是一个示例：</p>
+<pre><code>[root@study ~]# vim makefile
+main: main.o haha.o sin_value.o cos_value.o
+    gcc -o main main.o haha.o sin_value.o cos_value.o -lm
+# 注意：第二行的 gcc 之前是 &lt;tab&gt; 按键产生的空格喔！
+</code></pre><p>make 读取当前目录下的 Makefile 文件，并将 Makefile 文件中的第一个目标作为其执行的“终极目标”，开始处理第一个规则（终极目标所在的规则）。</p>
+<ol>
+<li>makefile文件规则基本上是这样的：<br>(1) 在 makefile 当中的 # 代表批注；<br>(2) &lt;tab> 需要在命令行 (例如 gcc 这个编译程序指令) 的第一个字<br>(3) 目标 (target) 与相依文件(就是目标文件)之间需以『:』隔开。</li>
+</ol>
+<p>在makefile文件里面可以有多个目标(target):</p>
+<pre><code># 1. 先编辑 makefile 来建立新的规则，此规则的目标名称为 clean ：  
+[root@study ~]# vi makefile&gt;
+main: main.o haha.o sin_value.o cos_value.o
+    gcc -o main main.o haha.o sin_value.o cos_value.o -lm
+clean:
+    rm -f main main.o haha.o sin_value.o cos_value.o
+# 2. 以新的目标 (clean) 测试看看执行 make 的结果：
+[root@study ~]# make clean &lt;==就是这里！透过 make 以 clean 为目标
+rm -rf main main.o haha.o sin_value.o cos_value.o
+</code></pre><p><font color="red">2017-12-18</font> &emsp;&emsp;  学习《鸟哥的Linux私房菜-基础篇》</p>
+<h2 id="7-dpkg与apt"><a href="#7-dpkg与apt" class="headerlink" title="7. dpkg与apt"></a>7. dpkg与apt</h2><h3 id="1-简介"><a href="#1-简介" class="headerlink" title="(1)简介"></a>(1)简介</h3><p>dpkg是Debian的中级软件包管理器,类似RPM.</p>
+<p>dpkg是Debian软件包管理系统的中流砥柱,负责安全卸载软件包,配置,以及维护已安装的软件包.也是Debian系统中众多软件包管理工具的后端.有关dpkg的更多介绍参阅:<a href="http://www.dpkg.org" target="_blank" rel="noopener">http://www.dpkg.org</a></p>
+<p>系统中所有packages的信息都在/var/lib/dpkg/目录下,其中子目录”/var/lib/dpkg/info”用于保存各个软件包的配置文件列表.</p>
+<p>.conffiles 记录了软件包的配置文件列表</p>
+<p>.list 保存软件包中的文件列表,用户可以从.list的信息中找到软件包中文件的具体安装位置.</p>
+<p>.md5sums 记录了软件包的md5信息,这个信息是用来进行包验证的.</p>
+<p>.prerm 脚本在Debian报解包之前运行,主要作用是停止作用于即将升级的软件包的服务,直到软件包安装或升级完成.</p>
+<p>.postinst脚本是完成Debian包解开之后的配置工作,通常用于执行所安装软件包相关命令和服务重新启动.</p>
+<p>/var/lib/dpkg/available文件的内容是软件包的描述信息,该软件包括当前系统所使用的Debian安装源中的所有软件包,其中包括当前系统中已安装的和未安装的软件包.</p>
+<p>dpkg –i 手工安装deb包到系统中,不过有时会存在Dpends关系,<strong><font color="red">建议使用apt-get 来安装</font></strong>.<br>如果通过<strong>dpkg –i</strong>安装软件后由于Dpends关系没有安装成功,可通过<strong>apt-get –f install</strong>解决</p>
+<h3 id="2-Apt和dpkg快速参考"><a href="#2-Apt和dpkg快速参考" class="headerlink" title="(2)Apt和dpkg快速参考"></a>(2)Apt和dpkg快速参考</h3><p>apt-cache search # ——(package 搜索包)<br>apt-cache show #——(package 获取包的相关信息，如说明、大小、版本等)<br>sudo apt-get install # ——(package 安装包)<br>sudo apt-get install # —–(package - - reinstall 重新安装包)<br>sudo apt-get -f install # —–(强制安装?#”-f = –fix-missing”当是修复安装吧…<br>sudo apt-get remove #—–(package 删除包)<br>sudo apt-get remove - - purge # ——(package 删除包，包括删除配置文件等)<br>sudo apt-get autoremove –purge # —-(package 删除包及其依赖的软件包+配置文件等（只对6.10有效，强烈推荐）)<br>sudo apt-get update #——更新源<br>sudo apt-get upgrade #——更新已安装的包<br>sudo apt-get dist-upgrade # ———升级系统<br>sudo apt-get dselect-upgrade #——使用 dselect 升级<br>apt-cache depends #——-(package 了解使用依赖)<br>apt-cache rdepends # ——(package 了解某个具体的依赖?#当是查看该包被哪些包依赖吧…)<br>sudo apt-get build-dep # ——(package 安装相关的编译环境)<br>apt-get source #——(package 下载该包的源代码)<br>sudo apt-get clean &amp;&amp; sudo apt-get autoclean # ——–清理下载文件的存档 &amp;&amp; 只清理过时的包<br>sudo apt-get check #——-检查是否有损坏的依赖</p>
+<p>apt-get install<br>下载 以及所有倚赖的包裹，同时进行包裹的安装或升级。如果某个包裹被设置了 hold (停止标志，就会被搁在一边(即不会被升级)。更多 hold 细节请看下面。</p>
+<p>apt-get remove [–purge]<br>移除 以及任何倚赖这个包裹的其它包裹。<br>–purge 指明这个包裹应该被完全清除 (purged) ，更多信息请看 dpkg -P。</p>
+<p>apt-get update<br>升级来自 Debian 镜像的包裹列表，如果你想安装当天的任何软件，至少每天运行一次，而且每次修改了/etc/apt/sources.list 后，必须执行。</p>
+<p>apt-get upgrade [-u]<br>升级所以已经安装的包裹为最新可用版本。不会安装新的或移除老的包裹。如果一个包改变了倚赖关系而需要安装一个新的包裹，那么它将不会被升级，而是标志为 hold。apt-get update 不会升级被标志为 hold 的包裹 (这个也就是 hold 的意思)。请看下文如何手动设置包裹为 hold。我建议同时使用 ‘-u’ 选项，因为这样你就能看到哪些包裹将会被升级。</p>
+<p>apt-get dist-upgrade [-u]<br>和 apt-get upgrade 类似，除了 dist-upgrade 会安装和移除包裹来满足倚赖关系。因此具有一定的危险性。</p>
+<p>apt-cache search<br>搜索满足 的包裹和描述。</p>
+<p>apt-cache show<br>显示 的完整的描述。</p>
+<p>apt-cache showpkg<br>显示 许多细节，以及和其它包裹的关系。</p>
+<p>dselect<br>console-apt<br>aptitude<br>gnome-apt<br>APT 的几个图形前端(其中一些在使用前得先安装)。这里 dselect 无疑是最强大的，也是最古老，最难驾驭。</p>
+<p>普通 Dpkg 用法  </p>
+<p>dpkg -i<br>安装一个 Debian 包裹文件，如你手动下载的文件。</p>
+<p>dpkg -c<br>列出安装包的内容。</p>
+<p>dpkg -I<br>从 中提取包裹信息。</p>
+<p>dpkg -r<br>移除一个已安装的包裹。</p>
+<p>dpkg -P<br>完全清除一个已安装的包裹。和 remove 不同的是，remove 只是删掉数据和可执行文件，purge 另外还删除所有的配制文件。</p>
+<p>dpkg -L<br>列出 安装的所有文件清单。同时请看 dpkg -c 来检查一个 .deb 文件的内容。</p>
+<p>dpkg -s<br>显示已安装包裹的信息。同时请看 apt-cache 显示 Debian 存档中的包裹信息，以及 dpkg -I 来显示从一个 .deb 文件中提取的包裹信息。</p>
+<p>dpkg -S<br>在包裹数据库中查找 ，并告诉你哪个包裹包含了这个文件。(注：查找的是事先已经安装的包裹)</p>
+<p>dpkg-reconfigure<br>重新配制一个已经安装的包裹，如果它使用的是 debconf (debconf 为包裹安装提供了一个统一的配制界面)。你能够重新配制 debconf 它本身，如你想改变它的前端或提问的优先权。例如，重新配制 debconf，使用一个 dialog 前端，简单运行：</p>
+<p>dpkg-reconfigure –frontend=dialog debconf (如果你安装时选错了，这里可以改回来哟：)</p>
+<p>echo “ hold” | dpkg –set-selections<br>设置 的状态为 hlod (命令行方式)</p>
+<p>dpkg –get-selections “”<br>取的 的当前状态 (命令行方式)</p>
+<p>支持通配符，如：</p>
+<pre><code>Debian:~# dpkg --get-selections *wine*
+libwine                                         hold
+libwine-alsa                                    hold
+libwine-arts                                    hold
+libwine-dev                                     hold
+libwine-nas                                     hold
+libwine-print                                   hold
+libwine-twain                                   hold
+wine                                            hold
+wine+                                           hold
+wine-doc                                        hold
+wine-utils                                      hold
+</code></pre><p>例如：<br>大家现在用的都是 gaim-0.58 + QQ-plugin，为了防止 gaim 被升级，我们可以采用如下方法：</p>
+<p>方法一：</p>
+<pre><code>Debian:~# echo &quot;gaim hold&quot; | dpkg --set-selections
+</code></pre><p>然后用下面命令检查一下：</p>
+<pre><code>Debian:~# dpkg --get-selections &quot;gaim&quot;
+gaim                                            hold
+</code></pre><p>现在的状态标志是 hold，就不能被升级了。</p>
+<p>如果想恢复怎么办呢?</p>
+<pre><code>Debian:~# echo &quot;gaim install&quot; | dpkg --set-selections
+Debian:~# dpkg --get-selections &quot;gaim&quot;
+gaim                                            install
+</code></pre><p>这时状态标志又被重置为 install，可以继续升级了。</p>
+<p>同志们会问，哪个这些状态标志都写在哪个文件中呢?<br>在 /var/lib/dpkg/status 里，你也可以通过修改这个文件实现 hold。</p>
+<p>有时你会发现有的软件状态标志是 purge，不要奇怪。<br>如：事先已经安装了 amsn，然后把它卸了。</p>
+<pre><code>apt-get remove --purge amsn
+</code></pre><p>那么状态标志就从 install 变成 purge。</p>
+<p>方法二：<br>在/etc/apt 下手动建一个 preferences 文件<br>内容：</p>
+<pre><code>Package: gaim
+Pin: version 0.58*
+</code></pre><p>保存</p>
+<h3 id="3-ubuntu给出的解释"><a href="#3-ubuntu给出的解释" class="headerlink" title="(3) ubuntu给出的解释"></a>(3) ubuntu给出的解释</h3><p>dpkg资料：<a href="https://help.ubuntu.com/lts/serverguide/dpkg.html" title="ubuntu官方解释" target="_blank" rel="noopener">Ubuntu官网资料</a></p>
+<p>apt资料： <a href="https://help.ubuntu.com/lts/serverguide/apt.html" title="ubuntu官方解释" target="_blank" rel="noopener">Ubuntu官网资料</a></p>
+<p><strong>apt命令</strong></p>
+<p>apt是一个强大的命令行工具，其实就是Ububuntu的Advanced Packaging Tool(APT)。<br>执行软件包的安装，卸载，更新，甚至是升级整个Ubuntu系统。</p>
+<p>一些有用的例子：</p>
+<p>1. 安装软件包</p>
+<pre><code>sudo apt install nmap
+</code></pre><p>2. 移除软件包</p>
+<pre><code>sudo apt remove nmap
+</code></pre><p>多个软件包：你可以安装和卸载用空格分隔的多个软件包。<br>如果要移除配置文件，则要加上–purge选项。</p>
+<p>3. 更新软件库列表<br>软件库列表放置的目录是：<br>/etc/apt/sources.list 和 /etc/apt/sources.list</p>
+<pre><code>sudo apt update
+</code></pre><p>4. 升级软件包<br>升级软件包之前，首先应该用上面的命令去更新软件库列表。</p>
+<pre><code>sudo apt upgrade
+</code></pre><p>apt命令的执行日志放置在：/var/log/dpkg.log<br>详细的使用信息，可以用下面的命令来获取。</p>
+<pre><code>apt help
+</code></pre>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Linux/" rel="tag"># Linux</a>
+          
+            <a href="/tags/编程小知识点/" rel="tag"># 编程小知识点</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/14/数据库/MySQL/" rel="next" title="MySQL">
+                <i class="fa fa-chevron-left"></i> MySQL
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/12/01/1_Java设计模式/" rel="prev" title="JAVA设计模式">
+                JAVA设计模式 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/zhg_avatar.jpg"
+                alt="zhongzhengang" />
+            
+              <p class="site-author-name" itemprop="name">zhongzhengang</p>
+              <p class="site-description motion-element" itemprop="description">一点一滴的积累</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/zhongzhengang" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/mu-cao-18-76/activities" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-globe"></i>知乎</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux学习笔记"><span class="nav-number">1.</span> <span class="nav-text">Linux学习笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#0-linux小知识点积累"><span class="nav-number">1.1.</span> <span class="nav-text">0. linux小知识点积累</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-重新启动X窗口"><span class="nav-number">1.1.1.</span> <span class="nav-text">(1) 重新启动X窗口</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Ubuntu创建新用户并增加管理员权限"><span class="nav-number">1.2.</span> <span class="nav-text">1. Ubuntu创建新用户并增加管理员权限</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Ubuntu14-04设置SSH无密码登录"><span class="nav-number">1.3.</span> <span class="nav-text">2. Ubuntu14.04设置SSH无密码登录</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-安装Openssh服务端"><span class="nav-number">1.3.1.</span> <span class="nav-text">(1) 安装Openssh服务端</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-开启openssh服务"><span class="nav-number">1.3.2.</span> <span class="nav-text">(2) 开启openssh服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-配置密钥对"><span class="nav-number">1.3.3.</span> <span class="nav-text">(3) 配置密钥对</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-重启SSH服务"><span class="nav-number">1.3.4.</span> <span class="nav-text">(4) 重启SSH服务</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Ubuntu14-04安装hadoop2-6-5"><span class="nav-number">1.4.</span> <span class="nav-text">3. Ubuntu14.04安装hadoop2.6.5</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#准备工作"><span class="nav-number">1.4.1.</span> <span class="nav-text">准备工作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改host配置文件"><span class="nav-number">1.4.2.</span> <span class="nav-text">修改host配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ssh无密码登陆"><span class="nav-number">1.4.3.</span> <span class="nav-text">ssh无密码登陆</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装jdk"><span class="nav-number">1.4.4.</span> <span class="nav-text">安装jdk</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装hadoop集群"><span class="nav-number">1.4.5.</span> <span class="nav-text">安装hadoop集群</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动和验证"><span class="nav-number">1.4.6.</span> <span class="nav-text">启动和验证</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用mapreduce"><span class="nav-number">1.4.7.</span> <span class="nav-text">应用mapreduce</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例学习"><span class="nav-number">1.4.8.</span> <span class="nav-text">实例学习</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-SSH免密码登录详解"><span class="nav-number">1.5.</span> <span class="nav-text">4. SSH免密码登录详解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-基于口令的安全验证"><span class="nav-number">1.5.1.</span> <span class="nav-text">1. 基于口令的安全验证</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-基于密匙的安全验证"><span class="nav-number">1.5.2.</span> <span class="nav-text">2. 基于密匙的安全验证</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-使用场景"><span class="nav-number">1.5.3.</span> <span class="nav-text">3. 使用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-相关配置项"><span class="nav-number">1.5.4.</span> <span class="nav-text">3. 相关配置项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-权限问题"><span class="nav-number">1.5.5.</span> <span class="nav-text">4. 权限问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-配置实现"><span class="nav-number">1.5.6.</span> <span class="nav-text">5. 配置实现</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#客户端配置"><span class="nav-number">1.5.6.1.</span> <span class="nav-text">客户端配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#服务器端配置"><span class="nav-number">1.5.6.2.</span> <span class="nav-text">服务器端配置</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-linux服务名称后面为什么有”d”"><span class="nav-number">1.6.</span> <span class="nav-text">5. linux服务名称后面为什么有”d”</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-make命令与makefile-Makefile-文件"><span class="nav-number">1.7.</span> <span class="nav-text">6. make命令与makefile(Makefile)文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-dpkg与apt"><span class="nav-number">1.8.</span> <span class="nav-text">7. dpkg与apt</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-简介"><span class="nav-number">1.8.1.</span> <span class="nav-text">(1)简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Apt和dpkg快速参考"><span class="nav-number">1.8.2.</span> <span class="nav-text">(2)Apt和dpkg快速参考</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-ubuntu给出的解释"><span class="nav-number">1.8.3.</span> <span class="nav-text">(3) ubuntu给出的解释</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zhongzhengang</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Linux,Bash Shell," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="ZhongZhenGang's Notes" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="Bash Shell学习bash shell 小知识点数组取值 对于一个数组，在直接使用数组变量名取值得时候，其实是取得第一个元素值，如果想要取所有的元素值，要用符号@。例如： 12345NAMES=(Joe Jenny Sara Tony)echo $&amp;#123;NAMES&amp;#125;  #输出：Joeecho $&amp;#123;NAMES[0]&amp;#125;  #输出：Joeecho $&amp;#123;">
+<meta name="keywords" content="Linux,Bash Shell">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Bash Shell学习">
+<meta property="og:url" content="http://yoursite.com/2018/05/16/2_Bash Shell学习/index.html">
+<meta property="og:site_name" content="ZhongZhenGang&#39;s Notes">
+<meta property="og:description" content="Bash Shell学习bash shell 小知识点数组取值 对于一个数组，在直接使用数组变量名取值得时候，其实是取得第一个元素值，如果想要取所有的元素值，要用符号@。例如： 12345NAMES=(Joe Jenny Sara Tony)echo $&amp;#123;NAMES&amp;#125;  #输出：Joeecho $&amp;#123;NAMES[0]&amp;#125;  #输出：Joeecho $&amp;#123;">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-07-04T10:27:59.541Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Bash Shell学习">
+<meta name="twitter:description" content="Bash Shell学习bash shell 小知识点数组取值 对于一个数组，在直接使用数组变量名取值得时候，其实是取得第一个元素值，如果想要取所有的元素值，要用符号@。例如： 12345NAMES=(Joe Jenny Sara Tony)echo $&amp;#123;NAMES&amp;#125;  #输出：Joeecho $&amp;#123;NAMES[0]&amp;#125;  #输出：Joeecho $&amp;#123;">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/05/16/2_Bash Shell学习/"/>
+
+
+
+
+
+  <title>Bash Shell学习 | ZhongZhenGang's Notes</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ZhongZhenGang's Notes</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/16/2_Bash Shell学习/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhongzhengang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/zhg_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZhongZhenGang's Notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Bash Shell学习</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-16T12:05:41+08:00">
+                2018-05-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/操作系统/" itemprop="url" rel="index">
+                    <span itemprop="name">操作系统</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/操作系统/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Bash-Shell学习"><a href="#Bash-Shell学习" class="headerlink" title="Bash Shell学习"></a>Bash Shell学习</h1><h2 id="bash-shell-小知识点"><a href="#bash-shell-小知识点" class="headerlink" title="bash shell 小知识点"></a>bash shell 小知识点</h2><p><strong>数组取值</strong></p>
+<p>对于一个数组，在直接使用数组变量名取值得时候，其实是取得第一个元素值，如果想要取所有的元素值，要用符号@。例如：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">NAMES=(Joe Jenny Sara Tony)</span><br><span class="line">echo $&#123;NAMES&#125;  #输出：Joe</span><br><span class="line">echo $&#123;NAMES[0]&#125;  #输出：Joe</span><br><span class="line">echo $&#123;NAMES[1]&#125;  #输出：Jenny</span><br><span class="line">echo $&#123;NAMES[@]  #输出：Joe Jenny Sara Tony</span><br></pre></td></tr></table></figure>
+<p><strong>表达式求值</strong></p>
+<p>在bash shell中，表达式求值的方式是：$$((数学表达式))，例如：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">count=4</span><br><span class="line">count=$(($count - 1))</span><br></pre></td></tr></table></figure></p>
+<p><strong>条件判断式中的中括号[]问题</strong></p>
+<p>注意，在条件判断式中，中括号和后面的内容要有空格，否则可能shell识别不了。</p>
+<p>例如 if [78 &gt; 45 ]; then 可能就会报”[78  识别不了这个命令”，正确的写法是 if [ 78 &gt; 45 ]; then。</p>
+<p><strong>在单引号中解析变量值</strong></p>
+<p>本来在单引号中的字符串中是不会解析变量值的，比如echo ‘\$2 is “\$2” ‘，输出结果就是”\$2 is “\$2” “ ，要想在单引号中解析变量值，需要在变量周围<strong>再使用单引号括起来</strong>，比如 echo ‘\$2 is ‘\$2’  ‘ </p>
+<p>学习参考网址：<a href="https://www.learnshell.org/en/Hello%2C_World%21" target="_blank" rel="noopener">https://www.learnshell.org/en/Hello%2C_World%21</a></p>
+<h2 id="基本了解"><a href="#基本了解" class="headerlink" title="基本了解"></a>基本了解</h2><p>对于Shell 脚本，其中第一行的”#!”不是一个注释，后面要跟上一个Shell解释器的全路径。这个路径可以告诉操作系统，这么文件中的内容是由解释器中的许多命令组成的。</p>
+<p>一般Shell脚本都是”.sh”结尾。第一行的示例如下：</p>
+<p><strong>#!/bin/bash</strong></p>
+<p>“#”后面的跟的内容被认为是注释。</p>
+<p>想查看当前活跃的Shell，并且查看它路径是什么，可以在命令行键入下面的命令：</p>
+<p><strong>ps | grep $$</strong></p>
+<blockquote>
+<p>987 tty1 00:00:00 bash</p>
+</blockquote>
+<p>上面展示了你正在使用的是哪种类型的’bash’，下面的操作会找出Shell 脚本的全路径</p>
+<p><strong>which bash</strong></p>
+<blockquote>
+<p>/bin/bash</p>
+</blockquote>
+<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><p>在bash中定义变量就直接使用“=”赋值，要注意一点就是”=”号两边是不能有空格的。</p>
+<p>使用反斜杠”\”可以逃脱特殊字符。</p>
+<p>使用单引号括起来的字符串，不会保留中间的任意空白字符，但是使用双引号括起来的字符串，是会保留任意的空白字符的。</p>
+<p>可以使用命令的执行结果给变量赋值，但是执行的命令要使用反引号括起来，或者使用$()。</p>
+<h2 id="传递参数到脚本"><a href="#传递参数到脚本" class="headerlink" title="传递参数到脚本"></a>传递参数到脚本</h2><p>可以给脚本传递参数，通过在执行脚本的时候，在脚本名字后面使用空格分隔参数，形成一个参数列表。</p>
+<p>在脚本里面变量$1就是第一个参数，\$2就是第二个参数，以此类推。注意，变量\$0指向的是当前脚本。</p>
+<p>==zhg:== 可以将脚本名字以及后面的参数看做是一个完整的数组，这样就和数组的下标编号对应上了。</p>
+<p>变量’$#’保存的是参数个数。</p>
+<p>变量‘$@’保存的是包含所有参数和空格的字符串。</p>
+<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><p>数组名和变量名一样，后面的初始化值使用（）括起来，值之间使用空格分隔。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">my_array=(apple banana "Fruit Basket" orange)</span><br><span class="line">new_array[2]=apricot</span><br></pre></td></tr></table></figure>
+<p>可以使用${ #arrayname[@]}获取数组的长度，即元素个数。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">my_array=(apple banana "Fruit Basket" orange)</span><br><span class="line">echo  $&#123; #my_array[@]&#125;</span><br></pre></td></tr></table></figure>
+<p>数组元素可以通过下标访问，下标从0开始的。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">my_array=(apple banana "Fruit Basket" orange)</span><br><span class="line">echo $&#123;my_array[3]&#125;                     # orange - note that curly brackets are needed</span><br><span class="line"><span class="meta">#</span> adding another array element</span><br><span class="line">my_array[4]="carrot"                    # value assignment without a $ and curly brackets</span><br><span class="line">echo $&#123; #my_array[@]&#125;                    # 5</span><br><span class="line">echo $&#123;my_array[$&#123; #my_array[@]&#125;-1]&#125;     # carrot</span><br></pre></td></tr></table></figure>
+<h2 id="基本操作-Basic-Operators"><a href="#基本操作-Basic-Operators" class="headerlink" title="基本操作(Basic Operators)"></a>基本操作(Basic Operators)</h2><p><strong>算数运算</strong></p>
+<p>在变量上的简单数学运算可以使用算法表达式：$((expression))</p>
+<p>The basic operators are:</p>
+<p><strong>a + b</strong> addition (a plus b)</p>
+<p><strong>a - b</strong> substraction (a minus b)</p>
+<p><strong>a * b</strong> multiplication (a times b)</p>
+<p><strong>a / b</strong> division (integer) (a divided by b)</p>
+<p><strong>a % b</strong> modulo (the integer remainder of a divided by b)</p>
+<p>==<strong>a</strong> <strong>**</strong> <strong>b</strong> exponentiation (a to the power of b)==</p>
+<h2 id="基础字符串操作"><a href="#基础字符串操作" class="headerlink" title="基础字符串操作"></a>基础字符串操作</h2><p>字符串长度</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>       1234567890123456</span><br><span class="line">STRING="this is a string"</span><br><span class="line">echo $&#123; #STRING&#125;            # 16</span><br></pre></td></tr></table></figure>
+<p>抽取子串</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">STRING=<span class="string">"this is a string"</span></span><br><span class="line">POS=1</span><br><span class="line">LEN=3</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;STRING:$POS:$LEN&#125;</span>   <span class="comment"># his</span></span><br></pre></td></tr></table></figure>
+<p>子串替换</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 替换第一次出现的地方</span></span><br><span class="line">STRING="to be or not to be"</span><br><span class="line">echo $&#123;STRING[@]/be/eat&#125;        # to eat or not to be</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 替换所有出现的地方</span></span><br><span class="line">STRING="to be or not to be"</span><br><span class="line">echo $&#123;STRING[@]//be/eat&#125;        # to eat or not to eat</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 删除所有子串出现的地方（替换为空串）</span></span><br><span class="line">STRING="to be or not to be"</span><br><span class="line">echo $&#123;STRING[@]// not/&#125;        # to be or to be</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> Replace occurrence of substring <span class="keyword">if</span> at the beginning of <span class="variable">$STRING</span></span></span><br><span class="line">STRING="to be or not to be"</span><br><span class="line">echo $&#123;STRING[@]/#to be/eat now&#125;    # eat now or not to be</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> Replace occurrence of substring <span class="keyword">if</span> at the end of <span class="variable">$STRING</span></span></span><br><span class="line">STRING="to be or not to be"</span><br><span class="line">echo $&#123;STRING[@]/%be/eat&#125;        # to be or not to eat</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> replace occurrence of substring with shell <span class="built_in">command</span> output</span></span><br><span class="line">STRING="to be or not to be"</span><br><span class="line">echo $&#123;STRING[@]/%be/be on $(date +%Y-%m-%d)&#125;    # to be or not to be on 2012-06-14</span><br></pre></td></tr></table></figure>
+<h2 id="逻辑判断"><a href="#逻辑判断" class="headerlink" title="逻辑判断"></a>逻辑判断</h2><p>基本条件判断结构为：</p>
+<p><strong>if [ expression ]; then</strong></p>
+<p>code if ‘expression’ is true</p>
+<p><strong>fi</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">NAME="John"</span><br><span class="line">if [ "$NAME" = "John" ]; then</span><br><span class="line">  echo "True - my name is indeed John"</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+<p>if-else</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">NAME="Bill"</span><br><span class="line">if [ "$NAME" = "John" ]; then</span><br><span class="line">  echo "True - my name is indeed John"</span><br><span class="line">else</span><br><span class="line">  echo "False"</span><br><span class="line">  echo "You must mistaken me for $NAME"</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+<p>else-if</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">NAME="George"</span><br><span class="line">if [ "$NAME" = "John" ]; then</span><br><span class="line">  echo "John Lennon"</span><br><span class="line">elif [ "$NAME" = "George" ]; then</span><br><span class="line">  echo "George Harrison"</span><br><span class="line">else</span><br><span class="line">  echo "This leaves us with Paul and Ringo"</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+<p>A empty string or a string consisting of spaces or an undefined variable name, are evaluated as false. The expression can be a logical combination of comparisons: negation is denoted by <strong>!</strong> , logical AND (conjunction) is denoted by <strong>&amp;&amp;</strong>, and logical OR (disjunction) is denoted by <strong>||</strong>. Conditional expressions should be surroun-ded by double brackets [[ ]].</p>
+<p>数学类型的比较</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">comparison    Evaluated to true when</span><br><span class="line"><span class="meta">$</span><span class="bash">a -lt <span class="variable">$b</span>    <span class="variable">$a</span> &lt; <span class="variable">$b</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash">a -gt <span class="variable">$b</span>    <span class="variable">$a</span> &gt; <span class="variable">$b</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash">a -le <span class="variable">$b</span>    <span class="variable">$a</span> &lt;= <span class="variable">$b</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash">a -ge <span class="variable">$b</span>    <span class="variable">$a</span> &gt;= <span class="variable">$b</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash">a -eq <span class="variable">$b</span>    <span class="variable">$a</span> is equal to <span class="variable">$b</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash">a -ne <span class="variable">$b</span>    <span class="variable">$a</span> is not equal to <span class="variable">$b</span></span></span><br></pre></td></tr></table></figure>
+<p>字符串类型的比较</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">comparison    Evaluated to true when</span><br><span class="line">"$a" = "$b"     $a is the same as $b</span><br><span class="line">"$a" == "$b"    $a is the same as $b</span><br><span class="line">"$a" != "$b"    $a is different from $b</span><br><span class="line">-z "$a"         $a is empty</span><br></pre></td></tr></table></figure>
+<p>注意，“=”号两边的空格符是需要的，还有字符串变量周围要有双引号””，以避免shell识别特殊字符。</p>
+<p>在shell中，单引号’’内的变量是不解析的，例如<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">n=3</span><br><span class="line">echo '$n'   # 输出：$n</span><br></pre></td></tr></table></figure></p>
+<p>但是，双引号括起来的变量是会进行解析的，例如：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">n=3</span><br><span class="line">echo "$n"    	#输出：3</span><br></pre></td></tr></table></figure></p>
+<p><strong>case-in结构</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">case "$variable" in</span><br><span class="line">    "$condition1" )</span><br><span class="line">        command...</span><br><span class="line">    ;;</span><br><span class="line">    "$condition2" )</span><br><span class="line">        command...</span><br><span class="line">    ;;</span><br><span class="line">esac</span><br></pre></td></tr></table></figure>
+<p>简单的case结构示例：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mycase=1</span><br><span class="line">case $mycase in</span><br><span class="line">    1) echo "You selected bash";;</span><br><span class="line">    2) echo "You selected perl";;</span><br><span class="line">    3) echo "You selected phyton";;</span><br><span class="line">    4) echo "You selected c++";;</span><br><span class="line">    5) exit</span><br><span class="line">esac</span><br></pre></td></tr></table></figure>
+<p>注意：case 后面的每一条语句都是以两个分号结尾的。</p>
+<h2 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h2><p>bash中基本的<strong>for循环结构</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> basic construct</span></span><br><span class="line">for arg in [list]</span><br><span class="line">do</span><br><span class="line"> command(s)...</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+<p>简单for循环例子：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> loop on array member</span></span><br><span class="line">NAMES=(Joe Jenny Sara Tony)</span><br><span class="line">for N in $&#123;NAMES[@]&#125; ; do</span><br><span class="line">  echo "My name is $N"</span><br><span class="line">done</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> loop on <span class="built_in">command</span> output results</span></span><br><span class="line">for f in $( ls prog.sh /etc/localtime ) ; do</span><br><span class="line">  echo "File is: $f"</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+<p>bash中基本的<strong>while循环结构</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># basic construct</span><br><span class="line">while [ condition ]</span><br><span class="line">do</span><br><span class="line"> command(s)...</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+<p>简单的while循环例子</p>
+<p>The while construct tests for a condition, and if true, executes commands. It keeps looping as long as the condition is true.<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">COUNT=4</span><br><span class="line">while [ $COUNT -gt 0 ]; do</span><br><span class="line">  	echo "Value of count is: $COUNT"</span><br><span class="line">  	COUNT=$(($COUNT - 1))   #计算一个表达式  $((数学表达式))</span><br><span class="line">done</span><br></pre></td></tr></table></figure></p>
+<p>bash中基本的<strong>until循环结构</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> basic construct</span></span><br><span class="line">until [ condition ]</span><br><span class="line">do</span><br><span class="line">	command(s)...</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+<p>until循环的简单例子</p>
+<p>The until construct tests for a condition, and if false, executes commands. It keeps looping as long as the condition is false (opposite of while construct)</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">COUNT=1</span><br><span class="line">until [ $COUNT -gt 5 ]; do</span><br><span class="line">  	echo "Value of count is: $COUNT"</span><br><span class="line">  	COUNT=$(($COUNT + 1))</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+<p><strong>break 和 continue 语句</strong></p>
+<p>break和continue用于控制for，while和until循环结构。continue用于跳过剩下的特殊循环迭代，但是break是用于跳过整个剩下的循环。下面是例子：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> Prints out 0,1,2,3,4</span></span><br><span class="line"></span><br><span class="line">COUNT=0</span><br><span class="line">while [ $COUNT -ge 0 ]; do</span><br><span class="line">  echo "Value of COUNT is: $COUNT"</span><br><span class="line">  COUNT=$((COUNT+1))</span><br><span class="line">  if [ $COUNT -ge 5 ] ; then</span><br><span class="line">    break</span><br><span class="line">  fi</span><br><span class="line">done</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> Prints out only odd numbers - 1,3,5,7,9</span></span><br><span class="line">COUNT=0</span><br><span class="line">while [ $COUNT -lt 10 ]; do</span><br><span class="line">  COUNT=$((COUNT+1))</span><br><span class="line"><span class="meta">  #</span><span class="bash"> Check <span class="keyword">if</span> COUNT is even</span></span><br><span class="line">  if [ $(($COUNT % 2)) = 0 ] ; then</span><br><span class="line">    continue</span><br><span class="line">  fi</span><br><span class="line">  echo $COUNT</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+<h2 id="shell-函数"><a href="#shell-函数" class="headerlink" title="shell 函数"></a>shell 函数</h2><p>shell中的函数就是一个子程序，实现了一些功能和操作。基本的函数结构如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> basic construct</span></span><br><span class="line">function_name &#123;</span><br><span class="line">  command...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>简单例子：</p>
+<p>Functions are called simply by writing their names. A function call is equivalent to a command. Parameters may be passed to a function, by specifying them after the function name. The first parameter is referred to in the function as $1, the second as $2 etc.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">function function_B &#123;</span><br><span class="line">  echo "Function B."</span><br><span class="line">&#125;</span><br><span class="line">function function_A &#123;</span><br><span class="line">  echo "$1"</span><br><span class="line">&#125;</span><br><span class="line">function adder &#123;</span><br><span class="line">  echo "$(($1 + $2))"</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> FUNCTION CALLS</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> Pass parameter to <span class="keyword">function</span> A</span></span><br><span class="line">function_A "Function A."     # Function A.</span><br><span class="line">function_B                   # Function B.</span><br><span class="line"><span class="meta">#</span><span class="bash"> Pass two parameters to <span class="keyword">function</span> adder</span></span><br><span class="line">adder 12 56                  # 68</span><br></pre></td></tr></table></figure>
+<h2 id="特殊变量-Special-Variables"><a href="#特殊变量-Special-Variables" class="headerlink" title="特殊变量(Special Variables)"></a>特殊变量(Special Variables)</h2><p>In last tutorial about shell function, you use “$1” represent the first argument passed to function_A. Moreover, here are some special variables in shell:</p>
+<ul>
+<li><code>$0</code> - The filename of the current script.|</li>
+<li><code>$n</code> - The Nth argument passed to script was invoked or function was called.|</li>
+<li><code>$#</code> - The number of argument passed to script or function.|</li>
+<li><code>$@</code> - All arguments passed to script or function.|</li>
+<li><code>$*</code> - All arguments passed to script or function.|</li>
+<li><code>$?</code> - The exit status of the last command executed.|</li>
+<li><code>$$</code> - The process ID of the current shell. For shell scripts, this is the process ID under which they are executing.|</li>
+<li><code>$!</code> - The process number of the last background command.|<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> !/bin/bash</span></span><br><span class="line">echo "Script Name: $0"</span><br><span class="line">function func &#123;</span><br><span class="line">    for var in $*</span><br><span class="line">    do</span><br><span class="line">        let i=i+1</span><br><span class="line">        echo "The \$$&#123;i&#125; argument is: $&#123;var&#125;"</span><br><span class="line">    done</span><br><span class="line">    echo "Total count of arguments: $#"</span><br><span class="line">&#125;</span><br><span class="line">func We are argument</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>执行结果为：</p>
+<blockquote>
+<p>Script Name: ./prog.sh<br>The $1 argument is: We<br>The $2 argument is: are<br>The $3 argument is: argument<br>Total count of arguments: 3</p>
+</blockquote>
+<p><code>$@</code> and <code>$*</code> have different behavior when they were enclosed in double quotes.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> !/bin/bash</span></span><br><span class="line">function func &#123;</span><br><span class="line">    echo "--- \"\$*\""</span><br><span class="line">    for ARG in "$*"</span><br><span class="line">    do</span><br><span class="line">        echo $ARG</span><br><span class="line">    done</span><br><span class="line"></span><br><span class="line">    echo "--- \"\$@\""</span><br><span class="line">    for ARG in "$@"</span><br><span class="line">    do</span><br><span class="line">        echo $ARG</span><br><span class="line">    done</span><br><span class="line">&#125;</span><br><span class="line">func We are argument</span><br></pre></td></tr></table></figure>
+<p><code>$@</code>会将参数分开，而<code>$*</code>会将参数组成的字符串看做是一个整体。</p>
+<p>上面脚本的执行结果为：</p>
+<blockquote>
+<p>— “$*”<br>We are argument<br>— “$@”<br>We<br>are<br>argument</p>
+</blockquote>
+<h2 id="Bash陷阱命令-Bash-Trap-Command"><a href="#Bash陷阱命令-Bash-Trap-Command" class="headerlink" title="Bash陷阱命令 (Bash Trap Command)"></a>Bash陷阱命令 (Bash Trap Command)</h2><p>这一小节主要参看：<a href="https://www.learnshell.org/en/Bash_trap_command" target="_blank" rel="noopener">https://www.learnshell.org/en/Bash_trap_command</a></p>
+<p>It often comes the situations that you want to catch a special signal/interruption/user input in your script to prevent the unpredictables.</p>
+<p>Trap is your command to try:</p>
+<ul>
+<li><code>trap &lt;arg/function&gt; &lt;signal&gt;</code></li>
+</ul>
+<p>上面语句的意思是，只要捕捉到指定的信号(signal)，然后就执行前面的命令或者函数功能。</p>
+<p><strong>example</strong><br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> !/bin/bash</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> traptest.sh</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> notice you cannot make Ctrl-C work <span class="keyword">in</span> this shell, </span></span><br><span class="line"><span class="meta">#</span><span class="bash"> try with your <span class="built_in">local</span> one, also remeber to chmod +x </span></span><br><span class="line"><span class="meta">#</span><span class="bash"> your <span class="built_in">local</span> .sh file so you can execute it!</span></span><br><span class="line"></span><br><span class="line">trap "echo Booh!" SIGINT SIGTERM</span><br><span class="line">echo "it's going to run until you hit Ctrl+Z"</span><br><span class="line">echo "hit Ctrl+C to be blown away!"</span><br><span class="line"></span><br><span class="line">while true:         </span><br><span class="line">do</span><br><span class="line">    sleep 60       </span><br><span class="line">done</span><br></pre></td></tr></table></figure></p>
+<p>Surely you can substitute the <code>&quot;echo Booh!&quot;</code> with a function:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function booh &#123;</span><br><span class="line">    echo "booh!"</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>and call it in trap:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">trap booh SIGINT SIGTERM</span><br></pre></td></tr></table></figure>
+<p>Some of the common signal types you can trap:</p>
+<ul>
+<li><code>SIGINT</code>: user sends an interrupt signal (Ctrl + C)</li>
+<li><code>SIGQUIT</code>: user sends a quit signal (Ctrl + C)</li>
+<li><code>SIGFPE</code>: attempted an illegal mathematical operation</li>
+</ul>
+<p>You can check out all signal types by entering the following command:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kill -l</span><br></pre></td></tr></table></figure>
+<p>Notice the numbers before each signal name, you can use that number to avoid typing long strings in trap:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 2 corresponds to SIGINT and 15 corresponds to SIGTERM</span></span><br><span class="line">trap booh 2 15</span><br></pre></td></tr></table></figure>
+<h2 id="文件测试-File-Testing"><a href="#文件测试-File-Testing" class="headerlink" title="文件测试(File Testing)"></a>文件测试(File Testing)</h2><p>Often you will want to do some file tests on the file system you are running. In this case, shell will provide you with several useful commands to achieve it.</p>
+<p>The command looks like the following</p>
+<ul>
+<li><code>-&lt;command&gt; [filename]</code></li>
+<li><code>[filename1] -&lt;command&gt; [filename2]</code></li>
+</ul>
+<p>We will briefly introduce some common commands you might encounter in your daily life.</p>
+<p><strong>Example</strong></p>
+<p><strong>use “-e” to test if file exist</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> !/bin/bash</span></span><br><span class="line">filename="sample.md"</span><br><span class="line">if [ -e "$filename" ]; then</span><br><span class="line">    echo "$filename exists as a file"</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+<p><strong>use “-d” to test if directory exists</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> !/bin/bash</span></span><br><span class="line">directory_name="test_directory"</span><br><span class="line">if [ -d "$directory_name" ]; then</span><br><span class="line">    echo "$directory_name exists as a directory"</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+<p><strong>use “-r” to test if file has read permission for the user running the script/test</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> !/bin/bash</span></span><br><span class="line">filename="sample.md"</span><br><span class="line">if [ ! -f "$filename" ]; then # -f 判断 该『档名』是否存在且为文件(file)？</span><br><span class="line">    touch "$filename"</span><br><span class="line">fi</span><br><span class="line">if [ -r "$filename" ]; then</span><br><span class="line">    echo "you are allowed to read $filename"</span><br><span class="line">else</span><br><span class="line">    echo "you are not allowed to read $filename"</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+<p>具体的文件判断命令，可以参考《鸟哥的Linux私房菜》的第十二章学习Shell Scripts的第12.3小节善用判断式。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Linux/" rel="tag"># Linux</a>
+          
+            <a href="/tags/Bash-Shell/" rel="tag"># Bash Shell</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/07/机器学习/机器学习/" rel="next" title="机器学习">
+                <i class="fa fa-chevron-left"></i> 机器学习
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/18/数据结构/" rel="prev" title="数据结构">
+                数据结构 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/zhg_avatar.jpg"
+                alt="zhongzhengang" />
+            
+              <p class="site-author-name" itemprop="name">zhongzhengang</p>
+              <p class="site-description motion-element" itemprop="description">一点一滴的积累</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/zhongzhengang" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/mu-cao-18-76/activities" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-globe"></i>知乎</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Bash-Shell学习"><span class="nav-number">1.</span> <span class="nav-text">Bash Shell学习</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#bash-shell-小知识点"><span class="nav-number">1.1.</span> <span class="nav-text">bash shell 小知识点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本了解"><span class="nav-number">1.2.</span> <span class="nav-text">基本了解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量"><span class="nav-number">1.3.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#传递参数到脚本"><span class="nav-number">1.4.</span> <span class="nav-text">传递参数到脚本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组"><span class="nav-number">1.5.</span> <span class="nav-text">数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本操作-Basic-Operators"><span class="nav-number">1.6.</span> <span class="nav-text">基本操作(Basic Operators)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基础字符串操作"><span class="nav-number">1.7.</span> <span class="nav-text">基础字符串操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#逻辑判断"><span class="nav-number">1.8.</span> <span class="nav-text">逻辑判断</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#循环"><span class="nav-number">1.9.</span> <span class="nav-text">循环</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shell-函数"><span class="nav-number">1.10.</span> <span class="nav-text">shell 函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#特殊变量-Special-Variables"><span class="nav-number">1.11.</span> <span class="nav-text">特殊变量(Special Variables)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bash陷阱命令-Bash-Trap-Command"><span class="nav-number">1.12.</span> <span class="nav-text">Bash陷阱命令 (Bash Trap Command)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件测试-File-Testing"><span class="nav-number">1.13.</span> <span class="nav-text">文件测试(File Testing)</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zhongzhengang</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>
