@@ -566,9 +566,9 @@
       <category term="学习笔记" scheme="http://yoursite.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="SQL" scheme="http://yoursite.com/tags/SQL/"/>
-    
       <category term="MySQL" scheme="http://yoursite.com/tags/MySQL/"/>
+    
+      <category term="SQL" scheme="http://yoursite.com/tags/SQL/"/>
     
   </entry>
   
