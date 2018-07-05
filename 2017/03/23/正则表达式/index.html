@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="ZhongZhenGang&#39;s Notes">
 <meta property="og:description" content="table th:nth-of-type(1){ width: 20%; } table th:nth-of-type(2){ width: 80%; } }   正则表达式表达式全集   字符 描述     \ 将下一个字符标记为一个特殊字符、或一个原义字符、或一个向后引用、或一个八进制转义符。例如，“n”匹配字符“n”。“\n”匹配一个换行符。串行“\\”匹配“\”而“\(”则匹配“(”。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-05T12:04:41.512Z">
+<meta property="og:updated_time" content="2018-07-05T12:20:16.159Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="正则表达式">
 <meta name="twitter:description" content="table th:nth-of-type(1){ width: 20%; } table th:nth-of-type(2){ width: 80%; } }   正则表达式表达式全集   字符 描述     \ 将下一个字符标记为一个特殊字符、或一个原义字符、或一个向后引用、或一个八进制转义符。例如，“n”匹配字符“n”。“\n”匹配一个换行符。串行“\\”匹配“\”而“\(”则匹配“(”。">
@@ -448,7 +448,7 @@ width: 80%;
 </tr>
 <tr>
 <td>(?:pattern)</td>
-<td>匹配pattern但不获取匹配结果，也就是说这是一个非获取匹配，不进行存储供以后使用。这在使用或字符“( &#124; )”来组合一个模式的各个部分是很有用。例如“<code>industr(?:y &amp;#124;ies)</code>”就是一个比“<code>industry &amp;#124; industries</code>”更简略的表达式。</td>
+<td>匹配pattern但不获取匹配结果，也就是说这是一个非获取匹配，不进行存储供以后使用。这在使用或字符“( &#124; )”来组合一个模式的各个部分是很有用。例如“industr(?:y &#124;ies)”就是一个比“industry &#124; industries”更简略的表达式。</td>
 </tr>
 <tr>
 <td>(?=pattern)</td>
@@ -464,7 +464,7 @@ width: 80%;
 </tr>
 <tr>
 <td>(?&lt;!pattern)</td>
-<td>反向否定预查，与正向否定预查类拟，只是方向相反。例如“<code>(?&lt;!95 &amp;#124; 98 &amp;#124; NT &amp;#124; 2000)Windows</code>”能匹配“<code>3.1Windows</code>”中的“<code>Windows</code>”，但不能匹配“<code>2000Windows</code>”中的“<code>Windows</code>”。</td>
+<td>反向否定预查，与正向否定预查类拟，只是方向相反。例如“(?&lt;!95 &#124; 98 &#124; NT &#124; 2000)Windows”能匹配“<code>3.1Windows</code>”中的“<code>Windows</code>”，但不能匹配“<code>2000Windows</code>”中的“<code>Windows</code>”。</td>
 </tr>
 <tr>
 <td>x &#124; y</td>
